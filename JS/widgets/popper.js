@@ -1,4 +1,4 @@
-import "Common/Popover.css";
+import $ from '../jquery';
 import module from "module";
 import require from "require";
 import { createPopper } from '@popperjs/core/lib/popper-lite';
