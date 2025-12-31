@@ -26,22 +26,29 @@ async function fileExists(filePath) {
   }
 }
 
-function formatTimeSince(ms) {
-  const seconds = Math.floor(ms / 1000)
-  const minutes = Math.floor(seconds / 60)
-  const hours = Math.floor(minutes / 60)
-  const days = Math.floor(hours / 24)
-  const months = Math.floor(days / 30)
-  const years = Math.floor(days / 365)
-
-  if (years > 0) return `${years}y`
-  if (months > 0) return `${months}mo`
-  if (days > 0) return `${days}d`
-  if (hours > 0) return `${hours}h`
-  if (minutes > 0) return `${minutes}m`
-  return `${seconds}s`
+const UNITS = {
+  year: 365 * 24 * 60 * 60 * 1000,
+  month: (365 / 12) * 24 * 60 * 60 * 1000,
+  week: 7 * 24 * 60 * 60 * 1000,
+  day: 24 * 60 * 60 * 1000,
+  hour: 60 * 60 * 1000,
+  minute: 60 * 1000,
+  second: 1000,
 }
 
+const timeFormat = new Intl.RelativeTimeFormat('en', { style: 'long' })
+
+function formatTimeSince(time) {
+  const diffInMs = time - Date.now()
+  const absDiff = Math.abs(diffInMs)
+
+  for (const [unit, msValue] of Object.entries(UNITS)) {
+    if (absDiff >= msValue || unit === 'second') {
+      const value = Math.round(diffInMs / msValue)
+      return timeFormat.format(value, unit)
+    }
+  }
+}
 
 async function updateRevisions() {
   const req = await fetch(`https://${HOST}/js/revisions.json`, {
@@ -56,8 +63,10 @@ async function updateRevisions() {
   }
 
   const res = await req.json()
-  const revision = JSON.stringify(res, null, 2)
-  await fs.writeFile("revisions.json", revision)
+  const jsPaths = Object.keys(res.js)
+  const cssPaths = Object.keys(res.css)
+  const revisions = JSON.stringify([...jsPaths, ...cssPaths].toSorted(), null, 2)
+  await fs.writeFile("revisions.json", revisions)
 }
 
 async function downloadAndExtractSourcemap(url) {
@@ -69,14 +78,19 @@ async function downloadAndExtractSourcemap(url) {
   }
 
   try {
-    const response = await fetch(url)
-    if (!response.ok) {
+    const req = await fetch(url, {
+      headers: {
+        Cookie: `sandbox=${SANDBOX_KEY}`
+      }
+    })
+
+    if (!req.ok) {
       results.success = false
-      results.error = `HTTP ${response.status}`
+      results.error = `HTTP ${req.status}`
       return results
     }
 
-    const sourcemap = await response.json()
+    const sourcemap = await req.json()
     if (!sourcemap.sources || !sourcemap.sourcesContent) {
       results.success = false
       results.error = 'Invalid sourcemap format'
@@ -86,16 +100,13 @@ async function downloadAndExtractSourcemap(url) {
     for (let i = 0; i < sourcemap.sources.length; i++) {
       const sourcePath = sourcemap.sources[i]
       const sourceContent = sourcemap.sourcesContent[i]
-
-      if (!sourceContent) {
-        continue
-      }
+      if (!sourceContent) continue
 
       const cleanPath = sourcePath.replace(/^[a-z]+:\/\/\//, '')
       const localPath = path.join('.', cleanPath)
       const newHash = getFileHash(sourceContent)
       let isChanged = false
-      let lastModified = null
+      let previousModified = null
 
       if (await fileExists(localPath)) {
         const existingContent = await fs.readFile(localPath, 'utf-8')
@@ -104,7 +115,7 @@ async function downloadAndExtractSourcemap(url) {
 
         if (isChanged) {
           const fileStat = await fs.stat(localPath)
-          lastModified = fileStat.mtime
+          previousModified = fileStat.mtime
         }
       } else {
         isChanged = true
@@ -113,9 +124,16 @@ async function downloadAndExtractSourcemap(url) {
       if (isChanged) {
         await fs.mkdir(path.dirname(localPath), { recursive: true })
         await fs.writeFile(localPath, sourceContent, 'utf-8')
-        results.files.push({ path: localPath, isChanged: true, lastModified })
+        results.files.push({
+          path: localPath,
+          isChanged: true,
+          previousModified,
+        })
       } else {
-        results.files.push({ path: localPath, isChanged: false })
+        results.files.push({
+          path: localPath,
+          isChanged: false,
+        })
       }
     }
   } catch (error) {
@@ -133,7 +151,6 @@ async function processInBatches(items, batchSize, processor) {
     const batch = items.slice(i, i + batchSize)
     const batchResults = await Promise.all(batch.map(processor))
     results.push(...batchResults)
-
     console.log(`Processed ${Math.min(i + batchSize, items.length)}/${items.length} sourcemaps`)
   }
 
@@ -146,7 +163,7 @@ async function main() {
   const sourcemapLinks = JSON.parse(links)
     .map((link) => `https://${HOST}${link}.map`)
 
-  console.log(`Starting download sourcemaps (${sourcemapLinks.length} links, concurrency: ${CONCURRENCY})...\n`)
+  console.log(`Starting download sourcemaps (${sourcemapLinks.length} links, concurrency: ${CONCURRENCY})\n`)
 
   const startTime = Date.now()
   const results = await processInBatches(sourcemapLinks, CONCURRENCY, downloadAndExtractSourcemap)
@@ -156,12 +173,9 @@ async function main() {
       stats.failed.push({ url: result.url, error: result.error })
     } else {
       const changedFiles = result.files.filter(file => file.isChanged)
-      if (changedFiles.length > 0) {
-        changedFiles.forEach(file => {
-          stats.changed.set(file.path, {
-            lastModified: file.lastModified,
-            timeSince: file.lastModified ? Date.now() - file.lastModified.getTime() : null
-          })
+      for (const file of changedFiles) {
+        stats.changed.set(file.path, {
+          previousModified: file.previousModified,
         })
       }
     }
@@ -174,8 +188,8 @@ async function main() {
     lines.push('\n<pre>')
     const sortedChanged = Array.from(stats.changed.entries()).sort((a, b) => a[0].localeCompare(b[0]))
     sortedChanged.forEach(([file, info]) => {
-      const timeSuffix = info.timeSince ? ` (${formatTimeSince(info.timeSince)} ago)` : ' (new)'
-      lines.push(`- ${file}${timeSuffix}`)
+      const timeSuffix = info.previousModified ? ` (${formatTimeSince(info.previousModified.getTime())})` : ' (new)'
+      lines.push(`${file}${timeSuffix}`)
     })
     lines.push('</pre>')
   }
@@ -184,7 +198,7 @@ async function main() {
     lines.push(`\nFailed downloads (${stats.failed.length}):`)
     lines.push('\n<pre>')
     stats.failed.forEach(({ url, error }) => {
-      lines.push(`- ${url} (${error})`)
+      lines.push(`${url} (${error})`)
     })
     lines.push('</pre>')
   }
