@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  extract:
+  tracker:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
 
@@ -50,14 +50,12 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          sudo apt-get update && sudo apt-get install -y jq
-
-          if [ -f commit-message.txt ]; then
+          if [ -f commit.txt ]; then
             REPO_URL="https://github.com/${{ github.repository }}"
             COMMIT_URL="${REPO_URL}/commit/${{ github.sha }}"
 
             HEADER="[${{ github.repository }}](${REPO_URL}) • [${{ github.sha }}](${COMMIT_URL})"
-            BODY=$(cat commit-message.txt)
+            BODY=$(cat commit.txt)
             MESSAGE=$(printf "%s\n\n%s" "$HEADER" "$BODY")
 
             TEXT=$(echo "$MESSAGE" | jq -sRr @uri)
