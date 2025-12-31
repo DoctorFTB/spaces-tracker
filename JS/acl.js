@@ -6,7 +6,7 @@ var ACL_MODES = {
 	BY_ACCESS_LIST: 5
 };
 
-module.on("componentpage", function () {
+module.on("_componentpage", function () {
 	$('#main').on('change', '.js-acl_dropdown .js-radio input', function (e) {
 		var el = $(this),
 			wrap = el.parents('.js-acl_dropdown');
