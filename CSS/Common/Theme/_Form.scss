@@ -1,0 +1,86 @@
+@use "./Base" as *;
+
+/* Поля ввода */
+$input-text-color:				$default-text-color;
+$input-bg:						theme(#ffffff,	#3d3f3f);
+$input-placeholder-color:		theme(#c0c6d2,	#989fa4);
+$input-border:					theme(#b4bed1,	#1b1b1b);
+$input-focused-bg:				theme(#eff7ff,	#2d2e30);
+$input-focused-border:			theme(#57a3ea,	#89b2f6);
+$input-readonly-bg:				theme(#eff7ff,	#4b4d4e);
+$input-disabled-border:			theme(#d6dee8,	#808080);
+$input-error-bg:				theme(#fff0eb,	$input-focused-bg);
+$input-error-border:			theme(#ff0000,	#eb5656);
+
+/* Checkbox */
+$checkbox-unchecked-color:			theme(#a4b7c5,	#cccccc);
+$checkbox-unchecked-descr-color:	$checkbox-unchecked-color;
+$checkbox-checked-color:			$default-text-color;
+$checkbox-checked-descr-color:		theme($secondary-text-color,	$default-text-color);
+
+/* Toggle */
+$form-toggle-circle-bg:			#ffffff;
+$form-toggle-on-bg:				theme(#61a961,	#60a975);
+$form-toggle-on-shadow:			theme(inset 0px 3px 5px #277927,	inset 0px 3px 5px #27773e);
+$form-toggle-off-bg:			theme(#d9e3ef,	#858585);
+$form-toggle-off-shadow:		theme(inset 0px 3px 5px #bbcbdb,	inset 0px 3px 5px #4f4f4f);
+
+/* Select */
+$select-input-color:			$darkblue-text-color;
+$select-input-disabled-color:	$secondary-text-color;
+
+/* Calendar */
+$calendar-header-bg:			theme(#ebf0f5,	#4a4d4f);
+$calendar-header-color:			theme(#8996a3,	#cccccc);
+
+/* Button without style */
+$unstyled-button-hover-bg:		$default-hover-bg;
+$unstyled-button-clicked-bg:	$default-clicked-bg;
+$unstyled-button-bg:			$content-bg;
+$unstyled-button-border:		$default-border-color;
+$unstyled-button-color:			$default-text-color;
+
+/* Ошибка в форме */
+$error-message-bg:				theme(#fdf3ef,	#5d4141);
+$error-message-border-color:	theme(#ff9a95,	#8f5656);
+$error-message-color:			theme(#ff9a95,	#ff9a95);
+
+/* Buttons */
+$button-blue-bg:				theme(#395387,	#4563a1);
+$button-blue-hover-bg:			theme(#233353,	#3d588f);
+$button-blue-clicked-bg:		theme(#1C2943,	#28395d);
+$button-blue-clicked-shadow:	theme(inset 0px 3px 3px #05070C,	inset 0px 3px 3px #171f36);
+$button-blue-color:				#ffffff;
+
+$button-green-bg:				theme(#61A961,	#568f56);
+$button-green-hover-bg:			theme(#487E48,	#487E48);
+$button-green-clicked-bg:		theme(#305430,	#305430);
+$button-green-clicked-shadow:	theme(inset 0px 3px 3px #000000,	inset 0px 3px 3px #000000);
+$button-green-color:			#ffffff;
+
+$button-white-bg:				$content-bg;
+$button-white-hover-bg:			$default-hover-bg;
+$button-white-clicked-bg:		$default-clicked-bg;
+$button-white-clicked-shadow:	$default-clicked-shadow;
+$button-white-color:			$secondary-text-color;
+$button-white-border-color:		$default-border-color;
+
+/* Range */
+$range-input-track-shadow:			theme(inset 0px 3px 3px #bbcbdb,	inset 0px 3px 3px #282a2a);
+$range-input-track-bg:				theme(#d9e3ef,	#2f3131);
+$range-input-progress-bg:			theme(#d9e3ef,	#2f3131);
+$range-input-thumb-bg:				theme(#9ab2cc,	#646668);
+$range-input-thumb-active-bg:		theme(#7c99b6,	#4e5052);
+$range-input-text-color:			theme(#a4b7c4,	#cccccc);
+
+/* Progress Bar */
+$progress-bar-shadow:				theme(inset 0px 3px 3px #bbcbdb,	inset 0px 3px 3px #282a2a);
+$progress-bar-bg:					theme(#d9e3ef,	#2f3131);
+$progress-bar-runner-bg:			theme(#61a961,	#39ac5e);
+$progress-bar-runner-light-bg:		theme(#9ab2cc,	#646668);
+
+$progress-bar-text-color:			theme(#1b5201,	#ffffff);
+$progress-bar-text-shadow:			theme(none,			0 0 3px rgba(0,0,0,0.3));
+
+$progress-bar-pct-text-color:		theme(#a4b7c4,	#cccccc);
+$progress-bar-100-pct-text-color:	$green-text-color;

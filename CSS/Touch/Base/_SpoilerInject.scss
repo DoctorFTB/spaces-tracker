@@ -1,0 +1,106 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+
+/* Универсальные спойлеры (разрывает content-bl/widgets-group на две части) */
+.spoiler_inject::before, .our_spo_inj::before, 
+.operamini .spoiler_inject::after, .operamini .our_spo_inj::after {
+	content: "";
+	height: 16px;
+	top: -16px; /* height */
+	background: $content-bg; /* content-bl background */
+	display: inline-block;
+	border-radius: 2px;
+	position: absolute;
+	left: 3px; right: 3px;
+}
+.operamini .spoiler_inject::after, .operamini .our_spo_inj::after {
+	top: auto;
+	bottom: -16px; /* height */
+	border-top: 1px solid $separator-color;
+}
+.spoiler_inject, .our_spo_inj {
+	margin: 18px -18px; /* content-bl padding */
+	padding: 15px 3px;
+	background: $body-bg; /* main background */
+	overflow: hidden;
+	position: relative
+}
+.spoiler_inject.spoiler_inject-compact {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+.spoiler_inject-top {
+	margin-bottom: -18px; /* content-bl padding */
+}
+.spoiler_inject-chain {
+	margin-bottom: -18px; /* content-bl padding */
+	padding-bottom: 0
+}
+
+.spoiler_inject_bottom_fix{
+	margin: 15px -18px 3px -18px;
+}
+
+.spoiler_inject_empty_bottom{
+	margin-bottom: -28px;
+}
+
+.spoiler_inject_empty_top {
+	margin-top: -34px;
+}
+
+.error .spoiler_inject::after {
+	border-bottom: 1px solid $error-message-border-color;
+	border-top: 1px solid $error-message-border-color;
+	bottom: 0;
+	content: "";
+	display: block;
+	left: 3px;
+	position: absolute;
+	right: 3px;
+	top: 0;
+}
+
+.error .spoiler_inject.spoiler_inject_empty_bottom::after{
+	border-bottom: 0;
+}
+
+.spoiler_inject .widgets-group {
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 0
+}
+.spoiler_inject-pdb {
+	margin-bottom: 0
+}
+
+.widgets-group widgets-group_top wbg .spoiler_inject {
+	margin: 0 -3px;
+	padding: 20px 3px;
+}
+.widgets-group widgets-group_top wbg .spoiler_inject-top {
+	margin-bottom: -15px;
+}
+
+/* widgets-group */
+.our_spo_inj {
+	margin: 0px -13px;
+	padding: 15px 13px;
+}
+.our_spo_inj::before, 
+.operamini .our_spo_inj::after {
+	left: 13px;
+	right: 13px
+}
+.our_spo_inj-no_bottom {
+	padding-bottom: 0px;
+}
+.busi .our_spo_inj {
+	background: $system-message-warning-bg;
+}
+
+.our_spo_inj .widgets-group {
+	margin: 0
+}

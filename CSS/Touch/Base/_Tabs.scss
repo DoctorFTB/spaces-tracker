@@ -1,0 +1,175 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+@if ($PC) {
+	.tabs__item:hover {
+		background: $default-hover-bg;
+	}
+	
+	.tabs__item:hover .tabs__link {
+		color: $default-text-color;
+	}
+}
+
+.tabs__item:active,
+.tabs__item.clicked {
+	background: $tabs-clicked-bg;
+	-webkit-box-shadow: $tabs-clicked-shadow;
+	   -moz-box-shadow: $tabs-clicked-shadow;
+		box-shadow: $tabs-clicked-shadow;
+}
+
+.tabs .clicked .tabs__link:after{
+	border-bottom-color: transparent;
+	border-top-color: $tabs-clicked-bg;
+	margin-top: -1px;
+}
+
+.tabs .clicked:before{
+	display: block;
+	position: absolute;
+	content: '';
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	-webkit-box-shadow: $tabs-clicked-our-shadow;
+	   -moz-box-shadow: $tabs-clicked-our-shadow;
+		box-shadow: $tabs-clicked-our-shadow;
+}
+
+.tabs_no_shadow .tabs .clicked:before{
+	display: none;
+}
+
+.tabs{
+	background: $content-bg;
+	margin: 15px 10px 15px 10px;
+	position: relative;
+}
+
+.tabs:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+}
+
+.tabs__item {
+	cursor: pointer;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	position: relative;
+	z-index: 10;
+	word-break: break-word;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.tabs__link {
+	display: block;
+	padding: 14px 0 12px 0;
+	color: $default-text-color;
+	position: relative
+}
+
+.tabs__item:not(.clicked):active .tabs__link {
+	padding: 15px 0 11px 0;
+}
+
+.tabs__item:active,
+.tabs__item.clicked:hover{
+	color: $default-text-color !important;
+	background: $tabs-clicked-bg !important;
+}
+
+.tabs__item.clicked{
+	z-index: 1;
+	cursor: default;
+}
+
+.tabs__item_disabled,
+.tabs__item_disabled:active {
+	background: $content-bg !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.tabs__item_disabled .tabs__link {
+	color: $disabled-text-color !important;
+}
+
+@media all and (min-width:900px){
+	.min_screen_width_900{
+		display: none;
+	}
+}
+
+.tabs .table__cell {
+	border-right: 0;
+}
+
+.sub-tabs{
+	background: $content-bg;
+	margin-bottom: 0;
+	margin-top: -21px;
+	border-top: 1px solid $separator-color;
+}
+
+.sub-tabs_top{
+	margin-top: 0;
+	border-top: 0;
+}
+
+/* FIXME: Временный фикс для старого дизайна форума */
+.sub-tabs_wide_wrap .sub-tabs {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.sub-tabs .table__cell{
+	border-right: 0;
+}
+
+.sub-tabs__item {
+	padding: 12px 0 12px 0;
+	font-weight: bold;
+	color: $secondary-text-color;
+	display: block;
+	cursor: pointer;
+}
+
+.table__cell.sub-tabs__item-wrap {
+	border-bottom: 4px solid $content-bg;
+}
+
+.table__cell.sub-tabs__item-wrap:hover,
+.table__cell.sub-tabs__item-selected {
+	border-bottom: 4px solid $sub-tabs-selected-color !important;
+}
+
+.sub-tabs__item-wrap:hover .sub-tabs__item,
+.sub-tabs__item-selected .sub-tabs__item {
+	color: $sub-tabs-selected-color !important;
+}
+
+@if ($PC) {
+	.sub-tabs__item-selected{
+		cursor: default;
+	}
+}
+
+.wrapper-tabs{
+	margin-top: -14px
+}
+
+.tabs:before {
+	-webkit-box-shadow: $default-block-shadow;
+	-moz-box-shadow: $default-block-shadow;
+	box-shadow: $default-block-shadow;
+}

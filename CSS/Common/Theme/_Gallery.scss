@@ -1,0 +1,44 @@
+@use "spacepack/build/variables" as *;
+@use "./Base" as *;
+
+/* Wap */
+$gallery-wap-error-bg:			#00000c;
+$gallery-wap-toolbar-bg:		#323232;
+$gallery-wap-toolbar-color:		#ffffff;
+$gallery-wap-separator-color:	#424242;
+
+/* Остновые цвета */
+$gallery-text-color:			#ffffff;
+$gallery-link-color:			#6eb0ed;
+$gallery-separator-color:		#383838;
+
+$gallery-page-overlay-bg:		rgba(69, 69, 69, 0.95);
+$gallery-shadow-bg:				if($PC, #212121, #000000);
+$gallery-shadow-error-bg:		#000000;
+
+/* Нотификация */
+$gallery-notify-bg:				#232323;
+
+/* Описание файла */
+$gallery-descr-color:			#c0c6d2;
+$gallery-descr-bg-start:		rgba(33, 33, 33, 0);
+$gallery-descr-bg-end:			rgba(33, 33, 33, 1);
+
+/* Кнопка */
+$gallery-button-transparent-bg:	rgba(50, 50, 50, 0.5);
+$gallery-button-bg:				#323232;
+$gallery-button-color:			#ffffff;
+$gallery-button-active-bg:		#3a3a3a;
+$gallery-button-active-color:	#57a3ea;
+
+/* Индикатор загрузки */
+$gallery-image-loading-bg:		if($PC, #000000, rgba(64,64,64,0.45));
+$gallery-loading-bg:			#2299DD;
+
+/* Панели */
+$gallery-panel-bg:				#242424;
+
+/* HTML5 плеер для UC */
+$gallery-video-quality-bg:			#000000;
+$gallery-video-quality-text-color:	#ffffff;
+$gallery-video-quality-border:		#242424;

@@ -1,0 +1,22 @@
+@use "Common/Utils" as *;
+
+.gif-playing .ico_play_btn {
+	display: none
+}
+
+@include define-icon("ico_play_btn", "large") {
+	margin-left: -48px;
+	margin-top: -48px;
+}
+@include define-icon("ico_play_btn", "normal") {
+	margin-left: -24px;
+	margin-top: -24px;
+}
+@include define-icon("ico_play_btn", "medium") {
+	margin-left: -16px;
+	margin-top: -16px;
+}
+@include define-icon("ico_play_btn", "small") {
+	margin-left: -8px;
+	margin-top: -8px;
+}

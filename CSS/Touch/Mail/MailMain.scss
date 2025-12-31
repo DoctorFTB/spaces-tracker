@@ -1,0 +1,818 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.mail-contact {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	border-bottom: 1px solid $separator-color;
+
+	&__bg {
+		background: $content-bg;
+		cursor: pointer;
+	}
+
+	&__bg:hover {
+		background: $default-hover-bg;
+	}
+
+	&__bg:active {
+		background: $default-clicked-bg;
+		box-shadow: $default-clicked-shadow;
+	}
+
+	&--is-unread &__bg {
+		background: $mail-contact-unread-bg;
+
+		&:hover {
+			background: $mail-contact-unread-hover-bg;
+		}
+
+		&:active {
+			background: $default-clicked-bg;
+			box-shadow: $default-clicked-shadow;
+		}
+
+		.preview--stub {
+			background: $preview-stub-light-bg
+		}
+	}
+
+	&--is-checked &__bg {
+		background: $mail-contact-checked-bg;
+
+		&:hover {
+			background: $mail-contact-checked-bg;
+		}
+
+		&:active {
+			background: $mail-contact-checked-active-bg;
+			box-shadow: $mail-contact-checked-shadow;
+		}
+
+		.preview--stub {
+			background: $preview-stub-light-bg
+		}
+	}
+
+	&--is-checked.mail-contact--is-unread &__bg {
+		background: $mail-contact-checked-unread-bg;
+
+		&:hover {
+			background: $mail-contact-checked-unread-bg;
+		}
+
+		&:active {
+			background: $mail-contact-checked-active-bg;
+			box-shadow: $mail-contact-checked-shadow;
+		}
+	}
+
+	&--is-unread::after, &--has-reactions::after {
+		background: $mail-contact-unread-border;
+		content: "";
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 4px;
+	}
+
+	&__checkbox {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 17px;
+
+		.mail__select_contacts & {
+			display: flex;
+		}
+
+		input {
+			display: none;
+		}
+
+		&:active {
+			@include switch-sprite-color("ico", "black");
+		}
+
+		.mail-contact--is-checked & {
+			@include replace-icon("ico", "checkbox_circle", "ok_green");
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: row;
+		padding: 12px;
+		gap: 10px;
+		flex: 1;
+		min-width: 0;
+		width: auto;
+	}
+
+	&__avatar {
+		font-size: 0;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		min-width: 0;
+		gap: 2px;
+	}
+
+	&__header {
+		padding-top: 2px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	&__name {
+		font-weight: bold;
+	}
+
+	&__date {
+		color: $mail-service-color;
+		white-space: nowrap;
+	}
+
+	&__message {
+		position: relative;
+		min-height: 25px;
+		line-height: 25px;
+		color: $default-text-color;
+		z-index: 0;
+
+		&--type-service {
+			color: $mail-service-color;
+		}
+
+		&--is-unread::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -5px;
+			right: -5px;
+			background: $mail-contact-message-unread-bg;
+			z-index: -1;
+
+			.mail-contact--is-checked & {
+				background: $mail-contact-checked-unread-bg;
+			}
+		}
+
+		.smile, .emoji {
+			max-height: 25px;
+			width: auto;
+		}
+	}
+
+	&__message-text {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__indicators {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		position: absolute;
+		top: 50%;
+		left: -6px;
+		transform: translateY(-50%);
+		z-index: 9;
+	}
+
+	&__indicator {
+		display: none;
+		border-radius: 50%;
+		font-size: 10px;
+		width: 16px;
+		height: 16px;
+		align-items: center;
+		justify-content: center;
+
+		&--type-unread {
+			background: $important-counter-bg;
+			color: $important-counter-text-color;
+
+			.mail-contact--is-unread & {
+				display: flex;
+			}
+		}
+
+		&--type-reaction {
+			background: $mail-contact-unread-border;
+			color: $important-counter-text-color;
+
+			.mail-contact--has-reactions & {
+				display: flex;
+			}
+		}
+	}
+}
+
+#mail-text-field {
+	padding-top: 7px;
+}
+
+#mail__members_cnt, #mail_typing {
+	padding-bottom: 7px;
+}
+
+@if ($DARK_MODE) {
+	.mail__dialog_message {
+		.blog-item_short_shared, .quote, .code_tag, .att_wrap {
+			background: $mail-bubble-bg;
+		}
+	}
+}
+
+.mail__dialog_wrapper .blog-item_short_shared,
+.mail__dialog_wrapper .att_wrap {
+	border: 1px solid $default-border-color
+}
+
+.mail__service {
+	color: $mail-service-color
+}
+
+.mail__wrap .table__cell:last-child {
+	border: 0;
+}
+
+.mail__wrap .table__cell {
+	background: $content-bg;
+}
+
+.mail__dialog_message .btn-tools {
+	margin: -15px -25px;
+	padding: 11px 15px;
+	width: auto;
+}
+
+.mail__dialog_message .btn-tools .ico_more {
+	margin: 0;
+}
+
+.mail__dialog_message .stnd-block_outer-mrg {
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.mail__dialog_message .stnd-block:not(.stnd-block_outer-mrg) + div {
+	margin-top: 0;
+}
+
+.mail__attaches-group .stnd-block {
+	margin: 0 -15px;
+}
+
+.mail__button.disabled,
+.mail__button.disabled:focus,
+.mail__button.disabled:hover {
+	background: $content-bg none repeat scroll 0 0 !important;
+	box-shadow: none !important;
+	color: $secondary-text-color !important;
+	cursor: default;
+	opacity: 0.4
+}
+
+.mail__dialog_message {
+	background: $mail-message-outgoing-bg;
+	border-radius: 3px;
+	padding: 15px;
+}
+
+.mail__dialog_message.mail__dialog_message--is-new {
+	background: $mail-message-outgoing-new-bg
+}
+
+.mail__dialog_text {
+	padding-top: 5px;
+	word-wrap: break-word;
+}
+
+.mail__dialog_text_fix{
+	float: right;
+	width: 21px;
+	height: 14px;
+}
+
+.mail__dialog_message .user__nick {
+	float: left;
+	max-width: 95%;
+	margin-top: -5px;
+}
+
+.mail__dialog_message .user__nick .grey {
+	color: $secondary-text-color;
+}
+
+.mail__dialog_answer {
+	background: $mail-message-incoming-bg
+}
+
+.mail__dialog_answer.mail__dialog_message--is-new {
+	background: $mail-message-incoming-new-bg
+}
+
+.mail__dialog_answer .user__nick .mysite-nick {
+	word-wrap: break-word;
+}
+
+.mail__dialog_answer .btn-tools,
+.mail__dialog_message .btn-tools,
+.mail__dialog_answer .user__nick.right{
+	float: right;
+}
+
+.touch .mail__dialog_my .mail__dialog_ava_fix{
+	margin-left: 0;
+}
+
+.mail__dialog_reply {
+	background: $mail-message-system-bg;
+}
+
+.mail__dialog_system {
+	background: $mail-message-system-bg;
+	text-align: center;
+}
+
+.mail__dialog_unread:before {
+	position: absolute;
+	content: '';
+	display: block;
+	width: 3px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: $mail-contact-unread-border;
+}
+
+.mail__dialog_wrapper{
+	margin: 18px 0;
+	padding: 0 15px;
+	position: relative;
+}
+
+.mail__dialog_wrapper_extended {
+	margin: 0;
+    padding: 0;
+}
+
+.mail__dialog_wrapper:first-child {
+	margin-top: 0;
+}
+
+.mail__dialog_wrapper:last-child {
+	margin-bottom: 0;
+}
+
+.w_ava .mail__dialog_ava_fix {
+	margin-left: 50px;
+}
+
+.mail__typing,
+.mail__members_cnt{
+	color: $secondary-text-color !important;
+	min-height: 18px;
+}
+
+.mail_search_contact {
+	margin-left: 5px;
+}
+
+#mail_search_query .search__input {
+	padding: 13px 40px 12px 11px;
+}
+
+#mail__new_dialog {
+	overflow: hidden;
+	float: right;
+	position: absolute;
+	z-index: 1;
+	right: 0px;
+	top: 0px;
+	height: 97%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+#mail__new_dialog .stnd-link {
+	height: 100%;
+}
+
+#mail_search_query .search__input:focus {
+	padding: 12px 39px 11px 10px;
+}
+
+#mail_search_query .search__btn {
+	max-height: 50px;
+	min-height: 40px;
+}
+
+.w_ava .mail__dialog_message:before{
+	content: '';
+	display: block;
+	position: absolute;
+	top: 12px;
+	height: 0;
+	width: 0;
+	left: 50px;
+	border: 8px solid transparent;
+	border-right-color: $mail-message-outgoing-bg;
+}
+
+.w_ava .mail__dialog_answer:before{
+	border-right-color: $mail-message-incoming-bg;
+}
+
+.w_ava .mail__dialog_system:before{
+	border-right-color: $mail-message-system-bg;
+}
+
+.text-input__inline {
+	color: $input-text-color;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	display: block;
+	width: auto;
+	-webkit-appearance: none;
+	padding: 7px 9px 7px 5px;
+	-moz-box-sizing: content-box;
+		 box-sizing: content-box;
+	margin-bottom: 5px;
+	min-height: 22px;
+	width: 100%;
+}
+
+.text-input-wrapper_inline{
+	cursor: text;
+}
+
+.text-input-wrapper_inline .s-property{
+	cursor: default;
+}
+
+.text-input-wrapper_inline{
+	position: relative;
+	padding: 5px 40px 0 5px;
+	border: 1px solid $input-border;
+	background: $input-bg
+}
+
+.text-input-wrapper_inline.focus{
+	background: $input-focused-bg;
+	border: 2px solid $input-focused-border;
+	padding: 4px 34px 0 4px;
+	margin-bottom: -1px;
+}
+
+.text-input-wrapper_inline .s-property{
+	margin: 0 5px 5px 0;
+}
+
+.text-input-wrapper_inline .search__btn {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	margin-top: -8px;
+	right: 10px;
+	width: 16px;
+	height: 16px;
+}
+
+.text-input-wrapper_inline.focus .search__btn {
+	right: 9px;
+	margin-top: -9px;
+}
+
+.operamini .text-input-wrapper_inline .s-property {
+	display: inline-block;
+	float: none;
+}
+
+.mail__search_btn {
+	border: 1px solid $default-border-color;
+	height: 24px;
+	width: 48px;
+	margin-left: 10px;
+}
+
+.mail__select_contacts .mail__msg_w_chb {
+	margin-right: 50px;
+}
+
+@media all and (max-width: 480px) {
+	.table__wrap a .ico_mail,
+	.table__wrap button .ico_mail{
+		display: none;
+	}
+}
+
+.toolbar a .ico,
+.toolbar a .ico_mail{
+	display: inline-block !important;
+}
+
+.touch .mail__dialog_wrapper  .tiled-preview a{
+	display: block !important;
+}
+
+.mail_form_fix .stnd-block{
+	background: transparent;
+}
+
+.mail__service_attaches{
+	margin-top: 2px;
+    display: block;
+}
+
+.content-bl_hor-nopad{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.voice-player {
+	user-select: none;
+
+	.root--layout-light & {
+		padding: 10px;
+		background-color: $mail-message-outgoing-bg;
+	}
+
+	.root--layout-light &--style-incoming {
+		background-color: $mail-message-incoming-bg;
+	}
+
+	&__play-button {
+		display: table-cell;
+		cursor: pointer;
+		position: relative;
+		width: 40px;
+		height: 40px;
+		min-width: 40px;
+		border: 1px solid $voice-player-outgoing-button-bg;
+		border-radius: 100%;
+
+		.ico_player {
+			display: block;
+			position: absolute;
+		}
+	}
+
+	&__body {
+		position: relative;
+		display: table;
+		width: 100%;
+		margin-top: 5px;
+	}
+
+	&__error {
+		padding-top: 10px;
+		color: $red-text-color;
+	}
+
+	&__progress {
+		display: table-cell;
+		cursor: pointer;
+		width: 100%;
+		position: relative;
+	}
+
+	&__waveform {
+		cursor: pointer;
+		position: absolute;
+		left: 8px;
+		right: 8px;
+		top: 0;
+		bottom: 0;
+	}
+
+	&__tools {
+		position: relative;
+		display: table-cell;
+		min-width: 2.6em;
+		text-align: center;
+	}
+
+	&__speed {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		display: inline-block;
+		cursor: pointer;
+		padding: 1px 0;
+		border: 1px solid $voice-player-outgoing-button-border;
+		color: $voice-player-outgoing-button-inactive-color;
+		border-radius: 3px;
+		text-align: center;
+
+		&--is-active {
+			background: $voice-player-outgoing-button-bg;
+			color: $voice-player-outgoing-button-color;
+		}
+	}
+
+	.ico_player_play {
+		@include use-icon("ico_player", "play_green");
+		left: 16px;
+		top: 12px;
+	}
+
+	&__listen-status {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: -15px;
+		border-radius: 100%;
+		background-color: $mail-message-outgoing-bg;
+	}
+
+	&--is-unlistened &__listen-status {
+		display: block;
+	}
+
+	&--state-playing .ico_player_play {
+		@include use-icon("ico_player", "pause_green");
+		left: 14px;
+		top: 12px;
+	}
+
+	&--style-incoming {
+		.voice-player__listen-status {
+			background-color: $mail-message-incoming-bg;
+		}
+
+		.voice-player__play-button {
+			border: 1px solid $voice-player-incoming-button-bg;
+		}
+
+		.voice-player__speed {
+			border: 1px solid $voice-player-incoming-button-border;
+			color: $voice-player-incoming-button-inactive-color;
+		}
+
+		.voice-player__speed--is-active {
+			background: $voice-player-incoming-button-bg;
+			color: $voice-player-incoming-button-color;
+		}
+
+		@include switch-sprite-color("ico_player", "default");
+	}
+
+	.font_18 &, .font_20 &, .font_22 &, .font_24 & {
+		font-size: 16px;
+	}
+}
+
+.mail-reactions-button {
+	display: flex;
+
+	gap: 6px;
+	align-items: center;
+	justify-content: center;
+
+	padding: 8px 10px;
+	border-radius: 16px;
+
+	font-size: 12px;
+	line-height: 1;
+
+	position: absolute;
+	left: 50%;
+	top: 0;
+
+	opacity: 1;
+	visibility: visible;
+
+	transform: translate(-50%, var(--mail-reactions-button-y));
+	z-index: 3000;
+
+	background: $content-bg;
+	color: $reactions-mail-button-text;
+	box-shadow: $reactions-mail-button-shadow;
+	border: 1px solid $reactions-mail-button-border;
+
+	cursor: pointer;
+	user-select: none;
+
+	transition:
+		opacity 0.3s,
+		visibility 0.3s,
+		bottom 0.3s,
+		background 0.2s;
+
+	&--is-sticky {
+		position: fixed;
+		top: 8px;
+		transform: translateX(-50%);
+		color: $reactions-mail-button-sticky-text;
+		box-shadow: $reactions-mail-button-sticky-shadow;
+		border: 1px solid $reactions-mail-button-sticky-border;
+	}
+
+	&[data-count="0"], &--is-hidden {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	&:hover {
+		background: $default-hover-bg;
+	}
+
+	&:active {
+		color: $default-text-color;
+		background: $default-clicked-bg;
+	}
+}
+
+.mail-reactions-users-link {
+	padding-top: 3px;
+	background: $separator-color;
+}
+
+.voice-recorder {
+	position: relative;
+	padding: 15px;
+	user-select: none;
+
+	&__body {
+		position: relative;
+		background: $voice-recorder-bg;
+		border-radius: calc(1.15em + 9px);
+		height: 1.15em; /* input line height */
+		padding: 9px; /* input padding */
+		margin-right: 26px;
+	}
+
+	&__cancel-button {
+		position: absolute;
+		cursor: pointer;
+		top: 50%;
+		right: 15px;
+		margin: 0;
+		margin-top: -8px;
+	}
+
+	&__waveform {
+		position: absolute;
+		cursor: pointer;
+		top: 5px;
+		bottom: 5px;
+		left: calc(1em + 12px + 10px);
+		right: calc(4em + 5px);
+	}
+
+	&--long-duration &__waveform {
+		right: 5em;
+	}
+
+	&__button {
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		left: 5px;
+		width: calc(1em + 12px);
+		height: calc(1em + 12px);
+		margin-top: calc((1em + 12px) / -2);
+
+		background-image: inline-url("Images/mail/stop.svg");
+		background-size: contain;
+
+		.font_13 & {
+			left: 4px;
+		}
+
+		.font_20 &, .font_22 &, .font_24 & {
+			width: calc(1em + 13px);
+			height: calc(1em + 13px);
+			margin-top: calc((1em + 13px) / -2);
+		}
+	}
+
+	&--state-paused &__button {
+		background-image: inline-url("Images/mail/play.svg");
+	}
+
+	&--state-playing &__button {
+		background-image: inline-url("Images/mail/pause.svg");
+	}
+
+	&__duration {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		margin-top: -0.5em;
+		color: $voice-recorder-text-color;
+	}
+}

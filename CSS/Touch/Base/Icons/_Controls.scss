@@ -1,0 +1,30 @@
+@use "Common/Utils" as *;
+
+.s-chb:after, .form-checkbox:after {
+	@include use-icon("ico", "checkbox_circle");
+	position: absolute;
+	display: block;
+	content: '';
+	top: 50%;
+	margin-top: -8px;
+	right: 0;
+}
+
+.form-checkbox_plus:after {
+	@include use-icon("ico", "plus");
+}
+
+.form-checkbox.square:after {
+	@include use-icon("ico", "checkbox_square");
+}
+
+.form-checkbox_checked:after, .form-checkbox_checked:active:after, .form-checkbox_checked.square:after, .form-checkbox_checked.square:active:after {
+	@include use-icon("ico", "ok_green");
+}
+
+.form-checkbox--is-disabled.form-checkbox_checked:after,
+.form-checkbox--is-disabled.form-checkbox_checked:active:after,
+.form-checkbox--is-disabled.form-checkbox_checked.square:after,
+.form-checkbox--is-disabled.form-checkbox_checked.square:active:after {
+	@include use-icon("ico", "ok");
+}

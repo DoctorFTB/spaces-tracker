@@ -1,0 +1,118 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.s-city__wrap{
+    background: $content-bg;
+    margin: 0;
+}
+
+.s-city__stnd{
+    padding: 15px;
+}
+
+.s-city__item{
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    border-bottom: 1px solid $separator-color;
+    padding: 11px 15px 10px 15px;
+}
+
+.s-city__item.s-chb{
+    padding: 11px 46px 10px 15px;
+}
+
+
+.s-city__item_city {
+    padding-left: 41px !important;
+}
+
+.s-city__country-flag{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 16px;
+    height: 12px;
+}
+
+.s-city__country-flag{
+    top: 13px;
+}
+
+.s-city__item-title,
+.s-city__current .clicked .s-city__item-title{
+    font-weight: bold;
+    color: $default-text-color;
+}
+
+.s-city__current .s-city__item-title{
+    font-weight: normal;
+    color: inherit;
+}
+
+.s-city__item-region{
+    color: $secondary-text-color;
+}
+
+.s-chb:after{
+    right: 15px;
+}
+
+.s-city__item_light{
+    color: $secondary-text-color;
+}
+
+.s-city__item_light:active,
+.s-city__item_light.clicked{
+    color: $default-text-color;
+}
+
+.s-city__item_city.clicked,
+.s-city__item_light.clicked {
+    font-weight: bold;
+    background: $content-bg;
+    -webkit-box-shadow: none !important;
+       -moz-box-shadow: none !important;
+	    box-shadow: none !important;
+}
+
+.s-city__item_city.clicked:hover,
+.s-city__item_light.clicked:hover,
+.s-city__item_hovered, 
+.s-city__item_hovered.clicked {
+    background: $default-hover-bg;
+}
+
+.s-city__item_mobile{
+    padding-left: 55px !important;
+}
+
+.s-city__wrap-mobile-pic {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    margin-top: -15px;
+    left: 12px;
+    text-align: center;
+}
+
+.s-city__wrap-mobile-pic img {
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.s-city__wrap .stnd-link_arr{
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.s-chb.clicked:after, .s-chb.clicked:hover:after {
+	@include use-icon("ico", "ok_green");
+}

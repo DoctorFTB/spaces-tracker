@@ -1,0 +1,58 @@
+@use "spacepack/build/variables" as *;
+
+@function theme($light, $dark) {
+	@if ($DARK_MODE) {
+		@return $dark;
+	} @else {
+		@return $light;
+	}
+}
+
+/* Основное */
+$html-bg:						theme(#dddcdc,	#000000);	/* Цвет фона страницы */
+$body-bg:						theme(#f5f5f5,	#2d2e30);	/* Цвет тела странциы */
+$bottom-bg:						theme(#ebebeb,	#36383a);	/* Цвет низа страницы (счётчики и т.д.) */
+$content-bg:					theme(#ffffff,	#3e3f40);	/* Фон контента */
+
+/* Цвета текста */
+$default-text-color:			theme(#323232,	#ffffff);	/* Стандартный цвет текста */
+$secondary-text-color:			theme(#617989,	#cccccc);	/* Серый текст */
+$secondary2-text-color:			theme(#426476,	#cccccc);	/* Серый текст, но темнее */
+$secondary-accent-text-color:	theme(#395387,	#95c1e4);
+$disabled-text-color:			theme(#b0bcc3,	#797a7a);
+
+$darkblue-bg-color:				theme(#395387,	#7cc3ff);
+$green-bg-color:				theme(#61a961,	#78da97);
+
+$white-text-color:				#ffffff;
+$darkblue-text-color:			theme(#0E3C87,	#7cc3ff);
+$blue-text-color:				theme(#57a3ea,	#7cc3ff);
+$green-text-color:				theme(#61a961,	#78d993);
+$darkgreen-text-color:			theme(#108210,	#78d993);
+$darkred-text-color:			theme(#993333,	#ff8a66);
+$red-text-color:				theme(#ff6837,	#ff8a66);
+$yellow-text-color:				theme(#FFA000,	#FFA000);
+// $orange-text-color:			theme(#EE8800,	#fd8e26);
+$purple-text-color:				theme(#673ab7,	#b591eb);
+$service-text-color:			theme(#006666,	#00bdbd);
+
+/* Рамки */
+$default-border-color:			theme(#cdd4e1,	#28282a);
+$label-border-color:			theme(#becedd,	#2d2e30);
+$body-border-color:				theme(#cccaca,	#2d2e30);
+$separator-color:				theme(#c5d3e1,	#2d2e30);
+$fat-separator-color:			theme(#c5d3e1,	#2d2e30);
+$light-separator-color:			theme(#dddddd,	#2d2e30);
+
+/* Стандартный фон */
+$default-clicked-bg:			theme(#b8cde3,	#555759);
+$default-hover-bg:				theme(#ecf5fd,	#424446);
+$default-clicked-shadow:		theme(inset 0px 3px 3px #6485a7,		inset 0px 3px 5px #272727);
+$default-block-shadow:			theme(0px 3px 3px rgba(#5d6d9d, 0.3),	0px 3px 3px rgba(#111113, 0.3));
+
+// Скелетон
+$skeleton-base:					theme(#e2eaf5,	#4e4f50);
+$skeleton-highlight:			theme(#eef2f8,	#5a5b5c);
+$skeleton-gradient:				theme(linear-gradient(90deg, #e2eaf5, #eef2f8, #e2eaf5), linear-gradient(90deg, #4e4f50, #5a5b5c, #4e4f50));
+
+@import "./Base/Project";

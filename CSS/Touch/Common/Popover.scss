@@ -1,0 +1,63 @@
+@use "Common/Theme" as *;
+
+.popover {
+	opacity: 0;
+	transition: opacity 0.2s ease;
+	pointer-events: none;
+	visibility: hidden;
+
+	&--visible {
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	position: absolute;
+	background-color: $popover-bg;
+	padding: 10px;
+	border-radius: 6px;
+	z-index: 1000;
+	box-shadow: $popover-shadow;
+
+	&__arrow {
+		position: absolute;
+		width: 0;
+		height: 0;
+	}
+
+	&[data-popper-placement^='top'] &__arrow {
+		bottom: -10px;
+		left: 50%;
+		transform: translateX(-50%);
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-top: 10px solid $popover-bg;
+	}
+
+	&[data-popper-placement^='bottom'] &__arrow {
+		top: -10px;
+		left: 50%;
+		transform: translateX(-50%);
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid $popover-bg;
+	}
+
+	&[data-popper-placement^='left'] &__arrow {
+		right: -10px;
+		top: 50%;
+		transform: translateY(-50%);
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-left: 10px solid $popover-bg;
+	}
+
+	&[data-popper-placement^='right'] &__arrow {
+		left: -10px;
+		top: 50%;
+		transform: translateY(-50%);
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-right: 10px solid $popover-bg;
+	}
+}

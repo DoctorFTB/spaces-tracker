@@ -1,0 +1,67 @@
+@use "Common/Theme" as *;
+.action-bar{
+	border-top: 1px solid $separator-color;
+}
+
+.action-bar td:last-child{
+	border-right: none;
+}
+
+.action-bar .table__wrap .ico{
+	margin: 0;
+	vertical-align: middle;
+}
+
+.action-bar_cnt{
+	vertical-align: middle;
+	margin-left: 4px;
+}
+
+.action-bar_cnt_on {
+	color: $action-bar-like-on-color;
+}
+
+.action-bar_cnt_on_red {
+	color: $action-bar-dislike-on-color;
+}
+
+a:active .action-bar_cnt_on {
+	color: $default-text-color;
+}
+
+.action-bar-info__wrapper{
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.action-bar-info{
+	overflow: hidden;
+	color: $secondary-text-color;
+}
+
+.action-bar-info .bubble .preview {
+	vertical-align: middle;
+}
+
+.action-bar-info .bubble a[title] {
+	position: relative;
+	z-index: 1;
+}
+
+.action-bar-info .bubble{
+	margin: 15px 15px 0 15px;
+	padding: 10px;
+}
+
+.action-bar-info .bubble:after{
+	display: none;
+}
+
+.action-bar-info .triangle-show:after{
+	border-bottom-color: $bubble-bg;
+	margin-top: -2px;
+}
+
+.action-bar .user__tools-link {
+	line-height: normal
+}

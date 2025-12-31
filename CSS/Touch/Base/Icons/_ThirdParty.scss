@@ -1,0 +1,18 @@
+@use "Common/Utils" as *;
+
+@include define-icon("ico_thirdparty", "google_play") {
+	margin: 0;
+}
+
+@include define-icon("ico_thirdparty", "vk") {
+	margin: 0;
+}
+
+@include define-icon("ico_thirdparty", "telegram") {
+	margin: 0;
+}
+
+@include define-icon("ico_thirdparty", "strip2");
+@include define-icon("ico_thirdparty", "olympic");
+@include define-icon("ico_thirdparty", "twitter");
+@include define-icon("ico_thirdparty", "1x");

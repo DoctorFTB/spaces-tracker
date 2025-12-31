@@ -1,0 +1,26 @@
+@use "Common/Theme" as *;
+
+.site-link__wrapper{
+	border-bottom: 1px solid $separator-color;
+	background: $content-bg
+}
+
+.site-link__wrapper .list-link{
+	border-bottom: 0;
+	padding: 13px 15px 13px 15px;
+	color: $block-link-grey-color !important;
+}
+
+.site-link__wrapper .list-link:active{
+	padding: 14px 15px 12px 15px;
+}
+
+.site-link__title,
+.site-link__nick{
+	width: 50%;
+	word-wrap: break-word;
+}
+
+.site-link__nick .ico{
+	margin-bottom: -4px !important;
+}

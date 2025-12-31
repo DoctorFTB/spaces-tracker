@@ -1,0 +1,54 @@
+@use "Common/Theme" as *;
+@use "spacepack/build/variables" as *;
+
+.files-sort-dnd {
+	&__item {
+		color: $secondary-text-color;
+		background: $upload-dnd-bg;
+		border: 3px dashed $upload-dnd-border;
+		text-align: center;
+	}
+	
+	&--active {
+		color: $green-text-color;
+		background: $upload-dnd-active-bg;
+		border: 3px dashed $upload-dnd-active-border;
+	}
+	
+	&__wrap {
+		display: table;
+		overflow: hidden;
+		width: 100%;
+	}
+	
+	&__item {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	
+	/* Стиль для тайлов */
+	&--tile {
+		padding: 0 5px;
+	}
+	
+	&--tile &__wrap {
+		border-spacing: 5px 0;
+	}
+	
+	&--tile &__item {
+		width: 50%;
+		padding: 10px;
+	}
+	
+	/* Стиль для списка */
+	&--list:last-child {
+		margin-top: -1px;
+	}
+	&--list &__wrap {
+		height: 110px;
+	}
+	
+	&--list &__item {
+		padding: 0 10px;
+	}
+}

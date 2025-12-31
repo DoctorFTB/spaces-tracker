@@ -1,0 +1,122 @@
+@use "./Base" as *;
+
+/* Bordered */
+$bordered-darkblue-color:		$darkblue-text-color;
+$bordered-blue-color:			$blue-text-color;
+$bordered-green-color:			$green-text-color;
+$bordered-red-color:			$red-text-color;
+
+/* Block */
+$block-title-bg:				theme(#cddae7,	#424446);
+$block-title-color:				$blue-text-color;
+$block-title-hover-bg:			theme(#a7c0d9,	#4b4d4e);
+$block-title-btn-clicked-bg:	theme(#82a1bf,	transparent);
+
+/* Title counter */
+$title-counter-border:			theme(#8396b7,	#cccccc);
+$title-counter-color:			theme(#8396b7,	#cccccc);
+
+$title-counter-green-border:	$green-text-color;
+$title-counter-green-color:		$green-text-color;
+
+$title-counter-blue-border:		$blue-text-color;
+$title-counter-blue-color:		$blue-text-color;
+
+/* LP Notifications */
+$lp-notif-bg:					#738dc6;
+$lp-notif-text-color:			#ffffff;
+$lp-notif-border:				#273c6c;
+
+/* Статусы, цитаты */
+$bubble-bg: 					theme(#ddebf7,	#4b4d4e);
+$bubble-secondary-bg:			theme(#f4f4f4,	#4b4d4e);
+
+/* Системные сообщения */
+$system-message-info-bg:		theme(#ddebf7,	#214045);
+$system-message-info-text:		$default-text-color;
+
+$system-message-warning-bg:		theme(#f9edbf,	#414858);
+$system-message-warning-text:	$default-text-color;
+$system-message-warning-border: theme(#d9cebf,	#485060);
+
+$system-message-error-bg:		theme(#f9e1d9,	#643a3a);
+$system-message-error-text:		theme(#ff6837,	#ffffff);
+
+$system-message-shadow:			theme(0px 3px 3px rgba(#395387, 0.3),	0px 3px 3px rgba(#111113, 0.3));
+
+$system-message-counter-bg:		#ffffff;
+$system-message-counter-text:	#323232;
+$system-message-counter-border:	#323232;
+
+/* Счётчик онлайна на главной */
+$online-block-bg:				theme(#ddebf7,	#424446);
+$online-block-hover-bg:			theme(#bbd3e8,	#4b4d4e);
+$online-block-clicked-bg:		theme(#82a1bf,	#555759);
+$online-block-shadow:			theme(0px 3px 3px rgba(#395387, 0.3),	0px 3px 3px rgba(#111113, 0.3));
+
+/* Dropdown */
+$dropdown-body-bg:				theme(#cddae7,	#555758);
+$dropdown-body-contrast-bg:		theme(#f5f6f8,	#555758);
+$dropdown-body-shadow:			theme(null,		0px 3px 3px rgba(#111113, 0.55));
+
+/* Drag'N'Drop */
+$upload-dnd-bg:					$content-bg;
+$upload-dnd-border:				theme(#7A90A0,	#CCCCCC);
+
+$upload-dnd-active-bg:			theme(#edfced,	#314541);
+$upload-dnd-active-border:		theme(#61a961,	#78d993);
+
+$upload-dnd-shadow:				theme(0px 0px 8px rgba(#5d6d9d, 0.3),	0px 0px 8px rgba(#111113, 0.3));
+$upload-dnd-active-shadow:		theme(0px 0px 8px rgba(#61a961, 0.9),	0px 0px 8px rgba(#78d993, 0.9));
+
+/* Админское */
+$admin-block-bg:				$bubble-bg;
+
+/* Блок для привлечения внимания */
+$attention-block-bg:				theme(#edf6ff,	#344556);
+$attention-block-border:			$blue-text-color;
+
+/* List backgrounds */
+$list-item-info-bg:					theme(#ddebf7,	#344556);
+$list-item-info-hover-bg:			theme(#e3f0fc,	#364759);
+
+$list-item-success-bg:				theme(#edfced,	#314541);
+$list-item-success-hover-bg:		theme(#e0fae0,	#314541);
+$list-item-success-border:			theme(#75a175,	#4a6862); // legacy!
+
+$list-item-error-bg:				theme(#fdeded,	#5d4141);
+$list-item-error-hover-bg:			theme(#fbdfdf,	#5a3f3f);
+
+$list-item-warning-bg:				theme(#f9edbf,	#4b4d4e);
+$list-item-warning-hover-bg:		theme(#f8e9b0,	#484a4b);
+
+$list-item-inactive-bg:				theme(#e4ebf1,	#4b4d4e);
+$list-item-inactive-hover-bg:		theme(#dbe4eb,	#484a4b);
+
+/* [code] */
+$code-tag-bg:						theme(#F5F5F5,	#4b4d4e);
+$code-tag-border:					theme(#e6e6e6,	$default-border-color);
+
+/* Главные табы */
+$tabs-clicked-bg:				theme(#b8cde3,	#424346);
+$tabs-clicked-shadow:			theme(inset 0px 3px 3px #6485a7,		inset 0 3px 5px #1f2123);
+$tabs-clicked-our-shadow:		theme(0px 7px 8px #f5f5f5,				none);
+
+/* Суб. табы */
+$sub-tabs-selected-color:		theme(#57a3ea,	$darkblue-text-color);
+
+/* Обычные табы */
+$switch-selected-bg:			$content-bg;
+$switch-unselected-bg:			theme(#cddae7,	#525456);
+$switch-hover-bg:				theme(#a7c0d9,	#4b4d4e);
+$switch-clicked-bg:				theme(#82a1bf,	#555759);
+$switch-cnt-border:				theme(#617989,	#cccccc);
+$switch-cnt-color:				theme(#617989,	#cccccc);
+
+/* Action bar */
+$action-bar-dislike-on-color:	theme(#d4232f,	$red-text-color);
+$action-bar-like-on-color:		$green-text-color;
+
+/* Popover */
+$popover-bg: $content-bg;
+$popover-shadow: 0 4px 14px rgba(#111113, 0.3);

@@ -1,0 +1,303 @@
+@use "Common/Theme" as *;
+$md-baseline: 0.75rem;
+$md-head-top: 1.2rem;
+$md-head-bottom: 0.5rem;
+
+.markdown {
+	line-height: 1.6;
+
+	*:first-child {
+		margin-top: 0 !important;
+	}
+
+	*:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	/* Заголовки */
+	h1, h2, h3, h4, h5, h6 {
+		display: block;
+		margin-top: $md-head-top;
+		margin-bottom: $md-head-bottom;
+		line-height: 1.3;
+		font-weight: 600;
+		overflow-wrap: break-word;
+	}
+
+	h1 {
+		font-size: 1.5em;
+	}
+
+	h2 {
+		font-size: 1.3em;
+	}
+
+	h3 {
+		font-size: 1.15em;
+	}
+
+	h4 {
+		font-size: 1em;
+	}
+
+	h5 {
+		font-size: 0.875em;
+	}
+
+	h6 {
+		font-size: 0.85em;
+	}
+
+	/* Блоки */
+	p, ul, ol, blockquote, pre, table, figure {
+		margin-top: $md-baseline;
+		margin-bottom: $md-baseline;
+	}
+
+	/* Строчные элементы */
+	small {
+		font-size: 80%;
+	}
+
+	abbr[title] {
+		text-decoration: underline dotted;
+		border-bottom: 0;
+		cursor: help;
+	}
+
+	b, strong {
+		font-weight: 700;
+	}
+
+	em, i {
+		font-style: italic;
+	}
+
+	u {
+		text-decoration: underline;
+	}
+
+	s, del {
+		text-decoration: line-through;
+	}
+
+	ins {
+		text-decoration: none;
+		background: rgba(0,200,0,.08);
+	}
+
+	mark {
+		background: rgba(255,235,59,.45);
+		border-radius: .2em;
+		padding: .05em .2em;
+	}
+
+	sub, sup {
+		font-size: 75%;
+		line-height: 0;
+		position: relative;
+		vertical-align: baseline;
+	}
+
+	sup {
+		top: -0.5em;
+	}
+
+	sub {
+		bottom: -0.25em;
+	}
+
+	/* Списки */
+	ul, ol {
+		display: block;
+		margin: 0 0 $md-baseline;
+		padding-left: 1.4em;
+	}
+
+	/* Маркеры для UL оставляем стандартные */
+	ul { list-style: disc outside; }
+	ul ul { list-style: circle outside; }
+	ul ul ul { list-style: square outside; }
+
+	/* Нумерованные списки через ::marker, с иерархией counters() */
+	&--style-legal {
+		ol {
+			list-style: none;
+			counter-reset: item;
+		}
+		ol > li {
+			counter-increment: item;
+		}
+		ol > li::marker {
+			content: counters(item, ".") ". ";
+		}
+	}
+
+	/* Отступы элементов */
+	li {
+		margin-top: 0.3rem;
+		margin-bottom: 0.3rem;
+	}
+	li:last-child { margin-bottom: 0; }
+	li > ul, li > ol {
+		margin-top: 0.35rem;
+		margin-bottom: 0.35rem;
+	}
+
+	/* Цитаты */
+	blockquote {
+		padding: 10px;
+		background: $bubble-bg;
+		border: 1px solid $default-border-color;
+		color: $default-text-color;
+		overflow: hidden;
+		word-wrap: break-word;
+		margin: 10px 0;
+	}
+
+	/* Код */
+	code, pre, kbd, samp {
+		font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Lucida Console", "DejaVu Sans Mono", "Courier New", monospace;
+		tab-size: 4;
+		-moz-tab-size: 4;
+	}
+
+	code {
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		white-space: pre-line;
+		background: $code-tag-bg;
+		border: 1px solid $code-tag-border;
+		color: $default-text-color;
+	}
+
+	pre > code {
+		display: block;
+		line-height: 1.45;
+		margin-top: $md-baseline;
+		margin-bottom: $md-baseline;
+		padding: 0.6rem 1rem;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		white-space: pre;
+		background: $code-tag-bg;
+		border: 1px solid $code-tag-border;
+		color: $default-text-color;
+	}
+
+	pre {
+		background: transparent;
+		padding: 0;
+		white-space: pre;
+		word-break: normal;
+	}
+
+	/* Таблицы */
+	.table-overflow {
+		margin-top: $md-baseline;
+		margin-bottom: $md-baseline;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	table {
+		width: max-content;
+		min-width: 100%;
+		border-collapse: collapse;
+		margin-top: $md-baseline;
+		margin-bottom: $md-baseline;
+		-webkit-overflow-scrolling: touch;
+		border: 1px solid $default-border-color;
+	}
+
+	thead {
+		position: relative;
+		z-index: 1;
+	}
+
+	tr {
+		background: $content-bg;
+		border: 1px solid $default-border-color;
+
+		&:hover {
+			background: $default-hover-bg;
+		}
+
+		&:last-child td {
+			border-bottom: 0;
+		}
+	}
+
+	th, td {
+		line-height: 1.2;
+		text-align: left;
+		padding: 5px 8px;
+		vertical-align: top;
+		border: 1px solid $default-border-color;
+		color: $default-text-color;
+	}
+
+	th {
+		background: $stat-table-title-bg;
+		font-weight: 600;
+	}
+
+	/* Разделители */
+	hr {
+		height: 1px;
+		border: 0;
+		background: $separator-color;
+		margin: 1.2rem 0;
+	}
+
+	/* Спойлеры */
+	details {
+		margin: $md-baseline 0;
+		border-radius: .5rem;
+		padding: .4rem .6rem;
+		background: $bubble-bg;
+		border: 1px solid $default-border-color;
+		color: $default-text-color;
+	}
+
+	details[open] {
+		padding-bottom: .6rem;
+	}
+
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+		list-style: none;
+		outline: none;
+		margin: .1rem 0 .4rem;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::before {
+		content: "▸";
+		margin-right: .35rem;
+		display: inline-block;
+		transform: translateY(-1px);
+	}
+
+	details[open] > summary::before {
+		content: "▾";
+	}
+
+	/* Футноты */
+	sup a {
+		text-decoration: none; /* [^1] в тексте */
+	}
+
+	/* Примечания */
+	section:last-child > ol {
+		padding-left: 1.1em;
+	}
+
+	section:last-child > ol > li {
+		margin: .35rem 0;
+	}
+}

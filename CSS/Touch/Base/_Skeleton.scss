@@ -1,0 +1,33 @@
+@use "Common/Theme" as *;
+
+body {
+	.skeleton, .skeleton-text {
+		background-color: $skeleton-base;
+		background-image: $skeleton-gradient;
+		background-size: 100px 100%;
+		background-repeat: no-repeat;
+		animation: skeleton-animation 1.5s ease-in-out infinite;
+		border-color: transparent;
+		color: transparent;
+	}
+
+	.skeleton--circle {
+		border-radius: 50%;
+	}
+
+	.skeleton-text {
+		display: inline-block;
+		border-radius: 1em;
+		height: 0.9em;
+		vertical-align: middle;
+	}
+}
+
+@keyframes skeleton-animation {
+	0% {
+		background-position: -100px 0;
+	}
+	100% {
+		background-position: calc(100px + 100%) 0;
+	}
+}

@@ -1,0 +1,89 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+@include define-icon("ico_attaches", "attach");
+@include define-icon("ico_attaches", "attach_blue");
+@include define-icon("ico_attaches", "file");
+@include define-icon("ico_attaches", "music");
+@include define-icon("ico_attaches", "picture");
+@include define-icon("ico_attaches", "poll");
+@include define-icon("ico_attaches", "poll_darkblue");
+@include define-icon("ico_attaches", "poll_blue");
+@include define-icon("ico_attaches", "video");
+
+.js-clicked {
+	@include replace-icon("ico_attaches", "attach", "attach_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico_attaches", "file", "file_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico_attaches", "music", "music_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico_attaches", "picture", "picture_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico_attaches", "poll", "poll_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico_attaches", "video", "video_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico", "a", "a_black");
+}
+
+.js-clicked {
+	@include replace-icon("ico", "smile", "smile_black");
+}
+
+.att_wrap{
+	background: $bubble-bg;
+	padding: 5px;
+	overflow: hidden;
+	margin: 10px 0;
+	-webkit-border-radius: 2px;
+			border-radius: 2px;
+}
+
+.bubble-message .att_wrap{
+	margin: 0;
+	padding: 5px 0;
+}
+
+.att_pic{
+	float: left;
+	margin-right: 10px;
+}
+
+.att_size{
+	float: right;
+	color: $secondary-accent-text-color;
+}
+
+.dropdown-menu .list-link_select_item{
+	padding: 10px 45px 10px 15px;
+}
+
+.dropdown-menu .list-link_select_item:active{
+	padding: 11px 45px 9px 15px;
+}
+
+
+.list-link_select_item .ico_buttons_select,
+.list-link_select_item .ico_buttons_selected{
+	margin: -12px 0 0 0;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+}
+.attach_filewidget{
+	padding: 0 6px;
+}

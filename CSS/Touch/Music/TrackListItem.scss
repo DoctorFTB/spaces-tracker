@@ -1,0 +1,22 @@
+@use "Common/Theme" as *;
+.top_position_item{
+	color:$secondary-text-color;
+	position:absolute;
+	top: 50%;
+	margin-top: -8px;
+	left: 10px;
+}
+
+.for_avatar{
+	margin-right:10px;
+}
+
+.t-block_item{
+	position:relative;
+	z-index: 1000;
+}
+
+.delta{
+	margin-left:4px;
+	line-height:39px;
+}

@@ -1,0 +1,256 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.soc-links {
+	padding-bottom: 8px;
+	
+	&--last {
+		padding-bottom: 0;
+	}
+}
+
+.spoiler_inject.spoiler_inject--soc-link {
+	margin-top: 7px; /* 15px - 8px */
+	margin-bottom: 15px;
+}
+
+.spoiler_inject.spoiler_inject--soc-link-last {
+	margin-top: 15px;
+	margin-bottom: -28px;
+}
+
+.widgets-group.soc-links{
+	margin-top: -27px;
+}
+
+.soc-links .list-link{
+	background: $soc-link-none-bg;
+	color: $secondary-text-color;
+	padding: 0;
+	overflow: initial;
+	z-index: 10;
+	line-height: normal;
+}
+
+.soc-links .list-link:last-child{
+	border: none;
+}
+
+.soc-links .list-link:active{
+	padding: 0;
+}
+
+.soc-link_ico.vk,
+.soc-links .list-link_vk{
+	background: $soc-link-vk-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.odnk,
+.soc-links .list-link_odnk{
+	background: $soc-link-ok-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.spcs,
+.soc-links .list-link_spcs{
+	background: $soc-link-spcs-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.mymir,
+.soc-links .list-link_mymir{
+	background: $soc-link-mymir-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.fb,
+.soc-links .list-link_fb{
+	background: $soc-link-fb-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.google,
+.soc-links .list-link_google{
+	background: $soc-link-google-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.yandex,
+.soc-links .list-link_yandex{
+	background: $soc-link-yandex-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-link_ico.tg,
+.soc-links .list-link_tg{
+	background: $soc-link-telegram-bg;
+	color: $soc-link-color !important;
+}
+
+.soc-links .list-link.clicked,
+.soc-links .list-link:active{
+	color: $default-text-color;
+}
+
+@if ($PC) {
+	.soc-links .list-link_soc:hover {
+		color: $default-text-color;
+		background: $soc-link-none-hover;
+	}
+	
+	.soc-links .list-link_soc:active {
+		background: $default-clicked-bg;
+	}
+}
+
+.soc-links .list-link_vk,
+.soc-links .list-link_odnk,
+.soc-links .list-link_spcs,
+.soc-links .list-link_mymir,
+.soc-links .list-link_fb{
+	text-align: left;
+}
+
+@if ($PC) {
+	.soc-links .list-link_vk:hover {
+		background: $soc-link-vk-hover;
+	}
+}
+
+.soc-links .list-link_vk:active,
+.soc-links .list-link_vk.clicked {
+	background: $soc-link-vk-clicked;
+	-webkit-box-shadow: $soc-link-vk-clicked-shadow;
+	   -moz-box-shadow: $soc-link-vk-clicked-shadow;
+			box-shadow: $soc-link-vk-clicked-shadow;
+}
+
+@if ($PC) {
+	.soc-links .list-link_odnk:hover {
+		background: $soc-link-ok-hover;
+	}
+}
+
+.soc-links .list-link_odnk:active,
+.soc-links .list-link_odnk.clicked{
+	background: $soc-link-ok-hover;
+	-webkit-box-shadow: $soc-link-ok-clicked-shadow;
+	   -moz-box-shadow: $soc-link-ok-clicked-shadow;
+			box-shadow: $soc-link-ok-clicked-shadow;
+}
+
+@if ($PC) {
+	.soc-links .list-link_spcs:hover {
+		background: $soc-link-spcs-hover;
+	}
+}
+
+.soc-links .list-link_spcs:active,
+.soc-links .list-link_spcs.clicked {
+	background: $soc-link-spcs-clicked;
+	-webkit-box-shadow: $soc-link-spcs-clicked-shadow;
+	   -moz-box-shadow: $soc-link-spcs-clicked-shadow;
+			box-shadow: $soc-link-spcs-clicked-shadow;
+}
+
+@if ($PC) {
+	.soc-links .list-link_mymir:hover {
+		background: $soc-link-mymir-hover;
+	}
+}
+
+.soc-links .list-link_mymir:active,
+.soc-links .list-link_mymir.clicked {
+	background: $soc-link-mymir-clicked;
+	-webkit-box-shadow: $soc-link-mymir-clicked-shadow;
+	   -moz-box-shadow: $soc-link-mymir-clicked-shadow;
+			box-shadow: $soc-link-mymir-clicked-shadow;
+}
+
+@if ($PC) {
+	.pc .soc-links .list-link_fb:hover {
+		background: $soc-link-fb-hover;
+	}
+}
+
+.soc-links .list-link_fb:active,
+.soc-links .list-link_fb.clicked {
+	background: $soc-link-fb-clicked;
+	-webkit-box-shadow: $soc-link-fb-clicked-shadow;
+	   -moz-box-shadow: $soc-link-fb-clicked-shadow;
+			box-shadow: $soc-link-fb-clicked-shadow;
+}
+
+@if ($PC) {
+	.soc-links .list-link_google:hover {
+		background: $soc-link-google-hover;
+	}
+}
+
+.soc-links .list-link_google:active,
+.soc-links .list-link_google.clicked {
+	background: $soc-link-google-clicked;
+	-webkit-box-shadow: $soc-link-google-clicked-shadow;
+	   -moz-box-shadow: $soc-link-google-clicked-shadow;
+			box-shadow: $soc-link-google-clicked-shadow;
+}
+
+@if ($PC) {
+	.soc-links .list-link_yandex:hover {
+		background: $soc-link-yandex-hover;
+	}
+}
+
+.soc-links .list-link_yandex:active,
+.soc-links .list-link_yandex.clicked {
+	background: $soc-link-yandex-clicked;
+	-webkit-box-shadow: $soc-link-yandex-clicked-shadow;
+	   -moz-box-shadow: $soc-link-yandex-clicked-shadow;
+			box-shadow: $soc-link-yandex-clicked-shadow;
+}
+
+@if ($PC) {
+	.soc-links .list-link_tg:hover {
+		background: $soc-link-telegram-hover;
+	}
+}
+
+.soc-links .list-link_tg:active,
+.soc-links .list-link_tg.clicked {
+	background: $soc-link-telegram-clicked;
+	-webkit-box-shadow: $soc-link-telegram-clicked-shadow;
+	-moz-box-shadow: $soc-link-telegram-clicked-shadow;
+	box-shadow: $soc-link-telegram-clicked-shadow;
+}
+
+.dropdown-menu .list-link{
+	background: $content-bg;
+}
+
+.soc-link_ico{
+	width: 40px;
+	vertical-align: middle;
+	text-align: center !important;
+	-webkit-border-top-left-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+
+.soc-link_ico .ico,
+.soc-link_ico .ico_prof{
+	margin: 0 0 -2px 0;
+}
+
+.soc-link_ico .ico_soc{
+	margin: 0;
+	vertical-align: middle;
+}
+
+.soc-link_descr{
+	padding: 12px 10px;
+}

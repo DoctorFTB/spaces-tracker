@@ -1,0 +1,398 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.ico-alone {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.ico-inline {
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+.ico-right {
+	margin-right: 0 !important;
+	margin-left: $icon-right-margin !important;
+}
+
+.ico_mrg {
+	margin: 0 4px -3px 0;
+}
+.ico_no-mrg {
+	margin: 0 !important
+}
+.js-ico.m, .m.ico {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important
+}
+
+.rotate_button .ico {
+	margin: 0 !important;
+}
+
+.smile {
+	vertical-align: -3px
+}
+
+.emoji {
+	display: inline-block;
+	margin: 0.5px;
+	@include smile-middle-align(20);
+}
+
+.emoji {
+	.font_18 &, .font_20 &, .font_22 &, .font_24 & {
+		margin: 0;
+	}
+}
+
+/*! @cssnano-agressive-merger on */
+@include define-sprite("ico_startpage") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_startpage", "black");
+}
+@include define-sprite("ico_gallery") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("tile_main") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin: 25px 0 10px 0;
+}
+@include define-sprite("ico_panel") {
+	/*!__PURE__*/ display: inline-block;
+}
+.footer_edit .footer__links-wrapper .footer__link:after, .horiz-menu__link-ico, .location-bar__sep, .location-bar__home-link {
+	/*!__PURE__*/ display: inline-block;
+	@include use-sprite("ico_panel");
+}
+@include define-sprite("ico_cats") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_cats", "black");
+	@include icon-hover-state("ico_cats", "blue", "black");
+}
+@include define-sprite("ico_cats_sz") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_cats_sz", "black");
+}
+@include define-sprite("ico_acl") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_acl", "black");
+	@include icon-hover-state("ico_acl", "blue", "black");
+	@include icon-disabled-state("ico_acl");
+}
+@include define-sprite("ico_mail") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_mail", "black");
+	@include icon-hover-state("ico_mail", "blue", "black");
+}
+@include define-sprite("ico_abar") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_abar", "black");
+	@include icon-hover-state("ico_abar", "blue", "black");
+}
+@include define-sprite("ico_prof") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	/*
+	@include icon-active-state("ico_prof", "black");
+	@include icon-hover-state("ico_prof", "blue", "black");
+	*/
+}
+@include define-sprite("ico_attaches") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_attaches", "black");
+	@include icon-hover-state("ico_attaches", "blue", "black");
+}
+@include define-sprite("ico_chat") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_chat", "black");
+	@include icon-hover-state("ico_chat", "blue", "black");
+}
+@include define-sprite("adv_links") {
+	cursor: pointer;
+}
+@include define-sprite("ico") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico", "black");
+	@include icon-hover-state("ico", "blue", "black");
+}
+.s-chb:after, .form-checkbox:after, .pgn__go, body .delete-btn, .stnd-link_arr::after {
+	@include use-sprite("ico");
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_flags") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+}
+@include define-sprite("ico_langs") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+}
+@include define-sprite("ico_adult") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_play_btn") {
+	/*!__PURE__*/ display: inline-block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+@include define-sprite("ico_header_logo_newyear") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_logo_newyear") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_header_logo_default") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_logo_default") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_files") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+}
+@include define-sprite("ico_thirdparty") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+}
+@include define-sprite("ico_large") {
+	/*!__PURE__*/ display: inline-block;
+	@include icon-active-state("ico_large", "black");
+	@include icon-hover-state("ico_large", "blue", "black");
+}
+@include define-sprite("ico_xlarge") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_ext_site") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_newbie_quest") {
+	/*!__PURE__*/ display: inline-block;
+}
+@include define-sprite("ico_colored") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+	@include icon-active-state("ico_colored", "black");
+}
+
+@include define-sprite("ico_forum") {
+	/*!__PURE__*/ display: inline-block;
+	@include icon-middle-align(14);
+}
+
+@include define-sprite("ico_soc") {
+	/*!__PURE__*/ display: inline-block;
+	@include icon-middle-align(18);
+}
+
+@include define-sprite("ico_player") {
+	/*!__PURE__*/ display: inline-block;
+	@include icon-middle-align(16);
+}
+
+@include define-sprite("ico_buttons") {
+	/*!__PURE__*/ display: inline-block;
+}
+
+#{mangle(".ico")} {
+	@include use-sprite("ico_buttons");
+	/*!__PURE__*/ display: inline-block;
+}
+
+@include define-sprite("ico_sidebar") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: 6px;
+	@include icon-middle-align(16);
+}
+
+.root--bg-ny {
+	@if ($DARK_MODE) {
+		background-image: url('/i/bg/newyear_dark.png?r=1');
+	} @else {
+		background-image: url('/i/bg/newyear.png?r=1');
+	}
+	background-attachment: fixed;
+}
+
+@import "Base/ProjSpritesHead";
+/*! @cssnano-agressive-merger off */
+
+/*! @cssnano-agressive-merger on */
+@import "Base/Icons/Arr";
+@import "Base/Icons/Colored";
+@import "Base/Icons/Header";
+@import "Base/Icons/Footer";
+@import "Base/Icons/ActionBar";
+@import "Base/Icons/Adult";
+@import "Base/Icons/AdvLinks";
+@import "Base/Icons/Chat";
+@import "Base/Icons/Common";
+@import "Base/Icons/Acl";
+@import "Base/Icons/Files";
+@import "Base/Icons/Flags";
+@import "Base/Icons/Logo";
+@import "Base/Icons/Mail";
+@import "Base/Icons/Profile";
+@import "Base/Icons/ThirdParty";
+@import "Base/Icons/Toolbar";
+@import "Base/Icons/Video";
+@import "Base/Icons/Controls";
+@import "Base/Icons/XLarge";
+@import "Base/Icons/Soc";
+@import "Base/Icons/Buttons";
+@import "Base/Icons/Forum";
+/*! @cssnano-agressive-merger off */
+
+/* CSS for high-resolution devices */
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+/*! @cssnano-agressive-merger on */
+	@include define-sprite-2x("ico_startpage");
+	@include define-sprite-2x("ico_gallery");
+	@include define-sprite-2x("tile_main");
+	@include define-sprite-2x("ico_panel");
+	@include define-sprite-2x("ico_cats");
+	@include define-sprite-2x("ico_cats_sz");
+	@include define-sprite-2x("ico_acl");
+	@include define-sprite-2x("ico_mail");
+	@include define-sprite-2x("ico_abar");
+	@include define-sprite-2x("ico_prof");
+	@include define-sprite-2x("ico_attaches");
+	@include define-sprite-2x("ico_chat");
+	
+	@include define-sprite-2x("ico");
+	.s-chb:after, .form-checkbox:after, .pgn__go, body .delete-btn, .stnd-link_arr::after {
+		@include use-sprite-2x("ico");
+	}
+	
+	.footer_edit .footer__links-wrapper .footer__link:after, .horiz-menu__link-ico, .location-bar__sep, .location-bar__home-link {
+		@include use-sprite-2x("ico_panel");
+	}
+	
+	@include define-sprite-2x("ico_adult");
+	@include define-sprite-2x("ico_play_btn");
+	@include define-sprite-2x("ico_header_logo_newyear");
+	@include define-sprite-2x("ico_logo_newyear");
+	@include define-sprite-2x("ico_header_logo_default");
+	@include define-sprite-2x("ico_logo_default");
+	@include define-sprite-2x("ico_files");
+	@include define-sprite-2x("ico_thirdparty");
+	@include define-sprite-2x("ico_flags");
+	@include define-sprite-2x("ico_langs");
+	@include define-sprite-2x("ico_large");
+	@include define-sprite-2x("ico_xlarge");
+	@include define-sprite-2x("ico_ext_site");
+	@include define-sprite-2x("ico_newbie_quest");
+	@include define-sprite-2x("ico_colored");
+	@include define-sprite-2x("ico_forum");
+	@include define-sprite-2x("ico_soc");
+	@include define-sprite-2x("ico_player");
+	@include define-sprite-2x("ico_buttons");
+	@include define-sprite-2x("ico_sidebar");
+	
+	#{mangle(".ico")} {
+		@include use-sprite-2x("ico_buttons");
+	}
+
+	.root--bg-ny {
+		@if ($DARK_MODE) {
+			background-image: url('/i/bg/newyear_dark_2x.png?r=1');
+		} @else {
+			background-image: url('/i/bg/newyear_2x.png?r=1');
+		}
+		background-size: 400px 400px;
+	}
+
+	input.search__btn,
+	input.search__btn:hover,
+	input.search__btn:focus{
+		background-image: url('/i/search_icon_2x.png?r=1');
+		background-size: 16px 16px;
+	}
+	@import "Base/ProjSpritesRetina";
+/*! @cssnano-agressive-merger off */
+}
+
+.ico_stub16 {
+	background: none !important;
+	width: 0px;
+	height: 16px;
+	margin-right: 0;
+}
+
+.action-bar .ico_abar {
+	margin: 0
+}
+
+.toggle-list__btn .ico, 
+.btn-tools .ico_more {
+	margin-right: 0;
+}
+
+.ico_large{
+	width: 32px;
+	height: 32px;
+}
+
+.search__btn .ico_copy{
+	margin: 10px 0 0 11px;
+}
+
+.ico_centered {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	margin: -8px 0 0 0;
+	display: block;
+}
+
+.btn-link .ico{
+	margin: 0;
+}
+
+.link-imp .ico,
+.link-dim .ico,
+.link-grey .ico,
+.link-normal .ico{
+	margin-right: 0;
+}
+
+.link-imp .ico-right {
+	margin-right: 0;
+	margin-left: 1px;
+}
+
+.btn-light .ico {
+	margin-right: 0 !important;
+}

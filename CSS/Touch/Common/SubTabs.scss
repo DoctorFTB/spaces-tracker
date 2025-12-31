@@ -1,0 +1,8 @@
+@use "Common/Theme" as *;
+.sub-tabs_spoiler {
+    display: none
+}
+
+.sub-tabs_open .sub-tabs_spoiler {
+    display: table-row
+}

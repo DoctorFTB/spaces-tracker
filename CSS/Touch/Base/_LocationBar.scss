@@ -1,0 +1,134 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+
+.location-bar{
+	padding: 0 25px 0 35px;
+	position: relative;
+	background: $content-bg;
+	color: $default-text-color;
+	line-height: 40px;
+	z-index: 1;
+	overflow: hidden;
+	-webkit-box-shadow: $default-block-shadow;
+	   -moz-box-shadow: $default-block-shadow;
+			box-shadow: $default-block-shadow;
+}
+
+#location_header .location-bar{
+	z-index: 200;
+}
+
+@if ($TOUCH) {
+	.location-bar_no-break{
+		white-space: nowrap;
+	}
+}
+
+
+
+.location-bar__item{
+	display: inline-block;
+	margin-right: -20px;
+	white-space: nowrap;
+}
+
+.location-bar__item_home{
+	margin-left: -20px;
+}
+
+.location-bar a{
+	color: $location-link-color;
+}
+
+.location-bar a,
+.location-bar__title{
+	white-space: nowrap;
+	@if ($TOUCH) {max-width: 80px;}
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	vertical-align: middle;
+}
+
+@if ($TOUCH) {
+	.location-bar__half{
+		max-width: 130px !important;
+	}
+}
+
+@if ($PC) {
+	.location-bar:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 17px;
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba($content-bg, 0)), to(rgba($content-bg, 1)));
+		background: 	            -webkit-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background: 	               -moz-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background:                      -o-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background:                     -ms-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background:                         linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+	}
+}
+
+@if ($TOUCH) {
+	.location-bar a:after,
+	.location-bar__title:after,
+	.location-bar_no-break:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 64px;
+		width: 17px;
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba($content-bg, 0)), to(rgba($content-bg, 1)));
+		background: 	            -webkit-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background: 	               -moz-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background:                      -o-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background:                     -ms-linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+		background:                         linear-gradient(left, rgba($content-bg, 0), rgba($content-bg, 1));
+	}
+}
+
+@if ($TOUCH) {
+	.location-bar_no-break:after{
+		left: auto;
+		right: 0;
+	}
+	
+	@media all and (min-width: 500px) {
+		.location-bar a,
+		.location-bar__title{
+			max-width: 120px;
+		}
+		
+		.location-bar a:after,
+		.location-bar__title:after{
+			left: 104px;
+		}
+	}
+	
+	.location-bar__half:after{
+		left: 114px !important;
+	}
+}
+
+.location-bar a:hover{
+	color: $location-link-hover-color;
+}
+
+.location-bar__dots{
+	margin-top: -5px;
+}
+
+.no_max_width{
+	max-width: none !important;
+}
+
+.no_max_width:after{
+	display: none;
+}

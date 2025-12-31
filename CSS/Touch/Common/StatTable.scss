@@ -1,0 +1,32 @@
+@use "Common/Theme" as *;
+
+.stat_table th {
+	background: $stat-table-title-bg;
+	font-weight: bold
+}
+
+.stat_table tr {
+	background: $content-bg;
+}
+
+.stat_table tr:hover {
+	background: $default-hover-bg;
+}
+
+.stat_table th, .stat_table td {
+	padding: 5px;
+	border: 1px solid $default-border-color;
+	color: $default-text-color;
+}
+
+.stat_table th {
+	border-top: none;
+}
+
+.stat_table tr:last-child td {
+	border-bottom: none;
+}
+
+.stat_table__row-separator {
+	border-bottom: 2px solid $default-border-color;
+}

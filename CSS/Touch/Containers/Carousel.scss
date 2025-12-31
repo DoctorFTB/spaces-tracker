@@ -1,0 +1,434 @@
+@use "spacepack/build/variables" as *;
+@use "Common/Theme" as *;
+
+.carousel {
+	position: relative;
+	-webkit-touch-callout: none;
+	  -webkit-user-select: none;
+	   -khtml-user-select: none;
+	     -moz-user-select: none;
+	      -ms-user-select: none;
+		  user-select: none;
+	display: block !important;
+}
+
+.carousel-bg {
+	background: $content-bg;
+	border-bottom: 1px solid $separator-color;
+}
+
+.carousel-positional .carousel-wrap {
+	overflow: hidden;
+	top: 0; left: 0;
+}
+
+.carousel-native_scroll .carousel-wrap {
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.carousel-native_scroll .carousel-wrap::-webkit-scrollbar  {
+	width: 0 !important;
+	display: none;
+}
+
+.carousel-screen {
+	position: relative;
+	margin: 0 -10px;
+	overflow: hidden;
+	padding: 0; /* тут должен быть всегда ноль */
+}
+
+.rightbar .carousel-screen {
+	margin-right: 0
+}
+
+.carousel-mask {
+	-webkit-mask-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%,rgba(0, 0, 0, 1) 15%,rgba(0, 0, 0, 1) 85%,rgba(0, 0, 0, 0.5) 100%);
+	/*
+	mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48bWFzayBpZD0iZmFkZV9lZGdlc19zdmdfbWFzayIgbWFza1VuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgbWFza0NvbnRlbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giPjxsaW5lYXJHcmFkaWVudCBpZD0iZmFkZV9lZGdlc19zdmdfZ3JhZGllbnQiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4Mj0iMSIgeTI9IjAiPjxzdG9wIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iLjUiLz48c3RvcCBvZmZzZXQ9Ii4xNSIgc3RvcC1jb2xvcj0iI2ZmZiIvPjxzdG9wIG9mZnNldD0iLjg1IiBzdG9wLWNvbG9yPSIjZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9Ii41Ii8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2ZhZGVfZWRnZXNfc3ZnX2dyYWRpZW50KSI+PC9yZWN0PjwvbWFzaz48L3N2Zz4=#fade_edges_svg_mask');
+	*/
+}
+
+.carousel-shadow {
+	background-color: $content-bg;
+	opacity: 0.01;
+	position: absolute;
+	margin: 0 -10px;
+	padding: 0; /* тут должен быть всегда ноль */
+	top: 0; left: 0;
+	right: 0; bottom: 0;
+	display: none;
+	
+	/* IE hacks */
+	filter: alpha(opacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=1);
+}
+
+.carousel-wrap {
+	position: relative;
+	white-space: nowrap;
+	word-wrap: break-word;
+	padding: 15px 25px;
+	margin: 0; /* тут должен быть всегда ноль */
+}
+
+.msie .carousel-wrap {
+	word-wrap: normal;
+}
+
+.carousel-wrap .no_word_break {
+	word-wrap: normal !important;
+}
+
+.carousel-block {
+	border-bottom: 0;
+}
+
+.carousel-positional .carousel-item {
+	/* float: left */
+}
+
+.carousel-item {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	margin-right: 10px;
+	vertical-align: top;
+}
+.carousel-item .preview {
+	float: left;
+}
+.carousel-item:last-child {
+	margin-right: 0;
+}
+
+.carousel-tile,
+.carousel-item img {
+	-webkit-border-radius: 2px;
+	   -moz-border-radius: 2px;
+	        border-radius: 2px;
+}
+
+.carousel-next, .carousel-prev {
+	width: 51px;
+	cursor: pointer;
+}
+.carousel-edges_shadow {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 51px; /* При смене надо перерисовать carousel-shadow_*.png по их svg с нужной шириной и высотой 1px */
+}
+.carousel-prev .carousel-edges_shadow {
+	left: 0
+}
+.carousel-next .carousel-edges_shadow {
+	right: 0
+}
+
+.carousel-positional .carousel-next,
+.carousel-positional .carousel-prev {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+
+.carousel-next .ico_buttons_next,
+.carousel-prev .ico_buttons_prev{
+	position: absolute;
+	top: 50%;
+	margin-top: -9px;
+}
+
+.carousel-next .ico_buttons_next {
+	margin-right: 10px;
+	right: 5px;
+}
+.carousel-prev .ico_buttons_prev {
+	margin-left: 10px;
+	left: 5px;
+}
+
+.carousel-positional .carousel-next {
+	right: 0;
+}
+.carousel-positional .carousel-prev {
+	left: 0;
+}
+
+.carousel-item .ico_buttons {
+	position: absolute;
+	top: -5px;
+	right: -7px;
+}
+
+.carousel-tile{
+	background: $carousel-tile-bg;
+	text-align: center;
+	width: 85px;
+	text-decoration: none;
+	display: block;
+	color: $default-text-color;
+	min-height: 140px;
+}
+
+.tile__image{
+	height: 85px;
+	width: 85px;
+	overflow: hidden;
+}
+
+.tile__image img{
+	width: 100% !important;
+	height: auto !important;
+	-webkit-border-radius: 2px 2px 0 0;
+	   -moz-border-radius: 2px 2px 0 0;
+		border-radius: 2px 2px 0 0;
+}
+
+.tile__text{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 8px 5px 0 5px;
+}
+
+.tile__text-normal{
+	word-wrap: break-word;
+    white-space: normal;
+	padding: 8px 3px 0 3px;
+}
+
+/* Статическая карусель, которая не крутится и не подгружается */
+.carousel-static .carousel-wrap{
+	padding: 0;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.carousel-static .carousel-screen{
+	padding: 15px;
+	margin: 0;
+}
+
+.carousel-static .carousel-item{
+    padding: 0;
+	margin-right: 0;
+	width: 14.2%;
+	text-align: center;
+}
+
+.carousel-static .carousel-item a,
+.carousel-static .carousel-item .pr,
+.carousel-static .carousel-item .gview_link {
+	display: inline-block;
+	padding: 0 7px;
+}
+
+.carousel-static .carousel-item:nth-child(8){
+	display: none;
+}
+
+.carousel-static .carousel-item .preview {
+	height: auto;
+	max-width: 100%;
+}
+
+.carousel-static .tile__wrap{
+	padding: 0 7px;
+}
+
+.carousel-static .carousel-tile{
+	width: auto;
+	max-width: 100%;
+}
+
+.ucbrowser .carousel-static .carousel-tile{
+	width: 100%;
+}
+
+.carousel-static .tile__image{
+	height: auto;
+	width: auto;
+}
+
+.carousel-static .carousel-item .tile__wrap a {
+	padding: 0;
+	white-space: nowrap;
+}
+
+@media all and (max-width: 899px) {
+	.carousel-static .carousel-item{
+		width: 12.4%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8){
+		display: inline-block;
+	}
+}
+
+@media all and (max-width: 710px) {
+	.carousel-static .carousel-item{
+		width: 14.2%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8){
+		display: none;
+	}
+}
+
+@media all and (max-width: 610px) {
+	.carousel-static .carousel-item{
+		width: 16.6%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8),
+	.carousel-static .carousel-item:nth-child(7){
+		display: none;
+	}
+}
+
+@media all and (max-width: 536px) {
+	.carousel-static .carousel-item{
+		width: 19.9%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8),
+	.carousel-static .carousel-item:nth-child(7),
+	.carousel-static .carousel-item:nth-child(6){
+		display: none;
+	}
+}
+
+@media all and (max-width: 465px) {
+	.carousel-static .carousel-item{
+		width: 24.9%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8),
+	.carousel-static .carousel-item:nth-child(7),
+	.carousel-static .carousel-item:nth-child(6),
+	.carousel-static .carousel-item:nth-child(5){
+		display: none;
+	}
+}
+
+@media all and (max-width: 384px) {
+	.carousel-static .carousel-item{
+		width: 33.1%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8),
+	.carousel-static .carousel-item:nth-child(7),
+	.carousel-static .carousel-item:nth-child(6),
+	.carousel-static .carousel-item:nth-child(5),
+	.carousel-static .carousel-item:nth-child(4){
+		display: none;
+	}
+}
+
+@media all and (max-width: 304px) {
+	.carousel-static .carousel-item{
+		width: 49.9%;
+	}
+	
+	.carousel-static .carousel-item:nth-child(8),
+	.carousel-static .carousel-item:nth-child(7),
+	.carousel-static .carousel-item:nth-child(6),
+	.carousel-static .carousel-item:nth-child(5),
+	.carousel-static .carousel-item:nth-child(4),
+	.carousel-static .carousel-item:nth-child(3){
+		display: none;
+	}
+}
+
+/* Фиксированные размеры тумб */
+.carousel-item .preview_spinner {
+	width: 55px;
+	height: 55px
+}
+.carousel-plc { /* preloader center */
+	vertical-align: middle;
+	height: 100%;
+	display: inline-block
+}
+.carousel-plcd { /* preloader centered */
+	vertical-align: middle;
+	display: inline-block
+}
+.carousel-plcd img {
+	max-width: 70% !important;
+	max-height: 70% !important;
+}
+.carousel-item .spinner {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid $carousel-tile-border-color;
+	box-sizing: border-box;
+}
+
+.carousel-preloader {
+	display: inline-block;
+	background-color: transparent;
+	@if ($DARK_MODE) {
+		background-image: url(/i/preloader_dark2.gif?2);
+	} @else {
+		background-image: url(/i/preloader.gif?2);
+	}
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
+}
+
+.carousel-max_width {
+	height: auto !important
+}
+
+.tile__full-link{
+	padding: 0 !important;
+	display: block !important;
+}
+
+.carousel-item .fdw{
+	overflow: hidden;
+}
+.list .tile__wrap{
+	display: inline-block;
+	margin: 10px;
+	vertical-align: top;
+}
+
+.carousel-item .inl_bl {
+	max-width: 100%;
+}
+
+.carousel-item .f__size {
+	margin: -2px 0 0 1px;
+}
+
+.action-bar-info .carousel-wrap {
+	padding: 10px;
+}
+
+.action-bar-info .carousel-item .preview {
+	width: 20px;
+	height: 20px;
+}
+
+.f__size {
+	color: $secondary-text-color;
+	float: right;
+	margin-top: 4px;
+}
+
+.f__title {
+	color: $secondary-accent-text-color;
+	font-weight: bold;
+	margin: 5px 0 7px;
+	text-overflow: clip !important;
+	clear: both;
+}

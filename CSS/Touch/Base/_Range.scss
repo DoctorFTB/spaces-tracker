@@ -1,0 +1,86 @@
+@use "Common/Theme" as *;
+
+$range-input-track-height: 10px;
+$range-input-thumb-height: 20px;
+
+$range-input-thumb-align: ($range-input-track-height - $range-input-thumb-height) / 2;
+$range-input-track-align: ($range-input-thumb-height - $range-input-track-height) / 2;
+
+.range-input {
+	position: relative;
+	width: 100%;
+	height: $range-input-thumb-height;
+
+	&__track {
+		position: absolute;
+		top: $range-input-track-align;
+		left: 0;
+		right: 0;
+		height: $range-input-track-height;
+		border-radius: 5px;
+		background: $range-input-track-bg;
+		box-shadow: $range-input-track-shadow;
+		overflow: hidden;
+		pointer-events: none;
+	}
+
+	&__progress {
+		height: 100%;
+		background: $range-input-thumb-bg;
+		width: 50%;
+		pointer-events: none;
+	}
+
+	&__input {
+		width: 100%;
+		height: $range-input-thumb-height;
+		background: transparent;
+		position: relative;
+		z-index: 1;
+		margin: 0;
+		-webkit-appearance: none;
+
+		&::-webkit-slider-runnable-track {
+			height: $range-input-track-height;
+			background: none;
+			box-shadow: none;
+			border-radius: 5px;
+			margin-top: 0;
+		}
+
+		&::-moz-range-track {
+			height: $range-input-track-height;
+			background: none;
+			box-shadow: none;
+			border-radius: 5px;
+		}
+
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: $range-input-thumb-height;
+			height: $range-input-thumb-height;
+			background: $range-input-thumb-bg;
+			border: none;
+			border-radius: 50%;
+			margin-top: $range-input-thumb-align;
+			cursor: pointer;
+		}
+
+		&::-moz-range-thumb {
+			width: $range-input-thumb-height;
+			height: $range-input-thumb-height;
+			background: $range-input-thumb-bg;
+			border: none;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+
+		&:active::-webkit-slider-thumb {
+			background: $range-input-thumb-active-bg;
+		}
+
+		&:active::-moz-range-thumb {
+			background: $range-input-thumb-active-bg;
+		}
+	}
+}

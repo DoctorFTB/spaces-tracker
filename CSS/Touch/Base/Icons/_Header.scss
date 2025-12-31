@@ -1,0 +1,95 @@
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.horiz-menu__link-ico {
+	display: inline-block;
+	position: relative;
+	margin: 0 auto;
+}
+
+/* Иконки */
+.horiz-menu__link-ico_menu {
+	@include use-icon("ico_panel", "horiz_menu");
+}
+
+.horiz-menu__link-ico_mail {
+	@include use-icon("ico_panel", "horiz_mail");
+}
+
+.horiz-menu__link-ico_journal {
+	@include use-icon("ico_panel", "horiz_journal");
+}
+
+.horiz-menu__link-ico_lenta {
+	@include use-icon("ico_panel", "horiz_lenta");
+}
+
+.horiz-menu__link-ico_videos {
+	@include use-icon("ico_panel", "horiz_videos");
+}
+
+.horiz-menu__link-ico_films {
+	@include use-icon("ico_panel", "horiz_films");
+}
+
+.horiz-menu__link-ico_photos {
+	@include use-icon("ico_panel", "horiz_photos");
+}
+
+.horiz-menu__link-ico_cartoons {
+	@include use-icon("ico_panel", "horiz_cartoons");
+}
+
+.horiz-menu__link-ico_login {
+	@include use-icon("ico_panel", "horiz_login");
+}
+
+.horiz-menu__link-ico_users {
+	@include use-icon("ico_panel", "horiz_users");
+}
+
+.horiz-menu__link-ico_comms {
+	@include use-icon("ico_panel", "horiz_comms");
+}
+
+.horiz-menu__link-ico_news {
+	@include use-icon("ico_panel", "horiz_news");
+}
+
+.horiz-menu__link-ico_menu_small {
+	@include use-icon("ico_panel", "menu_small");
+	margin-right: 7px;
+	margin-bottom: -3px;
+}
+
+.horiz-menu__link-ico_login_small {
+	@include use-icon("ico_panel", "login_small");
+	margin-right: 7px;
+	margin-bottom: -3px;
+}
+
+@if ($PC) {
+	body .unauth_header__link:hover {
+		.horiz-menu__link-ico_menu_small {
+			@include use-icon("ico_panel", "menu_small_hover");
+		}
+		
+		.horiz-menu__link-ico_login_small {
+			@include use-icon("ico_panel", "login_small_hover");
+		}
+	}
+}
+
+/* Location Bar */
+.location-bar__sep {
+	@include use-icon("ico_panel", "location_bar_sep");
+	margin: -4px 5px -3px 5px;
+	vertical-align: middle;
+}
+.location-bar__home-link {
+	@include use-icon("ico_panel", "location_bar_house");
+	margin-top: -3px;
+}
+.location-bar__home-link:hover {
+	@include use-icon("ico_panel", "location_bar_house_darkblue");
+}

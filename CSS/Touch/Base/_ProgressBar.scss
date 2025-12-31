@@ -1,0 +1,58 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+
+.progress-item{
+	height: 10px;
+	background: $progress-bar-bg;
+	-webkit-box-shadow: $progress-bar-shadow;
+	   -moz-box-shadow: $progress-bar-shadow;
+			box-shadow: $progress-bar-shadow;
+}
+
+.progress-item__runner{
+	height: 10px;
+	background: $progress-bar-runner-bg;
+}
+
+.progress-item__runner_light{
+	background: $progress-bar-runner-light-bg;
+}
+.progress-item__runner_anim{
+	background: $progress-bar-runner-light-bg url(/i/progress.gif?r=1) repeat-x
+}
+
+.progress-item_top{
+	margin-top: 25px;
+}
+
+.progress-item__num{
+	color: $progress-bar-pct-text-color;
+	padding-left: 5px;
+	min-width: 3em;
+	white-space: nowrap;
+}
+
+.progress-item__num_fin{
+	color: $progress-bar-100-pct-text-color !important;
+}
+
+.table_progress{
+	width: 85px;
+}
+
+.table_progress-full{
+	width: 100%;
+}
+
+.table__cell_progress{
+	width: 99%;
+}
+
+.progress-item,
+.progress-item__runner {
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+}

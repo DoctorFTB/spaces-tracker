@@ -1,0 +1,119 @@
+@use "./Base" as *;
+
+/* Counters */
+$important-counter-bg:					theme(#ff6837,	#ff8a66);
+$important-counter-text-color:			theme(#ffffff,	#323232);
+
+$secondary-counter-bg:					theme(#a3b7c4,	#cccccc);
+$secondary-counter-text-color:			theme(#ffffff,	#323232);
+
+$online-counter-bg:						$green-bg-color;
+$online-counter-text-color:				theme(#ffffff,	#323232);
+
+/* Юзерское */
+$user-nick-color:				theme($default-text-color,		$secondary-text-color);	
+$user-nick-frozen-color:		theme($secondary-text-color,	#888888);
+
+/* Avatar Crop */
+$avatar-crop-shadow:			rgba(0,0,0,0.75);
+$avatar-crop-arrow-bg:			rgba(220, 220, 220, 0.3);
+$avatar-crop-arrow-active-bg:	rgba(220, 220, 220, 0.7);
+
+/* Пагинация */
+$pagination-gradient-start:		theme(#ffffff,	#3d3f3f);
+$pagination-gradient-end:		theme(#eff3f6,	#333436);
+$pagination-link-color:			theme(#617989,	$darkblue-text-color);
+$pagination-input-shadow:		theme(inset 0px 3px 3px #cdd2de,		none);
+$pagination-input-border:		theme(#c0c6d2,	#1b1b1b);
+
+/* Тулбар */
+$colorpicker-color-border:		theme(#bdcddd,	$default-border-color);
+$colorpicker-selector-border:	theme(#c1cfdf,	$default-border-color);
+
+/* Шапка */
+$header-bg:							theme(#6780b2,	#262728);
+$header-text-color:					#ffffff;
+$header-clock-bg:					theme(#cddae7,	#3e3f40);
+$header-avatar-shadow:				inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 2px 0 rgba(0,0,0,.2);
+$header-moders-block-bg:			theme(#d0d2d6,	#373839);
+$header-unauth-link-color:			#aaebff;
+$header-unauth-link-hover-color:	#87ecff;
+$header-link-hover-bg:				rgba(0, 0, 0, 0.25);
+$header-link-clicked-bg:			rgba(0, 0, 0, 0.5);
+$header-link-clicked-shadow:		inset 0px 3px 3px #000;
+$header-counter-bg:					$important-counter-bg;
+$header-counter-text-color:			$important-counter-text-color;
+$header-search-input-bg:			rgba(0,0,0,0.25);
+$header-search-input-color:			#c9ced9;
+
+/* Футер */
+$footer-link-enabled-border:		#3fd25a;
+$footer-link-disabled-border:		#ff6837;
+$footer-link-enabled-shadow:		0px 3px 3px rgba(0, 0, 0, 0.4);
+$footer-link-border:				rgba(255, 255, 255, 0.1);
+$footer-link-clicked-bg:			rgba(0, 0, 0, 0.3);
+$footer-link-clicked-shadow:		inset 0px 3px 3px rgba(0, 0, 0, 0.3);
+
+/* Разное */
+$ajax-lodader-bg:				#2299dd;
+$sandbox-lodader-bg:			#fdc9d2;
+$sandbox-indicator-bg:			theme(#e1e1e1,	#2d2e30);
+$upload-preview-bg:				theme(#f0f0f0,	#555758);
+
+$scrollbar-bg:					theme(#d0d2d6,	#2d2e30);
+$legacy-blue-block-bg:			theme(#eaeef4,	#4b4d4e);
+
+/* QR */
+$qr-code-bg:					#ffffff;
+$qr-code-pixel-color:			#000000;
+
+/* Statistic */
+$stat-table-title-bg:			theme(#EAEEF4,	#36383a);
+
+/* Sticker */
+$sticker-top-box-shadow:		theme(0px 0px 5px rgba(#5d6d9d, 0.3),	0px 0px 5px rgba(#111113, 0.3));
+$sticker-bottom-box-shadow:		rgba(0, 0, 0, 0.3) 0px -33px 80px 0px;
+
+/* Search suggests */
+$search-suggests-hover-bg:		theme(#ffeba0,	#4b4d4e);
+
+/* E-mail сообщения */
+$email-footer-bg:				#e6e6e6;
+$email-footer-separator:		#e0e0e0;
+$email-footer-link:				#a2a8b3;
+
+/* Newbie quets */
+$newbie-quest-position-color:	theme(#ffffff,	#323232);
+
+/* Список иконок в админке */
+$admin-icons-list-used-bg:		$content-bg;
+$admin-icons-list-not-used-bg:	theme(#f5f5f5,	#474747);
+$admin-icons-list-white-bg:		#000000;
+
+/* Karma log */
+$karma-log-is-voter-bg:		theme(#d3d3d3,	#757575);
+$karma-log-is-owner-bg:		theme(#f4f4be,	#7a7a00);
+$karma-log-zero-delta:		$content-bg;
+
+$karma-log-positive-delta:	theme(
+	hsl(120, 70%, calc(90% - var(--vote_power_limit) * 40%)),
+	hsl(168, calc(25% + 45% * var(--vote_power_limit)), calc(24% + 4% * var(--vote_power_limit)))
+);
+
+$karma-log-negative-delta:	theme(
+	rgb(255, calc(170 + (1 - var(--vote_power_limit)) * 73), calc(170 + (1 - var(--vote_power_limit)) * 69)),
+	hsl(0, calc(20% + 10% * var(--vote_power_limit)), calc(25% + 25% * var(--vote_power_limit)))
+);
+
+/* Cookie Banner */
+$cookie-banner-shadow-bg: rgba(0, 0, 0, 0.5);
+
+$cookie-banner-bg: theme(rgba(0, 0, 0, 0.85), rgb(25 25 26 / 85%));
+$cookie-banner-text-color: #e6e6e6;
+
+$cookie-banner-link-color: #e6e6e6;
+$cookie-banner-link-hover-color: #e6e6e6;
+
+$cookie-banner-button-bg: #568f56;
+$cookie-banner-button-hover-bg: #487e48;
+$cookie-banner-button-color: #FFFFFF;

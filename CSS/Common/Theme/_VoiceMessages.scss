@@ -1,0 +1,28 @@
+@use "./Base" as *;
+
+$voice-recorder-bg:								theme(#aeb7c2, #656565);
+$voice-recorder-text-color:						#FFF;
+
+$voice-player-incoming-button-border:			theme(#395387, #479ce6);
+$voice-player-outgoing-button-border:			theme(#3e7e35, #49b66b);
+
+$voice-player-incoming-button-inactive-bg:		theme(#9ab2cc, #5d5c61);
+$voice-player-outgoing-button-inactive-bg:		theme(#a0cc99, #5d5c61);
+
+$voice-player-incoming-button-color:			#FFF;
+$voice-player-outgoing-button-color:			#FFF;
+
+$voice-player-incoming-button-inactive-color:	$darkblue-text-color;
+$voice-player-outgoing-button-inactive-color:	$darkgreen-text-color;
+
+$voice-player-incoming-button-bg:				theme(#395387, #479ce6);
+$voice-player-outgoing-button-bg:				theme(#3e7e35, #49b66b);
+
+$voice-player-incoming-button-inactive-bg:		theme(#9ab2cc, #5d5c61);
+$voice-player-outgoing-button-inactive-bg:		theme(#a0cc99, #5d5c61);
+
+$voice-player-incoming-progress-bg:				theme(#9ab2cc, #5d5c61);
+$voice-player-outgoing-progress-bg:				theme(#a0cc99, #5d5c61);
+
+$voice-player-incoming-progress-runner-bg:		theme(#395387, #7cc3ff);
+$voice-player-outgoing-progress-runner-bg:		theme(#448939, #78da97);

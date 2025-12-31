@@ -1,0 +1,41 @@
+@use "~video.js/dist/video-js";
+@use "~videojs-ima/dist/videojs.ima";
+
+@use "./VideoJs/TouchSkin";
+@use "./VideoJs/DesktopSkin";
+
+// Тепловая карта популярных участков видео
+.vjs-heatmap {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	--heatmap-height: 25px; // Заполняется из JS
+
+	&__svg {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0.25em;
+		width: 100%;
+		height: var(--heatmap-height);
+		pointer-events: none;
+		filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+		opacity: 0;
+		transition: opacity 0.2s;
+
+		.vjs-progress-control:hover & {
+			opacity: 1;
+		}
+	}
+}
+
+// Скрываем некоторые элементы во время смены качества
+.vjs-changing-quality {
+	.vjs-poster, .vjs-tech {
+		display: none
+	}
+
+	.vjs-progress-control, .vjs-remaining-time {
+		opacity: 0
+	}
+}

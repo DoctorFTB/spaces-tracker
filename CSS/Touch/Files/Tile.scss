@@ -1,0 +1,758 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.tile_info {
+	line-height: 1.6em;
+	height: 1.6em;
+}
+
+.tile_descr_2l_wrap {
+	line-height: 1.6em;
+	height: 3.2em;
+}
+
+.tiled_moar_bg_l3 {
+	padding-bottom: 4.8em;
+}
+
+.tiled_moar_bg_l1 {
+	padding-bottom: 1.6em;
+}
+
+.tiled_item {
+	vertical-align: top;
+	display: inline-block;
+	margin: 0;
+	border: none;
+	width: 24%;
+}
+
+.tiled_body {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	width: 100%;
+}
+
+.attaches-fixer .tiled_item {
+	margin-left: -7px;
+}
+
+.video-teaser {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+
+	&--contain {
+		width: 100%;
+		height: 100%;
+	}
+
+	&--cover {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&--is-loading {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.tiled_item  img.preview {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.tiled_inner {
+	padding: 6px 1px;
+}
+
+.tiled_moar_bg_l3, .tiled_moar_bg_l1 {
+	margin-top: 0 !important
+}
+
+.main_image {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	max-height: 100%;
+	min-height: 100%;
+}
+
+.tiles-wrapper {
+	font-size: 0;
+	padding: 15px 8px;
+}
+
+.js-loadable_list .tiles_wrapper {
+	border-bottom: 1px solid $separator-color;
+}
+
+.tiles-wrapper_lenta {
+	padding: 4px 13px 10px;
+}
+
+.tiled_image-wrap_l_100{
+	max-width: 100px;
+	margin: 0 auto;
+}
+
+.tiles_block {
+	@if ($DARK_MODE) {
+		padding: 0 9px;
+	} @else {
+		padding: 6px 9px;
+		background: $tiles-block-bg;
+	}
+}
+
+.widgets-wrap.tiles_block {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.tiles_limit {
+	border-bottom: 0
+}
+
+.tiles_wrapper {
+	text-align: center;
+	font-size: 0
+}
+
+.tiles_wrapper:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+
+.tiled_cap {
+	display: inline-block;
+	height: 1px;
+	margin-bottom: -1px;
+}
+
+/* фикс отступа снизу для OM  */
+.operamini .tiles_limit .tiled_cap, 
+.tiles_limit.tiles_wrapper:after, 
+.operamini .tiles_wrapper:after, 
+.operamini .tiled_cap {
+	display: none
+}
+
+.attaches-fixer .tiled-preview .gview_link{
+	display: block;
+}
+
+
+.attaches__wrap_tile {
+	font-size: 0;
+}
+
+.attaches-fixer  .tiled_inner,
+.attaches__wrap_tile .tiled_inner{
+	padding: 7px;
+}
+
+.mobile .tiled_inner {
+	padding: 1px;
+}
+
+.touch_light .tiled_inner {
+	padding: 5px 1px;
+}
+
+.tile_descr_2l {
+	margin-top: 3px;
+	word-break: break-word;
+	word-wrap: break-word;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.tile_descr_2l_wrap {
+	position: relative;
+	overflow: hidden
+}
+
+.operamini .tile_descr_2l_wrap {
+	line-height: 1.2em;
+	height: 4em
+}
+
+.tile_info {
+	padding: 0 4px 1px 4px;
+	position: relative;
+	clear: both
+}
+.tiled_item_bg {
+	border: 2px solid $content-bg;
+	background: $content-bg;
+	margin: 0 auto;
+}
+
+#rightbar .tiled_item {
+	width: 100% !important;
+	max-width: 100% !important;
+	border-bottom: 1px solid $separator-color;
+}
+
+#rightbar .tiled_item:last-child {
+	border-bottom: none
+}
+
+#rightbar .tile_descr_2l_wrap {
+	line-height: 160% !important;
+	height: auto !important;
+}
+
+#rightbar .tile_descr_2l {
+	position: static
+}
+
+#rightbar .tiled_inner {
+	padding: 15px 1px
+}
+
+.tiled_item-spinner {
+	display: flex;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+
+	& > div {
+		animation: tiled-preview-spinner 2s steps(240) infinite;
+		background: #fff;
+		border-radius: 50%;
+		height: 10px;
+		margin: 0 2px;
+		transform: scale(0);
+		width: 10px;
+		will-change: transform;
+	}
+
+	& > div:first-child {
+		animation-delay: -.24s;
+	}
+
+	& > div:last-child {
+		animation-delay: .24s;
+	}
+}
+
+@keyframes tiled-preview-spinner {
+	0%, 20%, 60%, to {
+		transform: scale(0)
+	}
+
+	40% {
+		transform: scale(1)
+	}
+}
+
+.tiled_item .preview {
+	max-height: 100%;
+}
+
+/* Кнопка "Ещё" */
+.tiled_moar_bg {
+	background: $content-bg;
+	border-width: 0;
+	padding: 2px;
+	padding-bottom: 1px;
+}
+
+.pc .tiled_moar_bg:hover {
+	background: $default-hover-bg;
+}
+
+.tiled-moar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.tiled-moar__text {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	line-height: 50px;
+	margin-top: -25px;
+	font-size: 200%;
+}
+
+.operamini .tiled-moar__text {
+	margin-top: -0.5em;
+	line-height: normal
+}
+
+/* Фиксированный 1:1 для превьюшки внутри */
+.tiled-preview {
+	position: relative;
+}
+.tiled-preview:before {
+	padding-top: 100%;
+	content: '';
+	display: block;
+}
+.tiled-preview img.preview {
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.tile-ex .tiled-preview {
+	background-color: $tiles-external-bg;
+}
+
+.tile-ex img.preview {
+	margin: auto
+}
+
+.tiled-preview .fdw {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.fd .ico-alone {
+	vertical-align: middle
+}
+
+/* Чекбокс */
+.fd-checkbox {
+	display: none;
+	background: $tiles-checkbox-bg;
+	bottom: auto;
+	font-weight: 700;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.fd-checkbox::before {
+	position: absolute;
+	content: '';
+	top: -12px;
+	right: -12px;
+	left: -12px;
+	bottom: -12px;
+	z-index: 40;
+}
+
+@if ($PC) {
+	.tiled_item:hover .fd-checkbox {
+		display: block;
+	}
+	
+	.fd-checkbox:hover {
+		background: $tiles-checkbox-hover-bg;
+	}
+} @else {
+	.fd-checkbox {
+		display: block;
+	}
+}
+
+.fd-checkbox-active, .fd-checkbox-active:hover {
+	display: block;
+	cursor: default;
+	background: $tiles-checkbox-active-bg;
+}
+
+.tiled_item--animation .fd, .ico_play_btn {
+	opacity: 0;
+}
+
+/* Кнопка */
+.tiled-button {
+	display: none;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.tiled-button-clicked,
+.tiled_body:hover .tiled-button {
+	display: block;
+}
+
+.tiled-button .inl-link:hover {
+	@include switch-sprite-color("ico", "green");
+}
+
+/* Фиксированный 23:16 для превьюшки внутри */
+.t115_80 .tiled-preview:before, 
+.t200_139 .tiled-preview:before {
+	padding-top: 69%;
+}
+
+/* Фиксированный 2:3 для превьюшки внутри */
+.t115_137 .tiled-preview:before, 
+.t200_300 .tiled-preview:before {
+	padding-top: 150%;
+}
+
+/* Фиксированный 16:9 для превьюшки внутри */
+.t420_236 .tiled-preview:before,
+.t200_112 .tiled-preview:before,
+.t360_202 .tiled-preview:before {
+	padding-top: 56.25%;
+}
+
+/*
+	Тайловый grid
+	
+	Размеры экранов:
+		>= 0px			small
+		>= 200px		medium_wap
+		>= 302px		medium
+		>= 500px		large
+	
+	Каждый экран наследует предыдущий. 
+	
+	Квадратные тайлы:
+	Размер		|	small	|	medium_wap	| 	medium	|	large	|
+	80x80		| 	1		|	2			|			|	4		|
+	128x128		| 	1		|				|	2		|	4		|
+	200x200		| 	1		|				|	2		|	4		|
+	
+	Прямоугольные тайлы:
+	Размер		|	small	|	medium_wap	| 	medium	|	large	|
+	115x80		| 	1		|	1			|	2		|	3		|
+	200x129		| 	1		|				|	2		|	3		|
+	200x112		|	1		|				|	1		|	2		|
+	360x202		|	1		|				|	1		|	2		|
+	420x236		|	1		|				|	1		|	2		|
+*/
+
+/* Для устройств, которые не поддерживают media-запросы */
+.tiled_item, 
+.tiled_cap {
+	width: 24%
+}
+
+.touch .tiled_item, 
+.touch .tiled_cap {
+	width: 48%
+}
+
+.mobile .tiled_item , 
+.mobile .tiled_cap {
+	width: 99%
+}
+
+/* small - medium_wap */
+@media all and (max-width: 199px) {
+	.mobile {
+		.tile_descr_2l_wrap {
+			line-height: normal;
+			height: auto
+		}
+
+		.tile_descr_2l {
+			position: static
+		}
+
+		.t200_112,
+		.t115_80,
+		.t115_173 {
+			.tile_descr_2l_wrap {
+				line-height: normal;
+				height: auto;
+			}
+
+			.tile_descr_2l {
+				position: static;
+			}
+		}
+	}
+}
+
+@media all and (max-width: 499px) {
+	.t360_202,
+	.t420_236 {
+		.tile_descr_2l_wrap {
+			line-height: normal;
+			height: auto;
+		}
+
+		.tile_descr_2l {
+			position: static;
+		}
+	}
+}
+
+/* small */
+@media all and (min-width: 0px) {
+	.tiled_item.tile {
+		width: 100%
+	}
+	
+	.tiled_item.w80 {
+		max-width: 80px
+	}
+	
+	.tiled_item.w128 {
+		max-width: 128px
+	}
+	
+	.tiled_item.w139 {
+		max-width: 139px
+	}
+	
+	.tiled_item.w200 {
+		max-width: 200px
+	}
+	
+	/* Лимит линий */
+	.tiles_limit .tiled_item {
+		display: none
+	}
+	
+	.msie.ver8 .tiles_limit .tiled_item {
+		display: inline-block
+	}
+	
+	.tiles_limit-1 .tiled_item:first-child {
+		display: inline-block
+	}
+}
+
+/* medium_wap */
+@media all and (min-width: 200px) {
+	/* Выводим 2 на одну линию */
+	.tiled_item.t80_80, 
+	.tiled_item.t80_80 ~ .tiled_cap, 
+	.tiled_item.t115_80, 
+	.tiled_item.t115_80 ~ .tiled_cap, 
+	.tiled_item.t115_173, 
+	.tiled_item.t115_173 ~ .tiled_cap {
+		width: 49.9%;
+		max-width: none;
+
+		.operamini & {
+			width: 48%;
+		}
+
+		/* Лимит линий */
+		.tiles_limit-1 &:nth-child(2) {
+			display: inline-block;
+		}
+
+		.tiles_limit-2 &:nth-child(3),
+		.tiles_limit-2 &:nth-child(4) {
+			display: inline-block;
+		}
+	}
+}
+
+/* medium */
+@media all and (min-width: 302px) {
+	.tiles_wrapper {
+		text-align: justify
+	}
+	
+	.operamini .tiles_wrapper {
+		text-align: center
+	}
+	
+	/* Выводим 2 на одну линию */
+	.tiled_item.t80_80, 
+	.tiled_item.t80_80 ~ .tiled_cap, 
+	
+	.tiled_item.t115_80, 
+	.tiled_item.t115_80 ~ .tiled_cap, 
+	
+	.tiled_item.t115_173, 
+	.tiled_item.t115_173 ~ .tiled_cap, 
+	
+	.tiled_item.t200_112,
+	.tiled_item.t200_112 ~ .tiled_cap,
+
+	.tiled_item.t128_128, 
+	.tiled_item.t128_128 ~ .tiled_cap, 
+	
+	.tiled_item.t200_200, 
+	.tiled_item.t200_200 ~ .tiled_cap, 
+
+	.tiled_item.t200_139, 
+	.tiled_item.t200_139 ~ .tiled_cap, 
+	
+	.tiled_item.t200_300, 
+	.tiled_item.t200_300 ~ .tiled_cap {
+		width: 49.9%;
+		max-width: none;
+
+		.operamini & {
+			width: 48%;
+		}
+
+		/* Лимит линий */
+		.tiles_limit-1 &:nth-child(2) {
+			display: inline-block;
+		}
+
+		.tiles_limit-2 &:nth-child(3),
+		.tiles_limit-2 &:nth-child(4) {
+			display: inline-block;
+		}
+	}
+}
+
+/* large */
+@media all and (min-width: 500px) {
+	/* Выводим 4 на одну линию */
+	.tiled_item.t80_80, 
+	.tiled_item.t80_80 ~ .tiled_cap, 
+	
+	.tiled_item.t128_128, 
+	.tiled_item.t128_128 ~ .tiled_cap, 
+	
+	.tiled_item.t200_200, 
+	.tiled_item.t200_200 ~ .tiled_cap {
+		width: 24.9%;
+		max-width: none;
+
+		.operamini & {
+			width: 24.4%;
+		}
+
+		/* Лимит линий */
+		.tiles_limit-1 &:nth-child(2),
+		.tiles_limit-1 &:nth-child(3),
+		.tiles_limit-1 &:nth-child(4) {
+			display: inline-block;
+		}
+
+		.tiles_limit-2 &:nth-child(5),
+		.tiles_limit-2 &:nth-child(6),
+		.tiles_limit-2 &:nth-child(7),
+		.tiles_limit-2 &:nth-child(8) {
+			display: inline-block;
+		}
+	}
+	
+	/* Выводим 3 на одну линию */
+	.tiled_item.t115_80, 
+	.tiled_item.t115_80 ~ .tiled_cap, 
+	
+	.tiled_item.t115_173, 
+	.tiled_item.t115_173 ~ .tiled_cap, 
+	
+	.tiled_item.t200_139, 
+	.tiled_item.t200_139 ~ .tiled_cap, 
+	
+	.tiled_item.t200_300, 
+	.tiled_item.t200_300 ~ .tiled_cap {
+		width: 33%;
+		max-width: none;
+
+		.operamini & {
+			width: 32%;
+		}
+
+		/* Лимит линий */
+		.tiles_limit-1 &:nth-child(2),
+		.tiles_limit-1 &:nth-child(3) {
+			display: inline-block;
+		}
+
+		.tiles_limit-2 &:nth-child(4),
+		.tiles_limit-2 &:nth-child(5),
+		.tiles_limit-2 &:nth-child(6) {
+			display: inline-block;
+		}
+	}
+	
+	/* Выводим 2 на одну линию */
+	.tiled_item.t200_112,
+	.tiled_item.t200_112 ~ .tiled_cap,
+
+	.tiled_item.t420_236,
+	.tiled_item.t420_236 ~ .tiled_cap,
+
+	.tiled_item.t360_202,
+	.tiled_item.t360_202 ~ .tiled_cap {
+		width: 49.9%;
+		max-width: none;
+
+		.operamini & {
+			width: 48%;
+		}
+
+		/* Лимит линий */
+		.tiles_limit-1 &:nth-child(2) {
+			display: inline-block;
+		}
+
+		.tiles_limit-2 &:nth-child(3),
+		.tiles_limit-2 &:nth-child(4) {
+			display: inline-block;
+		}
+	}
+}
+
+/* Сортировка */
+.tile--state-moving .tiled_body {
+	-webkit-box-shadow: $upload-dnd-shadow;
+	-moz-box-shadow: $upload-dnd-shadow;
+	box-shadow: $upload-dnd-shadow;
+}
+
+.tile--state-dragover .tiled_body {
+	-webkit-box-shadow: $upload-dnd-active-shadow;
+	-moz-box-shadow: $upload-dnd-active-shadow;
+	box-shadow: $upload-dnd-active-shadow;
+}
+
+.tile__drag {
+	cursor: pointer;
+	padding: 5px;
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	z-index: 1;
+	background: $content-bg;
+	touch-action: none;
+}
+
+.tile__drag::before {
+	position: absolute;
+	content: ' ';
+	top: -10px;
+	right: -10px;
+	left: -10px;
+	bottom: -10px;
+	z-index: 40;
+	touch-action: none;
+}
+
+.tile--stub-empty {
+	.tiled_body {
+		opacity: 0;
+	}
+}
+
+.tile--stub-filled {
+	.tiled-preview, .tile_descr_2l_wrap {
+		opacity: 0;
+	}
+}

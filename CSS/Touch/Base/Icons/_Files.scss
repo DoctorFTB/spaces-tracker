@@ -1,0 +1,49 @@
+@use "Common/Utils" as *;
+
+@include define-icon("ico_files", "dir") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_all") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_list") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_friends") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_fof") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_password") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_locked") {
+	margin-bottom: 0
+}
+@include define-icon("ico_files", "dir_users") {
+	margin-bottom: 0
+}
+
+@include define-icon("ico_files", "dir_all_small");
+@include define-icon("ico_files", "dir_list_small");
+@include define-icon("ico_files", "dir_friends_small");
+@include define-icon("ico_files", "dir_fof_small");
+@include define-icon("ico_files", "dir_password_small");
+@include define-icon("ico_files", "dir_locked_small");
+@include define-icon("ico_files", "dir_users_small");
+
+@include define-icon("ico_files", "pic");
+@include define-icon("ico_files", "video");
+@include define-icon("ico_files", "mp3");
+@include define-icon("ico_files", "bin");
+@include define-icon("ico_files", "txt");
+@include define-icon("ico_files", "jar");
+@include define-icon("ico_files", "sis");
+@include define-icon("ico_files", "exe");
+@include define-icon("ico_files", "apple");
+@include define-icon("ico_files", "zip");
+@include define-icon("ico_files", "apk");
+
+@include define-icon("ico_files", "sz");
+@include define-icon("ico_files", "phone");

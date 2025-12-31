@@ -1,0 +1,12 @@
+@use "Common/Utils" as *;
+
+#add_to_lents_link span {
+	@include use-icon("adv_links", "subscribe_gray");
+}
+#bookmark_link span {
+	@include use-icon("adv_links", "bookmark_gray");
+}
+
+#bookmark_link span.on {
+	@include use-icon("adv_links", "bookmark");
+}

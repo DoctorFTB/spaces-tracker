@@ -1,0 +1,56 @@
+@use "spacepack/build/variables" as *;
+@use "./Base" as *;
+
+/* Тайлы */
+$tiles-external-bg:				#000000;
+$tiles-block-bg:				theme(#e5e5e5,	#19191a);
+$tiles-label-color:				#ffffff;
+$tiles-duration-label-bg:		if($PC or $TOUCH, rgba(0, 0, 0, 0.7), #000000);
+$tiles-top-label-bg:			#3eb348;
+$tiles-bottom-label-bg:			#dd4d1b;
+
+$tiles-checkbox-bg:				#ababab;
+$tiles-checkbox-hover-bg:		#4f4f4f;
+$tiles-checkbox-active-bg:		#3eb348;
+
+$preview-stub-bg:				theme(#E2EAF5,	#4e4f50);
+$preview-stub-light-bg:			theme(#ffffff,	#6a6b6c);
+
+$carousel-tile-bg:				theme(#e1e9f2,	#2d2e30);
+$carousel-tile-border-color:	theme(#F5F5F5,	$default-border-color);
+
+/* Видео */
+$video-wrap-bg:								#000000;
+$video-converter-info-bg:					theme(#2b333f,	#4b4d4e);
+$video-converter-info-text-color:			#ffffff;
+
+$video-converter-info-button-bg:			theme(#272f3a,	#3e3f40);
+$video-converter-info-button-hover-bg:		theme(#374353,	$default-hover-bg);
+$video-converter-info-button-text-color:	#ffffff;
+$video-converter-info-button-error-color:	#ffa78a;
+$video-converter-info-button-border:		theme(#ffffff,	$default-border-color);
+
+/* Music Player */
+$music-player-button-bg:					theme(#395387,	#479ce6);
+$music-player-button-inactive-bg:			theme(#9AB2CC,	#5d5c61);
+$music-player-button-color:					#FFF;
+
+$music-player-text-color:					theme(#395387,	$darkblue-text-color);
+
+$music-player-progress-shadow:				theme(inset 0px 1px 2px #7690c7,	inset 0px 3px 3px #282a2a);
+$music-player-progress-bg:					theme(#d2e3f4,	#2f3131);
+$music-player-progress-runner-bg:			$darkblue-bg-color;
+$music-player-preload-shadow:				theme(inset 0px 1px 2px #7690c7,	inset 0px 3px 3px #202222);
+$music-player-preload-runner-bg:			theme(#bac7d4,	#282a2a);
+
+$music-player-attach-progress-shadow:		theme(inset 0px 3px 3px #bbcbdb,	inset 0px 3px 3px #282a2a);
+$music-player-attach-progress-bg:			theme(#d9e3ef,	#2f3131);
+$music-player-attach-progress-runner-bg:	theme(#9ab2cc,	$darkblue-bg-color);
+$music-player-attach-preload-runner-bg:		theme(#becedd,	#5e5e5e);
+
+$music-player-selected-track:				theme(#D9E0E8,	#555759);
+
+/* Music Player Widget */
+$music-player-widget-float-color:			theme(#5B7099,	$darkblue-text-color);
+$music-player-widget-bg:					theme(#e9edf2,	$content-bg);
+$music-player-widget-hover-bg:				theme(#f5f7f9,	$default-hover-bg);

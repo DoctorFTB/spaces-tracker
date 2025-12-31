@@ -1,0 +1,44 @@
+@use "Common/Utils" as *;
+
+/* Очень большие иконки, используются как заглушки, когда нет ничего в списке */
+@include define-icon("ico_xlarge", "blocked");
+@include define-icon("ico_xlarge", "game");
+@include define-icon("ico_xlarge", "lenta");
+@include define-icon("ico_xlarge", "link");
+@include define-icon("ico_xlarge", "noaccess");
+@include define-icon("ico_xlarge", "nopeople") {
+	margin-bottom: 13px;
+}
+@include define-icon("ico_xlarge", "offline");
+@include define-icon("ico_xlarge", "ok");
+@include define-icon("ico_xlarge", "ok_green") {
+	margin-bottom: 13px;
+}
+@include define-icon("ico_xlarge", "people");
+@include define-icon("ico_xlarge", "reload");
+@include define-icon("ico_xlarge", "weather");
+@include define-icon("ico_xlarge", "magic");
+
+/* Большие иконки для ссылок-объявлений */
+@include define-icon("ico_large", "add_school_blue");
+@include define-icon("ico_large", "add_univer_blue");
+@include define-icon("ico_large", "add_user_blue");
+@include define-icon("ico_large", "attention_red");
+@include define-icon("ico_large", "career");
+@include define-icon("ico_large", "compass");
+@include define-icon("ico_large", "dating");
+@include define-icon("ico_large", "ed");
+@include define-icon("ico_large", "high");
+@include define-icon("ico_large", "info");
+@include define-icon("ico_large", "info_blue");
+@include define-icon("ico_large", "locked");
+@include define-icon("ico_large", "main");
+@include define-icon("ico_large", "no_results");
+@include define-icon("ico_large", "noaccess") {
+	margin-right: 10px;
+}
+@include define-icon("ico_large", "pair_users_blue");
+@include define-icon("ico_large", "search_people");
+@include define-icon("ico_large", "service");
+@include define-icon("ico_large", "sites");
+@include define-icon("ico_large", "magic_blue");

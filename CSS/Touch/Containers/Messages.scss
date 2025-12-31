@@ -1,0 +1,10 @@
+@use "Common/Theme" as *;
+@use "spacepack/build/variables" as *;
+
+.messages-list {
+	background: $content-bg;
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+	padding: 15px;
+}

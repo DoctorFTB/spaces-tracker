@@ -1,0 +1,67 @@
+@use "Common/Theme" as *;
+.stnd-link_newbe{
+	padding-left: 25px !important;
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+.stnd-link_newbe:active{
+	padding-top: 14px;
+	padding-bottom: 12px;
+}
+
+.stnd-link_newbe .ico_left{
+	position: absolute;
+	top: 14px;
+	left: 15px;
+}
+
+.stnd-link_newbe .table__wrap{
+	min-height: 30px;
+}
+
+.newbe-quest .stnd-link{
+	color: $default-text-color !important;
+}
+
+.newbe__position{
+	color: $newbie-quest-position-color;
+	font-weight: bold;
+	text-align: center;
+	width: 30px;
+	padding: 6px 0 6px 0;
+}
+
+.ico_dots_newbe-top,
+.ico_dots_newbe-bottom{
+	position: absolute;
+	left: 38px;
+}
+
+.ico_dots_newbe-top{
+	top: 1px;
+}
+
+.ico_dots_newbe-bottom{
+	bottom: 1px;
+}
+
+.block-item_not-completed .block-item__descr{
+	color: $disabled-text-color;
+}
+
+.block_success{
+	background: $list-item-success-bg;
+	padding: 13px 0 12px 0;
+}
+
+.block-item__pic_translucent{
+	-moz-opacity: 0.25;
+		 opacity: 0.25;
+}
+
+.block-item__pic_float{
+	width: 128px;
+	text-align: center;
+}
+

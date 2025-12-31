@@ -1,0 +1,46 @@
+@use "Common/Utils" as *;
+
+/* Стрелочка для ссылок */
+.stnd-link_arr::after {
+	@include use-icon("ico", "arr_right");
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	margin-top: -6px;
+	display: inline-block;
+}
+
+.stnd-link_arr:active::after {
+	background-position-y: #{get-sprite-state-offset("ico", "black")};
+}
+
+@include define-icon("ico", "arr_right");
+@include define-icon("ico", "arr_right_red");
+@include define-icon("ico", "arr_right_blue");
+@include define-icon("ico", "arr_right_darkblue");
+
+@include define-icon("ico", "arr_left");
+@include define-icon("ico", "arr_left_darkblue");
+@include define-icon("ico", "arr_small_left_darkblue");
+@include define-icon("ico", "arr_small_right_blue");
+
+@include define-icon("ico", "arr_up");
+@include define-icon("ico", "arr_up_black");
+@include define-icon("ico", "arr_up_green");
+@include define-icon("ico", "arr_up_blue");
+@include define-icon("ico", "arr_up_red");
+
+@include define-icon("ico", "arr_down");
+@include define-icon("ico", "arr_down_blue");
+@include define-icon("ico", "arr_down_green");
+@include define-icon("ico", "arr_down_darkblue");
+@include define-icon("ico", "arr_down_white");
+@include define-icon("ico", "arr_down_black");
+@include define-icon("ico", "arr_down_red");
+
+@include define-icon("ico", "darr_left");
+@include define-icon("ico", "darr_right");
+
+@include define-icon("ico", "arr_big_up");
+@include define-icon("ico", "arr_big_down");

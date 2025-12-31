@@ -1,0 +1,426 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+/* Базовые стили HTML элементов */
+@if ($TOUCH) {
+	html {
+		-ms-text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%; 
+	}
+}
+
+button, input, optgroup, select, textarea {
+	line-height: 1.15;
+}
+
+button, input, optgroup, select, textarea,
+table, tr, th, td,
+h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-size: 100%;
+}
+
+:root {
+	color-scheme: if($DARK_MODE, only dark, only light);
+}
+
+html, body {
+	font-weight:normal;
+	background: $html-bg;
+	margin:0px auto;text-align:left;
+	width:auto;
+	max-width:100%;
+	position:relative;
+	color:$default-text-color;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+html, body, button, textarea {
+	font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+}
+
+uc-click {
+	cursor: pointer;
+	display: inline
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+}
+
+textarea{
+	overflow:auto
+}
+
+a {
+	text-decoration: none !important;
+}
+
+a img {
+	border: 0
+}
+
+ol, ul, li {
+	padding: 0;
+	margin: 0
+}
+
+ul, ol {
+	padding-left: 20px;
+}
+
+input[type="file"] {
+	max-width: 100%;
+}
+
+iframe {
+	border: none;
+	box-shadow: none;
+}
+
+@if (not $PC) {
+	select{
+		max-width: 90%;
+	}
+}
+
+:focus {
+	outline: none
+}
+
+::-moz-focus-inner {
+	border: 0
+}
+
+/* Стандартные цвета HTML элементов */
+button, input[type="button"], input[type="submit"], input[type="reset"], .button{
+	background: $unstyled-button-bg;
+	border: 1px solid $unstyled-button-border;
+	color: $unstyled-button-color;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	cursor:pointer;
+	outline:0;
+	
+	@if ($PC) {
+		&:hover {
+			background-color: $unstyled-button-hover-bg;
+		}
+	}
+	
+	&:active {
+		background-color: $unstyled-button-clicked-bg;
+	}
+}
+/*
+textarea, input[type="text"], input[type="password"] {
+	background-color: $input-bg;
+	border: 1px solid $input-border;
+	color: $input-text-color;
+	padding: 5px 6px;
+	
+	&:focus {
+		background: $input-focused-bg;
+		border: 2px solid $input-focused-border;
+		padding: 4px 5px;
+	}
+}
+*/
+%input-placeholder {
+	color: $input-placeholder-color;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+::placeholder {
+	color: $input-placeholder-color;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+::-webkit-input-placeholder {
+	color: $input-placeholder-color;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+:-moz-placeholder {
+	color: $input-placeholder-color;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+::-moz-placeholder {
+	color: $input-placeholder-color;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+:-ms-input-placeholder {
+	color: $input-placeholder-color;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+input[disabled]::placeholder { color: $input-placeholder-color; }
+input[disabled]::-webkit-input-placeholder { color: $input-placeholder-color; }
+input[disabled]:-moz-placeholder { color: $input-placeholder-color; }
+input[disabled]::-moz-placeholder { color: $input-placeholder-color; }
+input[disabled]:-ms-input-placeholder { color: $input-placeholder-color; }
+
+textarea::placeholder { white-space: normal; }
+textarea::-webkit-input-placeholder { white-space: normal; }
+textarea:-moz-placeholder { white-space: normal; }
+textarea::-moz-placeholder { white-space: normal; }
+textarea:-ms-input-placeholder { white-space: normal; }
+
+/* Заглушки */
+.fixed-size {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	
+	&::before {
+		content: "";
+		display: block;
+	}
+	
+	&--1-1::before {
+		padding-top: 100%;
+	}
+	
+	&-16-9::before {
+		padding-top: 56.25%;
+	}
+	
+	&__content {
+		position:  absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+	}
+}
+
+/* Базовые цвета текста */
+.yellow {
+	color: $yellow-text-color;
+}
+
+.red {
+	color: $red-text-color
+}
+
+.purple {
+	color: $purple-text-color
+}
+
+.green {
+	color: $green-text-color
+}
+
+body .link-red {
+	color: $inline-link-red-color
+}
+
+body .link-green {
+	color: $inline-link-green-color
+}
+
+.un {
+	color: $user-nick-color;
+}
+
+.mysite-nick {
+	color: $user-nick-color;
+}
+
+.mysite-nick {
+	color: $user-nick-color;
+}
+
+.mysite-nick--frozen {
+	color: $user-nick-frozen-color;
+}
+
+.mysite-nick--blocked {
+	text-decoration: line-through;
+}
+
+.darkgreen {
+	color: $darkgreen-text-color
+}
+
+.text-gray,
+.text_normal, 
+.grey, 
+#{mangle(".grey")} {
+	color: $secondary-text-color
+}
+
+.gl a,
+.link-dim,
+.link-normal,
+body .link-grey
+{
+	color: $inline-link-grey-color;
+}
+
+.lightgrey {
+	color: $disabled-text-color
+}
+
+.black {
+	color: $default-text-color
+}
+
+.white { 
+	color: $white-text-color;
+}
+
+.blue_text {
+	color: $blue-text-color;
+}
+
+/* Базовые цвета фона */
+.wbg {
+	background: $content-bg !important;
+}
+
+.transpar {
+	background: none !important;
+}
+
+.darkred {
+	color: $darkred-text-color
+}
+
+body .link-darkred {
+	color: $inline-link-darkred-color
+}
+
+/* Базовое оформление текста */
+.capitalize{
+	text-transform: capitalize;
+}
+
+.lowercase{
+	text-transform: lowercase;
+}
+
+.upcs {
+	text-transform: uppercase;
+}
+
+/* Разметка главного шаблона */
+@if ($PC) {
+	div.main, #{mangle("#ads_upk")}, #logo_panel, #navi_footer{
+		border-left: 1px solid $body-border-color;
+		border-right: 1px solid $body-border-color;
+	}
+}
+
+#siteContent {
+	position: relative;
+}
+
+.main {
+	background: $body-bg
+}
+
+.error {
+	color: $default-text-color
+}
+
+.darkblue {
+	color: $darkblue-text-color;
+}
+
+a,
+.sub_menu a,
+.inl-link,
+.text-title,
+.nl a,
+.link-darkblue,
+.anketa__rate-link,
+.info-item__descr a,
+.info-item__descr-link,
+.drop-down-label.drop-down-label_spoiler,
+#{mangle(".list_link_name")},
+.f_descr_text,
+a.arrow_link span,
+.response,
+.url-btn,
+.edit_widget_title {
+	color: $inline-link-darkblue-color;
+}
+
+
+.link-stnd {
+	color: $inline-link-darkblue-color
+}
+
+.blog-item__title,
+.list-link__name {
+	color: $block-link-darkblue-color
+}
+
+.clear, hr, .cl {
+	clear:both
+}
+
+hr {
+	border: none;
+	border-bottom: 1px solid #c5d3e1;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.relative,
+.menu_wrap,
+.oh relative,
+.fdw,
+.busi_switcher table td,
+.busi_switcher table a{
+	position: relative
+}
+
+.preview--stub {
+	background: $preview-stub-bg;
+}
+
+.preview-guard {
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+
+.cf:before, .cf:after {
+	content: ".";  
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+.cf:after { clear: both; }
+
+.font0 {
+	font-size:0
+}
+
+.font_small {
+	font-size: 11px
+}

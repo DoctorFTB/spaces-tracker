@@ -1,0 +1,48 @@
+@use "Common/Utils" as *;
+
+/* Иконки */
+@include define-icon("ico_panel", "more");
+@include define-icon("ico_panel", "settings");
+@include define-icon("ico_panel", "add");
+@include define-icon("ico_panel", "city");
+@include define-icon("ico_panel", "help");
+@include define-icon("ico_panel", "search");
+@include define-icon("ico_panel", "users_search");
+@include define-icon("ico_panel", "all_communities");
+@include define-icon("ico_panel", "communities");
+@include define-icon("ico_panel", "files");
+@include define-icon("ico_panel", "mp3");
+@include define-icon("ico_panel", "forum");
+@include define-icon("ico_panel", "lenta");
+@include define-icon("ico_panel", "journal");
+@include define-icon("ico_panel", "chat");
+@include define-icon("ico_panel", "my_blog");
+@include define-icon("ico_panel", "blogs");
+@include define-icon("ico_panel", "dating");
+@include define-icon("ico_panel", "mail");
+@include define-icon("ico_panel", "history");
+@include define-icon("ico_panel", "about");
+@include define-icon("ico_panel", "contacts");
+@include define-icon("ico_panel", "shared_zone");
+@include define-icon("ico_panel", "my_files");
+@include define-icon("ico_panel", "games");
+@include define-icon("ico_panel", "logout");
+@include define-icon("ico_panel", "ads");
+@include define-icon("ico_panel", "video");
+@include define-icon("ico_panel", "my_video");
+@include define-icon("ico_panel", "link");
+@include define-icon("ico_panel", "link");
+@include define-icon("ico_panel", "bookmarks");
+@include define-icon("ico_panel", "index");
+@include define-icon("ico_panel", "friends");
+@include define-icon("ico_panel", "login");
+@include define-icon("ico_panel", "photos");
+@include define-icon("ico_panel", "brush");
+
+.footer_edit .footer__links-wrapper .footer__link_on .footer__link:after {
+	@include use-icon("ico_panel", "on");
+}
+
+.footer_edit .footer__links-wrapper .footer__link_off .footer__link:after {
+	@include use-icon("ico_panel", "off");
+}

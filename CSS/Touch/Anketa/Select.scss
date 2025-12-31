@@ -1,0 +1,142 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.select_custom {
+	position: relative;
+	margin-right: 7px;
+	display: inline-block;
+	color: $select-input-color;
+	cursor: pointer
+}
+
+.select_custom_noactive{
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+	color: $select-input-disabled-color;
+}
+
+.select_custom_near,
+.select_custom_near_wrap .select_custom {
+	margin-right: -2px;
+}
+
+.select_custom .select__result{
+	margin-right: 5px;
+	display: inline-block !important;
+}
+
+.select_custom > .select{
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 0;
+	position: absolute;
+	width: 100%
+}
+
+.select_custom-last, 
+.select_custom-last .select__result {
+	margin-right: 0
+}
+
+.select_custom-sep {
+	margin-right: 3px
+}
+
+/* Opera Mini */
+.operamini .select__result {
+	display: none !important;
+}
+
+.operamini .select_custom > .select {
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	opacity: 1;
+	width: auto;
+	max-width: 100%;
+	position: static;
+	border: 1px solid $input-border;
+	background: $input-bg;
+	padding: 8px;
+	color: $input-text-color
+}
+
+/* Calendar */
+.calendar {
+	max-width: 300px;
+	margin: 0 auto;
+}
+
+.calendar th, .calendar td {
+	text-align: center;
+	font-weight: normal;
+	position: relative
+}
+
+.calendar-head {
+	background-color: $calendar-header-bg;
+}
+
+.calendar th {
+	color: $calendar-header-color;
+}
+
+.calendar th, 
+.calendar .list-link, 
+.calendar .list-link:hover, 
+.calendar .list-link:active {
+	padding: 10px 0;
+}
+
+td.list-link {
+	display: table-cell;
+}
+
+@media (max-width: 600px) {
+	.calendar {
+		max-width: 360px;
+	}
+	
+	.calendar th, 
+	.calendar .list-link, 
+	.calendar .list-link:hover, 
+	.calendar .list-link:active {
+		padding: 0;
+		width: 14.3%
+	}
+	
+	.calendar td:before, .calendar th:before {
+		padding-top: 100%;
+		content: '';
+		display: block;
+	}
+
+	.calendar td > div, 
+	.calendar th > div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.calendar td > div > div, 
+	.calendar th > div > div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.calendar td > div > div.fix, 
+	.calendar th > div > div.fix {
+		height: 100%
+	}
+}
+
+.select_custom_noactive.select_custom {
+	@include replace-icon("ico", "arr_down_darkblue", "arr_down");
+}

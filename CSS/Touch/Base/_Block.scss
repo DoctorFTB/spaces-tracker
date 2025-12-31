@@ -1,0 +1,354 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+/* Блок с заголовком */
+.b-title{
+	background: $block-title-bg;
+	color: $default-text-color;
+	overflow: hidden;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.b-title_center{
+	text-align: center;
+}
+
+.b-title__link,
+.b-title__item{
+	display: block;
+	cursor: pointer;
+	position: relative;
+	color: $default-text-color !important;
+	padding: 9px 14px 9px 14px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.b-title__item{
+	cursor: default;
+}
+
+.b-title__with-btn{
+	padding-right: 44px;
+}
+
+.header_links_fixer,
+.header_links_fixer a{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	min-width: 16px
+}
+
+.header_links_fixer a{
+	padding: 9px 14px 9px 14px;
+	display: block;
+}
+
+@if ($PC) {
+	.b-title__link:hover,
+	.b-title__sublink:hover,
+	.header_links_fixer a:hover{
+		background: $block-title-hover-bg;
+	}
+}
+
+.b-title__link:active,
+.header_links_fixer a:active{
+	background: $block-title-btn-clicked-bg;
+}
+
+.b-title__sublink:active {
+	color: $default-text-color;
+	background: $default-clicked-bg;
+}
+
+.b-title__link:active{
+	padding: 10px 14px 8px 14px;
+}
+
+.b-title__edit-link{
+	text-transform: none;
+	position: relative;
+	z-index: 10;
+}
+
+.b-title__edit-link:after,
+.b-title__edit-link:before{
+	background: $block-title-bg;
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	bottom: -2px;
+	right: -14px;
+	content: '';
+	z-index: -1;
+}
+
+.b-title__edit-link:before{
+	left: -12px;
+	right: auto;
+	width: 10px;
+}
+
+.b-title__all{
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: $block-title-color;
+	padding: 9px 14px 9px 10px;
+	background: $block-title-bg;
+}
+
+.b-title__all:before{
+	display: block;
+	position: absolute;
+	content: '';
+	top: 0;
+	bottom: 0;
+	right: 100%;
+	width: 40px;
+	pointer-events: none;
+}
+
+@if ($PC) {
+	a:hover .b-title__all{
+		background: $block-title-hover-bg;
+	}
+}
+
+a:active .b-title__all{
+	background: $block-title-btn-clicked-bg;
+	color: $default-text-color;
+}
+
+@if (not $DARK_MODE) {
+	a:active .b-title__all:before{
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba($block-title-btn-clicked-bg, 0)), to(rgba($block-title-btn-clicked-bg, 1)));
+		background: 			  -webkit-linear-gradient(left, rgba($block-title-btn-clicked-bg, 0), rgba($block-title-btn-clicked-bg, 1));
+		background:			     -moz-linear-gradient(left, rgba($block-title-btn-clicked-bg, 0), rgba($block-title-btn-clicked-bg, 1));
+		background: 			       -o-linear-gradient(left, rgba($block-title-btn-clicked-bg, 0), rgba($block-title-btn-clicked-bg, 1));
+		background: 			      -ms-linear-gradient(left, rgba($block-title-btn-clicked-bg, 0), rgba($block-title-btn-clicked-bg, 1));
+		background: 			          linear-gradient(left, rgba($block-title-btn-clicked-bg, 0), rgba($block-title-btn-clicked-bg, 1));
+	}
+}
+
+.b-title__spoiler{
+	font-weight: bold;
+	padding: 12px 15px;
+	background: $content-bg;
+	cursor: pointer;
+	position: relative;
+	z-index: 10;
+	overflow: hidden;
+}
+
+.b-title__spoiler #{icon("ico", "arr_down_black")} {
+	margin: 0 2px -3px -3px!important;
+}
+
+.b-title__spoiler:hover {
+	color: $inline-link-default-hover-color;
+
+	@include replace-icon("ico", "arr_down_black", "arr_down_blue");
+}
+
+.js-toggle_content_hide {
+	@include replace-icon("ico", "arr_down_black", "arr_small_right_black");
+}
+
+.js-toggle_content_hide .b-title__spoiler:hover {
+	@include replace-icon("ico", "arr_down_black", "arr_small_right_blue");
+}
+
+.b-title__with-btn .cnt_title{
+	margin-right: 6px;
+}
+
+/* block-item */
+
+.block-item{
+	position: relative;
+	border-bottom: 1px solid $separator-color;
+	background: $content-bg;
+	padding: 13px 15px;
+	display: block;
+}
+
+.block-item_titled{
+	border-bottom: 0;
+	margin-left: 25px;
+	margin-right: 25px;
+	background: transparent;
+}
+
+.block-item__pic{
+	float: left;
+	margin-right: 20px;
+}
+
+.block-item__pic-text{
+	text-align: center;
+	color: $secondary-text-color;
+}
+
+.block-item__descr{
+	color: $default-text-color;
+}
+
+.block-item__title,
+.block-item__title2{
+	font-weight: bold;
+}
+
+.block-item__title2{
+	color: $default-text-color;
+}
+
+.color-navy_blue,
+.block-item__light2{
+	color: $secondary-text-color;
+}
+
+.block-item__light2 .diary_inline{
+	vertical-align: initial !important;
+}
+
+.block-item__date,
+.block-item__light{
+	color: $secondary-text-color;
+	margin-bottom: 8px;
+}
+
+.block-item__light{
+	margin-bottom: 0;
+}
+
+.block-item__spacer{
+	min-height: 90px;
+}
+
+.block-item__borndate{
+	margin-left: 16px;
+}
+
+.block-item__medal{
+	margin-left: 5px;
+	vertical-align: middle;
+}
+
+.block-item__avatar{
+	margin-right: 10px;
+	float: left;
+}
+
+.block-item__avatar_xlarge,
+.block-item__avatar_xlarge img{
+	width: 100px;
+}
+
+.block-item__avatar_xlarge img{
+	height: 100px;
+}
+
+@media all and (max-width:359px) {
+	.block-item__avatar_xlarge,
+	.block-item__avatar_xlarge img {
+		width: 50px;
+	}
+
+	.block-item__avatar_xlarge img {
+		height: 50px;
+	}
+}
+
+.block-item__online{
+	text-align: center;
+	color: $darkgreen-text-color;
+}
+
+.block-item__btn-wrap{
+	padding: 0 0 4px 2px;
+}
+
+.block-item__btn-wrap > div > a{
+	border: 1px solid $default-border-color;
+	max-width: 158px;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+
+.block-item_single{
+	border-bottom: 0;
+}
+
+.avatar_wrap a,
+.avatar_wrap a:after,
+.avatar_wrap a img,
+.for_avatar img,
+.user__status,
+.bubble,
+.block-item__avatar img {
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+}
+
+.user__ava img,
+.block-item__avatar_xlarge img{
+	-webkit-border-radius: 10px;
+	   -moz-border-radius: 10px;
+			border-radius: 10px;
+}
+
+.user__ava img,
+.block-item__avatar_xlarge img{
+	-webkit-border-radius: 10px;
+	   -moz-border-radius: 10px;
+			border-radius: 10px;
+}
+
+.block-item__online{
+	font-size: 12px;
+}
+
+.block-item__avatar_xlarge .user__ava_status{
+	padding-top: 12px;
+}
+
+/* Sortable item shadow */
+.sortable-shadow {
+	-webkit-box-shadow: $upload-dnd-shadow;
+	-moz-box-shadow: $upload-dnd-shadow;
+	box-shadow: $upload-dnd-shadow;
+	border-bottom: none !important;
+
+	&--active {
+		-webkit-box-shadow: $upload-dnd-active-shadow;
+		-moz-box-shadow: $upload-dnd-active-shadow;
+		box-shadow: $upload-dnd-active-shadow;
+	}
+}
+
+
+/* Text list */
+.text-list {
+	&__item {
+		padding-bottom: 0.2em;
+	}
+
+	&__item:last-child {
+		padding-bottom: 0;
+	}
+}
+
+.tags-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	align-items: center;
+}

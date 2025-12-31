@@ -1,0 +1,145 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+
+.smiles-menu {
+	position: relative;
+	z-index: 1000;
+	border: 1px solid $input-border;
+	margin-bottom: 1px;
+
+	&.defer {
+		display: block
+	}
+
+	&__header {
+		display: flex;
+	}
+
+	&__list {
+		max-width: 500px;
+		margin: 0 auto;
+		font-size: 0;
+		text-align: center;
+	}
+
+	&__list-item {
+		border: 1px solid $input-border;
+		display: inline-block;
+		margin: 1px;
+		overflow: hidden;
+		text-align: center;
+
+		img {
+			cursor: pointer;
+			max-width: 100%;
+			height: auto;
+			vertical-align: middle
+		}
+	}
+
+	&__back {
+		margin-top: 10px;
+		padding-top: 10px;
+		border-top: 1px solid $separator-color;
+	}
+
+	&__categories {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+		gap: 8px;
+		max-width: 400px;
+		margin: auto;
+	}
+
+	&__category {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+		min-height: 25px;
+		overflow: hidden;
+	}
+
+	&__category-title {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 120px;
+		text-align: center;
+	}
+
+	&__category-icon {
+		flex-shrink: 0;
+	}
+
+	&__tab {
+		cursor: pointer;
+		text-align: center;
+		padding: 8px;
+		color: $secondary-text-color;
+		background: $switch-unselected-bg;
+		font-weight: bold;
+		border-bottom: 1px solid $default-border-color;
+
+		&:not(:last-child) {
+			flex: 1 1 0;
+			min-width: 0;
+		}
+
+		&:not(&--is-active) {
+			&:hover {
+				background: $switch-hover-bg;
+				@include switch-sprite-color("ico", "black");
+			}
+
+			&:active {
+				color: $default-text-color;
+				background: $switch-clicked-bg;
+				@include switch-sprite-color("ico", "black");
+			}
+		}
+
+		&--is-active {
+			color: $default-text-color;
+			background: $switch-selected-bg;
+			border-bottom: 1px solid transparent;
+		}
+	}
+
+	&__close {
+		position:absolute;
+		top: 50%;
+		right: 8px;
+		margin-top: -8px;
+		margin-bottom: 0;
+		cursor: pointer
+	}
+
+	&__body {
+		background: $content-bg;
+		padding: 10px;
+	}
+}
+
+.stickers_list {
+	max-width: 500px;
+	margin: 0 auto;
+	font-size: 0
+}
+.stickers_list__item {
+	border:1px solid $input-border;
+	display:inline-block;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	margin: 1px;
+	overflow: hidden
+}
+.stickers_list img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle
+}
+.stickers_list img {
+	cursor: pointer
+}

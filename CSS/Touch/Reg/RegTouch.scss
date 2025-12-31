@@ -1,0 +1,332 @@
+@use "Common/Theme" as *;
+.soc-link {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	padding: 12px;
+	margin: 0 8px;
+	margin-bottom: 15px;
+	vertical-align: middle;
+	color: $soc-link-color;
+	-webkit-border-radius: 2px;
+	   -moz-border-radius: 2px;
+			border-radius: 2px;
+}
+
+.soc-link:active {
+	padding: 13px 12px 11px 12px;
+}
+
+.soc-link__wrapper{
+	text-align: center;
+	margin-bottom: -10px;
+}
+
+.soc-link__wrapper .soc-link{
+	display: inline-block;
+	padding: 6px;
+	margin: 0 6px;
+	margin-bottom: 10px;
+}
+
+.soc-link__wrapper .soc-link:active{
+	padding: 7px 6px 5px 6px;
+}
+
+.soc-link .ico_soc {
+	margin: 0;
+}
+
+/* VK */
+.soc-link_vk {
+	background: $soc-link-vk-bg;
+}
+
+.soc-link_vk:hover {
+	background: $soc-link-vk-hover !important;
+}
+
+.soc-link_vk:active {
+	background: $soc-link-vk-clicked !important;
+}
+
+.soc-link_vk:active,
+body #left_nav ul li .soc-link_vk:active {
+	-webkit-box-shadow: $soc-link-vk-clicked-shadow;
+	   -moz-box-shadow: $soc-link-vk-clicked-shadow;
+			box-shadow: $soc-link-vk-clicked-shadow;
+}
+
+/* Twitter */
+.soc-link_twitter {
+	background: $soc-link-twitter-bg;
+}
+
+.soc-link_twitter:hover {
+	background: $soc-link-twitter-hover !important;
+}
+
+.soc-link_twitter:active {
+	background: $soc-link-twitter-clicked !important;
+}
+
+.soc-link_twitter:active,
+body #left_nav ul li .soc-link_twitter:active {
+	-webkit-box-shadow: $soc-link-twitter-clicked-shadow;
+	   -moz-box-shadow: $soc-link-twitter-clicked-shadow;
+			box-shadow: $soc-link-twitter-clicked-shadow;
+}
+
+/* Odnoklassniki */
+.soc-link_odnk {
+	background: $soc-link-ok-bg;
+}
+
+.soc-link_odnk:hover {
+	background: $soc-link-ok-hover !important;
+}
+
+.soc-link_odnk:active {
+	background: $soc-link-ok-clicked !important;
+}
+
+.soc-link_odnk:active,
+body #left_nav ul li .soc-link_odnk:active {
+	-webkit-box-shadow: $soc-link-ok-clicked-shadow;
+	   -moz-box-shadow: $soc-link-ok-clicked-shadow;
+			box-shadow: $soc-link-ok-clicked-shadow;
+}
+
+/* Spaces */
+.soc-link_spcs {
+	background: $soc-link-spcs-bg;
+	width: 18px;
+	height: 18px;
+}
+
+.soc-link_spcs:hover {
+	background: $soc-link-spcs-hover !important;
+}
+
+.soc-link_spcs:active {
+	background: $soc-link-spcs-clicked !important;
+}
+
+.soc-link_spcs:active,
+body #left_nav ul li .soc-link_spcs:active {
+	-webkit-box-shadow: $soc-link-spcs-clicked-shadow;
+	   -moz-box-shadow: $soc-link-spcs-clicked-shadow;
+			box-shadow: $soc-link-spcs-clicked-shadow;
+}
+
+/* МойМир */
+.soc-link_mymir {
+	background: $soc-link-mymir-bg;
+}
+
+.soc-link_mymir:hover {
+	background: $soc-link-mymir-hover !important;
+}
+
+.soc-link_mymir:active {
+	background: $soc-link-mymir-clicked !important;
+}
+
+.soc-link_mymir:active,
+body #left_nav ul li .soc-link_mymir:active {
+	-webkit-box-shadow: $soc-link-mymir-clicked-shadow;
+	   -moz-box-shadow: $soc-link-mymir-clicked-shadow;
+			box-shadow: $soc-link-mymir-clicked-shadow;
+}
+
+/* Email */
+.soc-link_email {
+	background: $soc-link-email-bg;
+}
+
+.soc-link_email:hover {
+	background: $soc-link-email-hover !important;
+}
+
+.soc-link_email:active {
+	background: $soc-link-email-clicked !important;
+}
+
+.soc-link_email:active,
+body #left_nav ul li .soc-link_email:active {
+	-webkit-box-shadow: $soc-link-email-clicked-shadow;
+	   -moz-box-shadow: $soc-link-email-clicked-shadow;
+			box-shadow: $soc-link-email-clicked-shadow;
+}
+
+/* Facebook */
+.soc-link_fb {
+	background: $soc-link-fb-bg;
+}
+
+.soc-link_fb:hover {
+	background: $soc-link-fb-hover !important;
+}
+
+.soc-link_fb:active {
+	background: $soc-link-fb-clicked !important;
+}
+
+.soc-link_fb:active,
+body #left_nav ul li .soc-link_fb:active {
+	-webkit-box-shadow: $soc-link-fb-clicked-shadow;
+	   -moz-box-shadow: $soc-link-fb-clicked-shadow;
+			box-shadow: $soc-link-fb-clicked-shadow;
+}
+
+/* Google */
+.soc-link_google {
+	background: $soc-link-google-bg;
+}
+
+.soc-link_google:hover {
+	background: $soc-link-google-hover !important;
+}
+
+.soc-link_google:active{
+	background: $soc-link-google-clicked !important;
+}
+
+.soc-link_google:active,
+body #left_nav ul li .soc-link_google:active {
+	-webkit-box-shadow: $soc-link-google-clicked-shadow;
+	   -moz-box-shadow: $soc-link-google-clicked-shadow;
+			box-shadow: $soc-link-google-clicked-shadow;
+}
+
+#left_nav ul li a.inl-link{
+	display: inline;
+	padding: 0 !important;
+	background: none !important;
+}
+
+/* Yandex */
+.soc-link_yandex {
+	background: $soc-link-yandex-bg;
+}
+
+.soc-link_yandex:hover {
+	background: $soc-link-yandex-hover !important;
+}
+
+.soc-link_yandex:active {
+	background: $soc-link-yandex-clicked !important;
+}
+
+.soc-link_yandex:active,
+body #left_nav ul li .soc-link_yandex:active {
+	-webkit-box-shadow: $soc-link-yandex-clicked-shadow;
+	   -moz-box-shadow: $soc-link-yandex-clicked-shadow;
+			box-shadow: $soc-link-yandex-clicked-shadow;
+}
+
+/* Telegram */
+.soc-link_tg {
+	background: $soc-link-telegram-bg;
+}
+
+.soc-link_tg:hover {
+	background: $soc-link-telegram-hover !important;
+}
+
+.soc-link_tg:active {
+	background: $soc-link-telegram-clicked !important;
+}
+
+.soc-link_tg:active,
+body #left_nav ul li .soc-link_tg:active {
+	-webkit-box-shadow: $soc-link-telegram-clicked-shadow;
+	-moz-box-shadow: $soc-link-telegram-clicked-shadow;
+	box-shadow: $soc-link-telegram-clicked-shadow;
+}
+
+/* Instagram */
+.soc-link_inst {
+	background: $soc-link-inst-bg;
+}
+
+.soc-link_inst:hover {
+	background: $soc-link-inst-hover !important;
+}
+
+.soc-link_inst:active {
+	background: $soc-link-inst-clicked !important;
+}
+
+.soc-link_inst:active,
+body #left_nav ul li .soc-link_inst:active {
+	-webkit-box-shadow: $soc-link-inst-clicked-shadow;
+	-moz-box-shadow: $soc-link-inst-clicked-shadow;
+	box-shadow: $soc-link-inst-clicked-shadow;
+}
+
+/* YouTube */
+.soc-link_youtube {
+	background: $soc-link-youtube-bg;
+}
+
+.soc-link_youtube:hover {
+	background: $soc-link-youtube-hover !important;
+}
+
+.soc-link_youtube:active {
+	background: $soc-link-youtube-clicked !important;
+}
+
+.soc-link_youtube:active,
+body #left_nav ul li .soc-link_youtube:active {
+	-webkit-box-shadow: $soc-link-youtube-clicked-shadow;
+	-moz-box-shadow: $soc-link-youtube-clicked-shadow;
+	box-shadow: $soc-link-youtube-clicked-shadow;
+}
+
+/* TikTok */
+.soc-link_tiktok {
+	background: $soc-link-tiktok-bg;
+}
+
+.soc-link_tiktok:hover {
+	background: $soc-link-tiktok-hover !important;
+}
+
+.soc-link_tiktok:active {
+	background: $soc-link-tiktok-clicked !important;
+}
+
+.soc-link_tiktok:active,
+body #left_nav ul li .soc-link_tiktok:active {
+	-webkit-box-shadow: $soc-link-tiktok-clicked-shadow;
+	-moz-box-shadow: $soc-link-tiktok-clicked-shadow;
+	box-shadow: $soc-link-tiktok-clicked-shadow;
+}
+
+.soc-separator{
+	position: relative;
+	text-align: center;
+	background: $content-bg;
+	padding: 10px;
+}
+
+.soc-separator:before{
+	content: '';
+	display: block;
+	border-bottom: 1px solid $separator-color;
+	left: 0;
+	right: 0;
+	top: 50%;
+	position: absolute;
+}
+
+.soc-separator__desrc{
+	background: $content-bg;
+	display: inline-block;
+	padding: 0 4px;
+	color: $default-text-color;
+	font-weight: bold;
+	position: relative;
+}

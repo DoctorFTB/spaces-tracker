@@ -1,0 +1,36 @@
+@use "Common/Theme" as *;
+
+.stat-tabs .sub-tabs {
+	margin: 0;
+	-webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.stat_table tr.ad-bg__archived {
+	background: $list-item-inactive-bg;
+}
+.stat_table tr.ad-bg__archived:hover {
+	background: $list-item-inactive-hover-bg;
+}
+
+.stat_table tr.ad-bg__blocked {
+	background: $list-item-error-bg;
+}
+.stat_table tr.ad-bg__blocked:hover {
+	background: $list-item-error-hover-bg;
+}
+
+.stat_table tr.ad-bg__active {
+	background: $list-item-success-bg;
+}
+.stat_table tr.ad-bg__active:hover {
+	background: $list-item-success-hover-bg;
+}
+
+.stat_table tr.ad-bg__moderation {
+	background: $list-item-warning-bg;
+}
+.stat_table tr.ad-bg__moderation:hover {
+	background: $list-item-warning-hover-bg;
+}

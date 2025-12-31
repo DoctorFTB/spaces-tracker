@@ -1,0 +1,192 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.pag{
+	padding: 5px 10px;
+}
+
+.pgn__button::-moz-focus-inner, .mail__button::-moz-focus-inner {
+	padding:0;
+	border:0
+}
+
+.pgn{
+    color: $pagination-link-color;
+    background: $pagination-gradient-start;
+    background: -webkit-gradient(linear, left top, right top, from($pagination-gradient-start), to($pagination-gradient-end));
+    background: -webkit-linear-gradient(top, $pagination-gradient-start, $pagination-gradient-end);
+    background: -moz-linear-gradient(top, $pagination-gradient-start, $pagination-gradient-end);
+    background: -o-linear-gradient(top, $pagination-gradient-start, $pagination-gradient-end);
+    background: -ms-linear-gradient(top, $pagination-gradient-start, $pagination-gradient-end);
+    background: linear-gradient(top, $pagination-gradient-start, $pagination-gradient-end);
+	margin: 15px 10px;
+	position: relative;
+}
+
+.pgn-wrapper .pgn{
+	border-top: 1px solid $default-border-color;
+	margin: -1px 0 0 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.pgn__link{
+	cursor: pointer;
+	color: $pagination-link-color !important;
+}
+
+.pgn__link_disabled {
+	pointer-events: none;
+	cursor: default;
+	-moz-opacity: 0.5;
+		 opacity: 0.5;
+}
+
+.pgn__link,
+.pgn__counter{
+	padding: 13px 0 11px 0;
+	text-align: center;
+	display: block;
+	overflow: hidden;
+	user-select: none;
+}
+
+.pgn__counter{
+	white-space: nowrap;
+}
+
+.pgn__range{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.pgn__range,
+.pgn__link_next,
+.pgn__link_prev{
+	min-height: 13px;
+}
+
+.pgn__link_next #{icon("ico", "arr_right")} {
+	margin-left: 8px;
+	margin-right: 0;
+	
+	@if ($DARK_MODE) {
+		@include use-icon("ico", "arr_right_darkblue");
+	}
+}
+
+.pgn__link_prev #{icon("ico", "arr_left")} {
+	margin-left: 0;
+	margin-right: 8px;
+	
+	@if ($DARK_MODE) {
+		@include use-icon("ico", "arr_left_darkblue");
+	}
+}
+
+@if ($DARK_MODE) {
+	.pgn__link_next #{icon("ico", "darr_right")} {
+		@include use-icon("ico", "darr_right_darkblue");
+	}
+
+	.pgn__link_prev #{icon("ico", "darr_left")} {
+		@include use-icon("ico", "darr_left_darkblue");
+	}
+}
+
+.pgn__link_hover:active{
+	color: $default-text-color !important;
+}
+
+.pgn__search_input {
+	padding: 6px 9px 5px 9px;
+	margin: 4px;
+	border: 1px solid $pagination-input-border;
+	-webkit-box-shadow: $pagination-input-shadow;
+	-moz-box-shadow: i$pagination-input-shadow;
+	box-shadow: $pagination-input-shadow;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: 100%;
+	background: $input-bg;
+	color: $input-text-color;
+}
+
+.pgn__search_input:focus{
+	padding: 5px 8px 4px 8px;
+	outline: none;
+}
+
+.ico.pgn__go, .ico.pgn__go:hover {
+	border: 0 !important;
+	position: absolute;
+	top: 50%;
+	margin-top: -7px;
+	right: 10px;
+	display: block;
+	padding: 0;
+	font-size: 0;
+	background-color: transparent
+}
+
+.pgn__wrap {
+	padding-right: 28px;
+	display: block;
+	position: relative;
+}
+
+.pgn__button, .mail__button {
+	border: 0 !important;
+	margin: 0 !important;
+	background: transparent !important;
+	padding: 13px 0 11px 0;
+	text-align: center;
+	width: 100%;
+	color: $secondary-text-color;
+	outline: none;
+	border-radius: 0 !important;
+	box-sizing: content-box;
+	user-select: none;
+}
+
+.pgn__button {
+	color: $pagination-link-color
+}
+
+.pgn__button:hover, .mail__button:hover {
+	background: if(($PC), $default-hover-bg !important, transparent !important);
+}
+
+@if ($PC) {
+	.pgn__button_press .pgn__button:hover {
+		background: transparent !important;
+	}
+}
+
+
+.pgn__button:active, .pgn__button_press, .pgn__button_press:hover, .mail__button:active{
+	color: $default-text-color !important;
+	background: $default-clicked-bg !important;
+	-webkit-box-shadow: $default-clicked-shadow !important;
+	-moz-box-shadow: $default-clicked-shadow !important;
+	box-shadow: $default-clicked-shadow !important;
+}
+
+.pgn__button_press .pgn__button{
+	color: $default-text-color !important;
+}
+
+.pgn__table {
+	border-collapse: separate !important;
+}
+
+.pgn__go {
+	@include use-icon("ico", "ok");
+	opacity: 0.6;
+}
+
+.pgn__link_hover:active {
+	@include switch-sprite-color("ico", "black");
+}

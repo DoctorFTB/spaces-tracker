@@ -1,0 +1,34 @@
+@use "./Base" as *;
+
+/* Ссылочные счётчики */
+$link-cnt-color:					$secondary-text-color;
+$link-cnt-border:					$default-border-color;
+
+/* Блочные ссылки */
+$block-link-grey-color:				$secondary-text-color;
+$block-link-darkblue-color:			$darkblue-text-color;
+$block-link-blue-color:				$blue-text-color;
+$block-link-darkred-color:			$darkred-text-color;
+$block-link-red-color:				$red-text-color;
+$block-link-green-color:			$green-text-color;
+
+/* Обычные ссылки */
+$inline-link-default-hover-color:	theme($blue-text-color,	#ffffff);
+$inline-link-default-clicked-color:	$default-text-color;
+$inline-link-blue-hover-color:		$default-text-color;
+
+$inline-link-darkblue-color:		$darkblue-text-color;
+$inline-link-grey-color:			$secondary-text-color;
+$inline-link-blue-color:			$blue-text-color;
+$inline-link-darkred-color:			$darkred-text-color;
+$inline-link-red-color:				$red-text-color;
+$inline-link-green-color:			$green-text-color;
+$inline-link-disabled-color:		$disabled-text-color;
+
+/* Бэклинк */
+$backlink-color:					theme(#395387,	$darkblue-text-color);
+$backlink-hover-color:				theme($blue-text-color,	#ffffff);
+
+/* Хлебные крошки */
+$location-link-color:				theme(#57a3ea,	#7cc3ff);
+$location-link-hover-color:			theme(#0E3C87,	#638db1);

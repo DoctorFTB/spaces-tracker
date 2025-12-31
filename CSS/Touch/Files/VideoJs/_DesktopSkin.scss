@@ -1,0 +1,300 @@
+$vjs-control-bar-height: 3.5em;
+$vjs-control-bar-icon-size: 2em;
+$vjs-timeline-height: 0.25em;
+$vjs-timeline-hover-font-size: 1.6666666667em;
+$vjs-timeline-hover-area-height: 2em;
+
+@mixin vjs-icon-size($icon-size) {
+	font-size: $icon-size;
+	line-height: calc($vjs-control-bar-height / $icon-size);
+}
+
+// Скин плеера для PC
+.vjs-theme-desktop {
+	font-size: 12px;
+
+	.vjs-video-title {
+		display: flex;
+		align-items: center;
+		justify-content: start;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3em;
+		text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+		padding-right: 1em;
+		padding-left: 1em;
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.675) 0%, rgba(0, 0, 0, 0) 100%);
+
+		a, a:hover, a:visited {
+			color: #fff;
+			text-decoration: none;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 18px;
+		}
+	}
+
+	.vjs-control {
+		&:focus:not(:focus-visible) {
+			text-shadow: none;
+		}
+
+		&:focus-visible {
+			text-shadow: 0 0 1em #fff;
+		}
+	}
+
+	&.vjs-has-started.vjs-user-inactive.vjs-playing {
+		.vjs-control-bar, .vjs-video-title {
+			transition: visibility 1s, opacity 1s;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	&.vjs-has-started.vjs-user-active.vjs-playing {
+		.vjs-control-bar, .vjs-video-title {
+			transition: visibility 0.05s, opacity 0.05s;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	// Превьшки
+	.vjs-thumbnail {
+		position: absolute;
+		bottom: 4.5em;
+		transition: opacity 0.2s;
+		will-change: transform;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, .5);
+		pointer-events: none;
+		border-radius: 3px;
+		background-color: #fff;
+		background-size: auto 100%;
+		opacity: 0;
+
+		&--visible {
+			opacity: 1;
+		}
+
+		&__time-label {
+			bottom: 4px;
+			color: #fff;
+			font-size: 14px;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+			z-index: 1;
+		}
+
+		&::before {
+			position: absolute;
+			top: 38%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: "";
+			background: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent);
+		}
+	}
+
+	// Большая кнопка PLAY
+	.vjs-big-play-button {
+		background: transparent;
+		border: none;
+
+		opacity: 0.85;
+		width: 3em;
+		height: 3em;
+		line-height: 3em;
+		margin-top: -1.5em;
+		margin-left: -1.5em;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		.vjs-icon-placeholder {
+			font-size: 3em;
+		}
+	}
+
+	&:hover .vjs-big-play-button {
+		background: transparent;
+		border: none;
+	}
+
+	// В фуллскрине цветовая схема не нужна
+	&:fullscreen {
+		color-scheme: none;
+	}
+
+	// Запрещаем открывать меню по hover'у, только по клику
+	&.vjs-workinghover .vjs-menu-button-popup.vjs-hover .vjs-menu {
+		display: none;
+	}
+
+	// Анимация шестерни
+	.vjs-button {
+		.vjs-icon-placeholder::before {
+			transition: transform 100ms cubic-bezier(0.4, 0, 1, 1);
+		}
+
+		&[aria-expanded="true"] .vjs-icon-placeholder::before {
+			transform: rotateZ(30deg);
+		}
+	}
+
+	// Стиль менюшек
+	.vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+		background: rgba(0, 0, 0, 0.7);
+		bottom: calc($vjs-control-bar-height / 2 + $vjs-timeline-height * 2);
+		border-radius: 5px;
+	}
+
+	// Заполнение между левыми и правыми кнопками в контрол-баре
+	.vjs-control-bar-spacer {
+		flex-grow: 1;
+	}
+
+	// Размер иконок контрол-бара
+	.vjs-button > .vjs-icon-placeholder::before {
+		@include vjs-icon-size($vjs-control-bar-icon-size);
+	}
+
+	&:not(.vjs-ended) .vjs-play-control > .vjs-icon-placeholder::before {
+		@include vjs-icon-size($vjs-control-bar-icon-size * 1.25);
+	}
+
+	.vjs-fullscreen-control > .vjs-icon-placeholder::before {
+		@include vjs-icon-size($vjs-control-bar-icon-size * 1.25);
+	}
+
+	// Громкость
+	.vjs-volume-panel .vjs-volume-control {
+		display: flex;
+		align-items: center;
+		height: $vjs-control-bar-height !important;
+	}
+
+	// Прогрессбар
+	.vjs-volume-bar.vjs-slider-horizontal {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	// Время воспроизведения и длительность
+	.vjs-time-control {
+		line-height: $vjs-control-bar-height;
+	}
+
+	.vjs-current-time {
+		display: block;
+		padding-right: 0;
+	}
+
+	.vjs-time-divider {
+		display: block;
+		padding-left: 0;
+		padding-right: 0;
+		min-width: 1em;
+		z-index: 1;
+	}
+
+	.vjs-duration {
+		display: block;
+		padding-left: 0;
+	}
+
+	// Выбор качества видео
+	.vjs-quality-selector {
+		.vjs-menu-button {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		.vjs-icon-placeholder {
+			font-family: 'VideoJS';
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		.vjs-icon-placeholder::before {
+			content: "\f114";
+		}
+	}
+
+	// Контрол-бар
+	.vjs-control-bar {
+		display: flex; // всегда отображаем
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+		height: $vjs-control-bar-height;
+		background: transparent;
+
+		&::before {
+			content: "";
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.675) 100%);
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: calc(var(--vjs-height) / 2);
+			pointer-events: none;
+		}
+	}
+
+	// Таймлайн
+	.vjs-slider {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.vjs-load-progress div {
+		background: rgba(255, 255, 255, 0.4);
+	}
+
+	.vjs-progress-control {
+		position: absolute;
+		top: -$vjs-timeline-hover-area-height;
+		height: $vjs-timeline-hover-area-height;
+		box-sizing: content-box;
+		right: 1em;
+		left: 1em;
+		width: auto;
+		z-index: 10;
+
+		.vjs-mouse-display {
+			z-index: 10
+		}
+
+		.vjs-progress-holder {
+			position: absolute;
+			right: 0;
+			left: 0;
+			width: 100%;
+			margin: 0;
+			height: $vjs-timeline-height;
+			bottom: calc(-1 * $vjs-timeline-height / 2);
+			z-index: 10;
+		}
+
+		&:hover .vjs-progress-holder {
+			font-size: $vjs-timeline-hover-font-size;
+		}
+
+		// Скрываем текущее время над таймлайном
+		&:hover .vjs-play-progress > .vjs-time-tooltip {
+			display: none;
+		}
+	}
+
+	.vjs-play-progress {
+		background-color: #ff0033;
+	}
+}

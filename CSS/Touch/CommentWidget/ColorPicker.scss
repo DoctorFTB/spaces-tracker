@@ -1,0 +1,81 @@
+@use "Common/Theme" as *;
+
+/* Выбор цвета в тулбаре */
+.bb-colorpicker .table__cell {
+	vertical-align: middle
+}
+
+/* Colorpicker */
+.colorpicker {
+	text-align: left
+}
+.colorpicker .btn-main,  
+.colorpicker .btn-main:active {
+	padding: 10px 0;
+	cursor: pointer
+}
+.colorpicker .text-input__wrap {
+	padding-right: 16px /* pading_left + padding_right */
+}
+.colorpicker table {
+	border-collapse: collapse;
+	border: 0
+}
+.colorpicker-rect {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	border: 1px solid $colorpicker-selector-border;
+	margin-right: 10px
+}
+.colorpicker-rect > div {
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	background-image: url(/i/bb/colorpicker/overlay.png)
+}
+.colorpicker-gradient_cursor {
+	position: absolute;
+	background-image: url(/i/bb/colorpicker/cursor.png);
+	width: 8px;
+	height: 8px;
+	margin-top: -4px;
+	margin-left: -4px;
+}
+.colorpicker-color {
+	display: inline-block;
+	height: 35px;
+	width: 100%;
+	border: 1px solid $colorpicker-color-border;
+}
+.colorpicker-row {
+	margin-top: 7px
+}
+.colorpicker-spectrum {
+	background-image: url(/i/bb/colorpicker/colors.png);
+	width: 17px; height: 150px;
+	display: inline-block;
+	position: relative;
+	border: 1px solid $default-border-color;
+	margin-right: 10px
+}
+.colorpicker-spectrum_cursor {
+	position: absolute;
+	left: 0; right: 0;
+	background: $colorpicker-selector-border;
+	height: 1px;
+}
+
+.colorpicker-colors {
+	padding: 8px;
+	margin-left: -3px;
+	margin-right: -3px
+}
+
+@media all and (max-width: 319px) {
+	.colorpicker-big { display: none }
+}
+
+@media all and (min-width: 320px) {
+	.colorpicker-small { display: none }
+}

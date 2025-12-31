@@ -1,0 +1,41 @@
+@use "./Base" as *;
+
+$busi-switcher-bg:					theme(#ffffff,	#3e3f40);
+$busi-switcher-hover-bg:			theme(#e6e6e6,	#424446);
+$busi-switcher-active-bg:			theme(#e6e6e6,	#4d4e51);
+
+$myc-button-bg:						theme(#fefefe,	#3e3f40);
+$myc-button-border:					theme(#cccccc,	#2d2e30);
+$myc-button-text-color:				theme(#333333,	#cccccc);
+
+$legacy-tabs-hover-bg:				theme(#ece9e9,	#4e5052);
+$legacy-tabs-unselected-bg:			theme(#e4e1e1,	#525456);
+$legacy-tabs-selected-bg:			$content-bg;
+
+$tracking-table-title-bg:			theme(#a0afbc,	#424446);
+$tracking-table-title-color:		#ffffff;
+$tracking-table-row-bg:				$content-bg;
+$tracking-table-row-summary-bg:		theme(#d3d3d3,	#525456);
+
+$legacy-title-bg:					theme(#cddae7,	#424446);
+$legacy-title-border-color:			theme(#AFCDDC,	#2d2e30);
+
+$rate-explain-title-bg:				theme(#cccccc,	#424446);
+$rate-explain-title-border-color:	theme(#b3b3b3,	#222222);
+
+$rate-explain-row-bg:				theme(#f0f0f0,	$content-bg);
+$rate-explain-row-hover-bg:			theme(#ffffff,	$default-hover-bg);
+$rate-explain-summary-bg:			theme(#c0c0c0,	#525456);
+$rate-explain-border-color:			theme(#cccccc,	#222222);
+
+$karma-button-bg:					theme(#CCCCCC,	#525456);
+$karma-button-color:				theme(#FFFFFF,	#CCCCCC);
+
+$light-service-link:				theme(#a4b7c4,	#CCCCCC);
+
+$legacy-blue-bg:					theme(#ebf3fe,	#424446);
+
+$adv-user-link-bg:					theme(#f7fafa,	$content-bg);
+$adv-user-link-hover-bg:			theme(#dae1eb,	#484a4c);
+$adv-user-link-selected-bg:			theme(#e4e1e1,	#525456);
+$adv-user-link-selected-mark:		#13bf60;

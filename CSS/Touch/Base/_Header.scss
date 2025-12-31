@@ -1,0 +1,329 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.navi-theme {
+	@if ($DARK_MODE) {
+		background: $header-bg;
+	}
+	color: $header-text-color;
+}
+
+.navi-theme a,
+.navi-theme a:visited {
+	color: $header-text-color;
+}
+
+.horiz-menu__link-ico_user::after{
+	content: " ";
+	display:block;
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	-webkit-box-shadow: $header-avatar-shadow;
+	-moz-box-shadow: $header-avatar-shadow;
+	box-shadow: $header-avatar-shadow;
+}
+
+@if ($TOUCH) {
+	body.navi-hide.android_app #wrapper_for_header_fix {
+		margin-top: 0
+	}
+}
+
+#navi_footer table{
+	width:100%;
+	border-collapse: collapse;
+}
+
+#navi_footer table td{
+	width:20%;
+}
+
+#navi_footer{
+	border-top:none;
+	border-left:none;
+	border-right:none;
+}
+
+.horiz-menu{
+	position: relative;
+	overflow: hidden;
+}
+
+.horiz-menu table {
+	table-layout: fixed;
+}
+
+.horiz-menu_search_form {
+	display: none
+}
+
+@if ($TOUCH) {
+	.navi-hide #navi,
+	.navi-hide .sidebar-logo {
+		display: none
+	}
+}
+
+@if ($PC) {
+	#quick_top_links_menu::before,
+	#quick_top_links_menu::after {
+		right: 3.55%
+	}
+
+	#quick_top_links_menu {
+		z-index: 9999
+	}
+}
+
+@if ($TOUCH) {
+	.user_advanced .horiz-menu__link{
+		height: 23px;
+	}
+}
+
+.horiz-menu_bottom{
+	z-index: 2000;
+	text-align: center
+}
+
+.horiz-menu__link .ico_arr_down_white {
+	margin-top: 2px !important
+}
+
+.horiz-menu__link.js-clicked {
+	@include replace-icon("ico", "arr_down_white", "arr_up_white");
+}
+
+#quick_top_links_menu_link .horiz-menu__link {
+	height: 21px
+}
+
+.horiz-menu__link{
+	display: block;
+	padding: if(($PC ), 11px 1px 12px 1px, 10px 1px 11px 1px);
+	color: $header-text-color !important;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align:center;
+	border: 0 !important;
+}
+
+.horiz-menu_bottom .horiz-menu__link {
+	padding: 19px 10px 15px 10px;
+	display: inline-block;
+	box-sizing: border-box;
+	height: auto !important;
+}
+
+@media all and (min-width: 400px) and (max-width: 479px) {
+	.horiz-menu_bottom .horiz-menu__link {
+		width: 24%;
+		padding: 19px 1px 15px 1px;
+	}
+	.horiz-menu_bottom .horiz-menu__link_opt {
+		display: none
+	}
+}
+
+@media all and (min-width: 480px) {
+	.horiz-menu_bottom .horiz-menu__link {
+		width: 19%;
+		padding: 19px 1px 15px 1px;
+	}
+}
+
+@if ($PC) {
+	.horiz-menu__link:hover {
+		border: 0 !important;
+		background: $header-link-hover-bg !important;
+	}
+
+	.horiz-menu__link:active {
+		padding: 12px 1px 11px 1px;
+		background: $header-link-clicked-bg !important;
+		-webkit-box-shadow: $header-link-clicked-shadow !important;
+		   -moz-box-shadow: $header-link-clicked-shadow !important;
+				box-shadow: $header-link-clicked-shadow !important;
+	}
+
+	.horiz-menu_bottom .horiz-menu__link:active{
+		padding: 20px 1px 14px 1px;
+	}
+}
+
+body #wrap_all .horiz-menu__link_no_hover{
+	background: none !important;
+}
+
+.not_auth .horiz-menu__link {
+	height: 21px;
+}
+
+.touch.not_auth .horiz-menu__link {
+	height: 23px;
+}
+
+
+.horiz-menu__link-wrap_ico_user{
+	background: transparent;
+	position: relative;
+	background-image: none !important;
+}
+
+body .horiz-menu__link-ico_user{
+	position: absolute;
+	background: transparent;
+	top: 50%;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -15px;
+	margin-bottom: if(($PC), -4px, -5px);
+}
+
+body .horiz-menu__link-ico_user,
+body .horiz-menu__link-ico_user::after,
+body .horiz-menu__link-ico_user img {
+	height: 30px;
+	width: 30px;
+}
+
+.horiz-menu__link-ico_user,
+.horiz-menu__link-ico_user::after,
+.horiz-menu__link-ico_user img{
+	position: relative;
+	-webkit-border-radius: 15px;
+		border-radius: 15px;
+	overflow: hidden;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.horiz-menu__link-ico_user::after{
+	position: absolute;
+}
+
+.horiz-menu__link-text{
+	display:block;
+	padding-top: 9px;
+	-webkit-tap-highlight-color: transparent;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.horiz-menu__link-event{
+	background: $header-counter-bg;
+	color: $header-counter-text-color;
+	display: none;
+	position: absolute;
+	bottom: 100%;
+	left: 100%;
+	margin-bottom: -11px;
+	margin-left: -10px;
+	padding: 1px;
+	opacity: 0;
+	transition: opacity 0.5s ease 0s;
+	-webkit-transition: opacity 0.5s ease 0s;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+}
+
+.horiz-menu__link-event_show{
+	opacity: 1;
+	display: block;
+}
+
+@media all and (min-width: 900px) {
+	.horiz-menu__link-ico{
+		vertical-align: middle;
+	}
+
+	.horiz-menu__link-text{
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 3px;
+		padding-top: 0;
+	}
+
+	.horiz-menu__link-text_user{
+		margin-top: 0;
+	}
+}
+
+/* Шапка для гостя */
+.unauth_header{
+	height: if(($PC), 44px, 44px);
+	position:relative;
+	margin:0 -1px;
+	overflow:hidden;
+}
+
+.unauth_header__link{
+	display: block;
+	height: 42px;
+}
+
+.unauth_header__link img{
+	-webkit-tap-highlight-color: transparent
+}
+
+.unauth_header__link_logo{
+	padding: if(($PC), 12px 14px 13px 5px !important, 13px 14px 13px 5px !important);
+	height: 17px;
+}
+
+body .unauth_header__link_menu,
+body .unauth_header__link_enter{
+	color: $header-unauth-link-color;
+	font-weight: bold;
+	padding: if(($PC), 13px 5px 13px 20px, 12px 5px 12px 20px);
+	height: auto;
+	white-space: nowrap;
+	text-transform: uppercase;
+}
+
+body .unauth_header__link_enter{
+	padding: if(($PC), 11px 20px 11px 5px, 12px 20px 12px 5px);
+}
+
+@if ($PC) {
+	.unauth_header__link:hover{
+		color: $header-unauth-link-hover-color !important;
+	}
+
+	.unauth_header__link_logo:hover{
+		opacity: 0.5;
+	}
+}
+
+/* Блок с кнопками модераторов */
+.moders_header_block{
+	background: $header-moders-block-bg;
+	padding: 3px;
+	border-left: 1px solid $body-border-color;
+	border-right: 1px solid $body-border-color;
+	border-bottom: 1px solid $separator-color;
+}
+
+.light_header .menu_wrap table td{
+	border-right:solid;
+	border-width:1px;
+}
+
+#main_logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.time-block{
+	text-align: right;
+	background: $header-clock-bg;
+	color: $default-text-color;
+	padding: 4px;
+	border-bottom: 1px solid $separator-color;
+}

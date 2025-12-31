@@ -1,0 +1,135 @@
+@use "Common/Theme" as *;
+.b-title_in-window {
+	background: $content-bg;
+	padding: 15px 15px 0 15px;
+}
+
+.user__ava {
+	position: relative;
+}
+
+.change_avatar_link.js-clicked, 
+.change_avatar_sublink.js-clicked {
+	position: relative;
+}
+
+.change_avatar_link.js-clicked:after, 
+.change_avatar_sublink.js-clicked:after {
+	display: block;
+	position: absolute;
+	content: '';
+	top: 100%;
+	left: 50%;
+	margin-left: -10px;
+	margin-top: -10px !important;
+	border: 10px solid transparent;
+	border-bottom-color: $dropdown-body-bg;
+	z-index: 10000;
+}
+
+.change_avatar_link, .change_avatar_sublink {
+	cursor: pointer
+}
+
+.change_avatar_link{
+	font-size: 0;
+}
+
+/* Avatar crop */
+.ava_crop * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ava_crop {
+	display: inline-block;
+	position: relative;
+	-webkit-tap-highlight-color: transparent;
+}
+.ava_crop-img {
+	max-width: 100%;
+	height: auto;
+}
+.ava_crop-shadow_frame {
+    position: absolute;
+}
+.ava_crop-arrow_wrap {
+	position: relative;
+	padding-bottom: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.ava_crop-move .ava_crop-arrow {
+	background: $avatar-crop-arrow-active-bg;
+}
+
+.ava_crop-arrow {
+	width: 13px;
+	height: 13px;
+	background: $avatar-crop-arrow-bg;
+	position: absolute
+}
+.ava_crop-arrow.ne {
+	top: -8px; right: -8px;
+	cursor: ne-resize
+}
+.ava_crop-arrow.nw {
+	top: -8px; left: -8px;
+	cursor: nw-resize
+}
+.ava_crop-arrow.se {
+	bottom: -8px; right: -8px;
+	cursor: se-resize
+}
+.ava_crop-arrow.sw {
+	bottom: -8px; left: -8px;
+	cursor: sw-resize
+}
+.ava_crop-thumb {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+	overflow: hidden;
+	cursor: pointer;
+}
+.ava_crop-thumb_small {
+	width: 40px;
+	height: 40px;
+}
+.ava_crop-thumb_large {
+	width: 100px;
+	height: 100px;
+}
+.ava_crop-resize * {
+	cursor: sw-resize !important
+}
+.ava_crop-shadow {
+	background: $avatar-crop-shadow;
+	position: absolute;
+	cursor: crosshair;
+}
+.ava_crop-shadow_wrap {
+	overflow: hidden;
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+}
+.ava_crop-frame {
+	position: absolute;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+.ava_crop-cursor {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.js-ava_crop_zoom_btn {
+	margin: -15px;
+    padding: 15px;
+}

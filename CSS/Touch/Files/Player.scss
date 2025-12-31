@@ -1,0 +1,622 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+/* Парящая кнопка */
+.gp {
+	display: block;
+	cursor: pointer
+}
+.gp-content {
+	height: 36px;
+	overflow: hidden;
+	padding: 1px;
+	font-size: 12px;
+	
+	@if ($TOUCH) {
+		border-top: 1px solid $sidebar-item-top-border;
+		border-bottom: 1px solid $sidebar-item-bottom-border;
+	}
+}
+
+.gp-right_btn .gp-content {
+	background-color: $music-player-widget-bg;
+	border-top: none;
+	border-bottom: none;
+}
+
+@if ($PC) {
+	.gp-content:hover {
+		background-color: $sidebar-item-hover-bg;
+	}
+	
+	.gp-right_btn .gp-content:hover {
+		background-color: $music-player-widget-hover-bg;
+	}
+}
+
+.gp-window {
+	z-index: 200000
+}
+.rightbar.gp-right_btn .gp-window {
+	margin-left: 13.95%;
+}
+
+.gp-hide_volume .gp-volume {
+	display: none
+}
+
+#gp_artist, #gp_title {
+	line-height: 13px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#gp_artist {
+	font-weight: bold;
+}
+
+/* Окно плеера */
+.gp__dropdown-menu {
+	top: 100%; left: 0; right: 0;
+	margin-top: 20px;
+}
+.gp-right_btn .gp-active .gp-content {
+	background-color: $music-player-widget-hover-bg
+}
+.gp-active .gp-content {
+	background-color: $sidebar-item-hover-bg
+}
+
+.gp-info_wrap {
+	color: $music-player-widget-float-color;
+	padding: 4px 1px 4px 0;
+	overflow: hidden;
+}
+.player-head_info {
+	font-size: 12px;
+	line-height: 13px;
+}
+.player-extended .p_i_progress {
+	padding-top: 4px;
+}
+.player-extended .p_i_p_lines {
+	margin-top: 6px;
+}
+
+.gp-native_scroll #gp_playlist {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gp-icon_wrap {
+	padding: 9px 12px;
+}
+
+.gp-nav_buttons {
+	padding-right: 9px;
+    width: 48px;
+	vertical-align: middle !important;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.gp-playlist_active {
+	background-color: $music-player-selected-track !important
+}
+
+
+.gp-body {
+	background: $content-bg
+}
+
+.player_item .ico_player_prev,
+.player_item .ico_player_next {
+	margin: -2px 0 0 0;
+}
+.player_item .ico_player_next {
+	margin-left: 3px;
+}
+
+.player-extended .player_tools_table {
+	table-layout: fixed;
+}
+
+/* Mobile */
+.gp-device_mobile.dropdown-menu__wrap {
+	margin-top: 0;
+	top: 0;
+}
+.gp-device_mobile .gp__dropdown-menu {
+	margin-top: 0 !important
+}
+.gp-device_mobile.gp-show_volume .player_tools_table {
+	table-layout: inherit;
+}
+/* Desktop */
+.gp-device_desktop .gp-playlist_size {
+	max-height: 400px;
+}
+
+/*
+	Кнопочка глобального плеера
+*/
+
+/* Плавающая справа кнопочка */
+.gp-right_btn .gp {
+	width: 154px;
+	top: 49px;
+	position: fixed;
+	bottom: auto;
+}
+.gp-right_btn .gp-content {
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	margin-left: 10px;
+	width: 100%;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+.gp-right_btn #gp_artist, .gp-right_btn #gp_title {
+    width: 114px;
+}
+
+
+/* Показать/скрыть только для конкретного девайса */
+.gp-device_desktop .gp-mobile_show {
+	display: none
+}
+.gp-device_mobile .gp-desktop_show {
+	display: none
+}
+
+/* Если слева в панельке */
+.gp-left_btn .gp-content {
+	padding: 4px;   
+}
+
+@if (not $DARK_MODE) {
+	/* Тёмная тема сайдбара */
+	.sidebar--dark {
+		.gp-info_wrap {
+			color: $sidebar-dark-item-color;
+		}
+		
+		.gp-content {
+			@if ($TOUCH) {
+				border-top: 1px solid $sidebar-dark-item-top-border;
+				border-bottom: 1px solid $sidebar-dark-item-bottom-border;
+			}
+		}
+		
+		.gp-active .gp-content {
+			background-color: $sidebar-dark-item-hover-bg
+		}
+		
+		@if ($PC) {
+			.gp-content:hover {
+				background-color: $sidebar-dark-item-hover-bg;
+			}
+		}
+		
+		@include switch-sprite-color("ico_player", "white");
+	}
+}
+
+.loading .p_i_p_lines_pg_bg {
+	@if ($DARK_MODE) {
+		background-image: url(/i/progress_dark.gif) !important;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	} @else {
+		background-image: url(/i/progress.gif) !important;
+	}
+	z-index: 9999;
+}
+
+/*
+	Стиль плеера
+*/
+.player_item, .p_i_tools, .p_i_progress, .p_i_t_playButton{
+	position:relative;
+}
+
+.player_item{
+	text-align: left;
+	color: $music-player-text-color;
+}
+
+.player_item_wrapper{
+	margin: 0;
+}
+
+.player-extended .p_i_t_pb_image{
+	margin-top: -7px !important;
+	margin-left: -6px !important;
+}
+
+.player-extended .ico_td .ico{
+	margin-top: -4px;
+}
+
+.p_i_progress{
+	height: 10px;
+	padding: 13px 0 12px 0;
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+}
+
+.player_item_modern .p_i_progress{
+	padding: 0;
+}
+
+.p_i_tool_wrapper{
+	position: relative;
+}
+
+.p_i_tool_wrapper .p_i_p_lines{
+	margin: 0;
+}
+
+.p_i_tool_wrapper .p_i_progress{
+	margin-top: 6px;
+}
+
+.p_i_p_lines{
+	height: 10px;
+	top: 0;
+	margin: 13px 0 12px 0;
+	position: absolute;
+	display: block;
+	width:0;
+	left:0;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-webkit-border-radius: 4px;
+			border-radius: 4px
+}
+
+.p_i_p_loadLine{
+	width: 0;
+	background-color: $music-player-preload-runner-bg;
+}
+
+.player_item_old .p_i_p_loadLine{
+	-webkit-box-shadow: $music-player-preload-shadow;
+	   -moz-box-shadow: $music-player-preload-shadow;
+			box-shadow: $music-player-preload-shadow;
+}
+
+.player_item_modern .p_i_p_loadLine{
+	background-color: $music-player-attach-preload-runner-bg;
+}
+
+.p_i_p_progressLine{
+	width: 0;
+	background-color: $music-player-progress-runner-bg;
+}
+
+.player_item_modern .p_i_p_progressLine{
+	background-color: $music-player-attach-progress-runner-bg;
+}
+
+.p_i_p_lines_bg{
+	width: 100%;
+	background-color: $music-player-progress-bg;
+	-webkit-box-shadow: $music-player-progress-shadow;
+	   -moz-box-shadow: $music-player-progress-shadow;
+			box-shadow: $music-player-progress-shadow;
+}
+
+.player_item_modern .p_i_p_lines_bg{
+	background-color: $music-player-attach-progress-bg;
+	-webkit-box-shadow: $music-player-attach-progress-shadow;
+	   -moz-box-shadow: $music-player-attach-progress-shadow;
+			box-shadow: $music-player-attach-progress-shadow;
+}
+
+.player_item_modern .p_i_t_playButton{
+	width:40px;
+	height:40px;
+	background: $music-player-button-bg;
+	-webkit-border-radius: 2px;
+	   -moz-border-radius: 2px;
+		    border-radius: 2px;
+}
+
+.p_i_t_playButton{
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+}
+
+.tools_table .play_td{
+	width:30px;
+}
+
+.play_td{
+	width: 50px;
+	padding: 0;
+	vertical-align: middle !important;
+}
+
+.small_player .t-padd_left{
+	padding-left:0;
+}
+
+.small_player .t-padd_right{
+	padding-right:0;
+}
+
+.small_player .p_i_t_playButton{
+	width: 20px;
+	height: 20px;
+}
+
+.small_player .button_tr{
+	width:26px;
+}
+
+.small_player .p_i_p_lines{
+	margin: 8px 0 9px 0;
+}
+
+.small_player .p_i_progress{
+	padding: 8px 0 9px 0;
+}
+
+.ico_td{
+	width:16px;
+	padding-left: 10px;
+	vertical-align: middle !important;
+}
+
+.ico_td .ico{
+	margin-bottom: -2px;
+}
+
+.volume_td{
+	width: 17%;
+	min-width:40px;
+	max-width:70px;
+	padding-left:10px;
+}
+
+.tools_table .volume_td{
+	width: 70px;
+}
+
+.tools_table{
+	width:100%;
+	margin: 0;
+	text-align: left;
+	border-spacing: 0;
+	border-collapse:collapse;
+}
+
+.tools_table td{
+	padding-top:0;
+	padding-bottom:0;
+}
+
+.button_tr,
+.download_tr{
+	width:39px;
+	vertical-align: middle !important;
+}
+
+.download_tr{
+	width:20px;
+}
+
+.p_i_tool_title{
+	margin-top: 3px;
+}
+
+.p_i_add{
+	margin: 4px 0 0 10px;
+}
+
+.p_i_progress_position{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.p_i_title,
+.p_i_progress_position{
+	display: none;
+}
+
+.playing .p_i_progress_position{
+	display: block;
+}
+
+.playing .p_i_title{
+	display: inline;
+}
+
+.playing .p_i_tool_title{
+	visibility: hidden;
+}
+
+.p_i_download{
+	position: relative;
+	top: 2px;
+}
+
+.player_item .ico_download2,
+.player_item .ico_plus_blue{
+	margin: 0 0 -2px;
+}
+
+/* Video player */
+.video-player-block {
+	margin: -15px -15px 0 -15px;
+}
+
+.video-player_container {
+	display: inline-block;
+	width: 100%;
+}
+
+.video-player_wrap {
+	position: relative;
+	width: 100%;
+	background-color: $video-wrap-bg;
+	padding: 0; margin: 0;
+	text-align: center;
+}
+.video-player_wrap::before {
+	content: "";
+	display: block;
+	padding-top: 56.25%;
+	background-color: $video-wrap-bg;
+}
+.video-player {
+	position:  absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+
+	@if ($TOUCH) {
+		&--is-stub::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+		}
+	}
+}
+.video-player_native {
+	width: 100%;
+	height: 100%;
+}
+.video-player img {
+	max-width: 100% !important; height: 100%;
+	vertical-align: middle;
+	width: auto;
+}
+
+/* Индикация загрузки видео */
+.video-player_spinner {
+	display: none
+}
+
+.video-player_busy .video-player_spinner {
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0.72;
+	background-color: $video-wrap-bg;
+	background-image: url(/i/preloader_dark.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+/* Выбиралка качества для native версии */
+.video-player_quality_wrap {
+	padding-top: 10px;
+}
+
+#galleryVideo .video-player_quality_wrap {
+	background: $gallery-video-quality-bg;
+	color: $gallery-video-quality-text-color;
+	padding: 0 5px;
+	border-top: 1px solid $gallery-video-quality-border
+}
+
+#galleryVideo .video-player_quality {
+    background: $gallery-video-quality-bg;
+    color: $gallery-video-quality-text-color;
+    border: none;
+    outline: none;
+    padding: 5px 8px;
+}
+
+/* Статус конвертирования */
+.video-player_vc {
+	z-index: 1000;
+	padding: 7px 10px;
+	color: $video-converter-info-text-color;
+	background: $video-converter-info-bg;
+}
+
+#galleryVideo .video-player_vc {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba($video-converter-info-bg, 0.92)
+}
+
+.video-player_vc table {
+	width: 100%;
+	border-spacing: 0px;
+	text-align: center;
+	font-size: 13px;
+}
+
+.video-player_vc_msg {
+	padding-top: 5px;
+	text-align: center;
+	font-size: 15px;
+}
+
+.video-player_vc_msg .red,
+.video-player_vc_msg .red a {
+	color: $video-converter-info-button-error-color;
+}
+
+.video-player_btn {
+    background: $video-converter-info-button-bg;
+    color: $video-converter-info-button-text-color;
+    border: 1px solid $video-converter-info-button-border;
+    padding: 5px 10px;
+    margin-top: 15px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.video-player_btn:hover {
+	background: $video-converter-info-button-hover-bg
+}
+
+/* Иконки */
+@include define-icon("ico_player", "play");
+@include define-icon("ico_player", "pause");
+@include define-icon("ico_player", "prev");
+@include define-icon("ico_player", "next");
+@include define-icon("ico_player", "add");
+@include define-icon("ico_player", "download");
+
+body .p_i_t_pb_image {
+	@include use-icon("ico_player", "play");
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -8px;
+	margin-left: -6px;
+}
+.playing .p_i_t_pb_image {
+	@include use-icon("ico_player", "pause");
+}
+.player_item_modern .p_i_t_playButton .p_i_t_pb_image {
+	@include use-icon("ico_player", "play_white");
+}
+.player_item_modern.playing .p_i_t_playButton .p_i_t_pb_image {
+	@include use-icon("ico_player", "pause_white");
+}

@@ -1,0 +1,121 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+#{mangle(".block_id")},
+#{mangle("#sidebar_reklama")},
+#{mangle("#ads_content_main")},
+#{mangle("#ads_main")},
+#{mangle("#ads_place_id")},
+#{mangle("#ads_title_main")} {
+	/* Заглушка, чтобы отработал mangle() */
+}
+
+#{mangle(".ads_link")} {
+	padding: 5px 0;
+	color: $block-link-green-color;
+	display: inline-block;
+}
+
+#{mangle("#ads_upk")} #{mangle(".darkblue")} {
+	color: $darkblue-text-color
+}
+
+#{mangle(".m")} {
+	vertical-align: middle
+}
+
+img#{mangle(".p50")}, 
+#{mangle(".p50")} img {
+	width: 50px;
+    height: 50px;
+}
+
+#{mangle("#ads_upk")} #{mangle(".ads_image")}{
+	font-size: small
+}
+
+#{mangle(".ads_lenta_link")} {
+	color: $block-link-grey-color;
+	padding: 3px 10px 10px 0;
+	float: right;
+}
+
+#{mangle(".list_link_wrap")}:last-child #{mangle(".list_link")} {
+	border-bottom: 0
+}
+
+#{mangle(".cl")} {
+	clear: both
+}
+
+.msie #{mangle("#ads_upk")} {
+	position:relative;
+}
+
+#{mangle("#ads_upk")} a {
+	border-bottom: 0;
+}
+
+#{mangle(".ads_class")} {
+	background: $content-bg;
+	position: relative;
+	padding: 10px 0 0 0;
+	margin: 15px 10px;
+	text-align: center;
+}
+
+.tiles_wrapper #{mangle(".ads_class")} {
+	margin: 5px 2px;
+}
+
+#sidebar_wrap #{mangle(".ads_class")} {
+	margin: 20px 7px;
+}
+
+#{mangle(".ads_title")} {
+	top: 0;
+	left: 0;
+	z-index: 1000
+}
+
+#{mangle(".ads_link_disable")} {
+	z-index: 1000
+}
+
+#{mangle(".ads_content")} {
+	overflow: hidden
+}
+
+#{mangle(".ads_content_item")} {
+	padding-bottom: 7px
+}
+
+#{mangle(".mb0")} {
+	margin-bottom: 0 !important
+}
+
+#{mangle(".list_link_wrap")} {
+	position: relative;
+	text-align: left;
+}
+#{mangle(".ads_content")} #{mangle(".list_link")} {
+	border-bottom: 0;
+	border-top: 1px solid $separator-color;
+}
+
+/* Иконки */
+#{mangle(".ads_ico")} {
+	@include use-icon("ico_buttons", "ads");
+	margin: 0;
+}
+
+#{mangle(".remove_ads_ico")} {
+	@include use-icon("ico_buttons", "close");
+}
+
+#{mangle(".ico_arr")} {
+	@include use-icon("ico", "arr_right");
+	margin: 0;
+	vertical-align: middle;
+}

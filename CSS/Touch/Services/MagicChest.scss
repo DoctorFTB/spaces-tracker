@@ -1,0 +1,9 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+@include embed-sprite("ico_mchest") {
+	display: inline-block;
+}
+@include define-icon("ico_mchest", "closed");
+@include define-icon("ico_mchest", "opened");

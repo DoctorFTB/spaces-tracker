@@ -1,0 +1,336 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.block_hr {
+	border-bottom:1px dotted $separator-color
+}
+
+/* Старый списочный элемент */
+.list_item {
+	word-wrap: break-word;
+	border-bottom:1px solid $separator-color
+}
+
+.bottom_link_block,
+.list_item, 
+.error, 
+.error_block, 
+.list_item .error_block, 
+.busi, 
+.pinkBlock {
+	padding:11px 10px;
+}
+
+.list_item table td {
+	vertical-align: top
+}
+
+.list_item .list_item {
+	padding: 0;
+	border-bottom: none
+}
+
+.no-borders .list_item,
+.list_item .list .stnd_padd:last-child,
+.list_item .list .t-block_item:last-child {
+	border-bottom: 0!important;
+}
+
+/* Старые табы */
+.busi_switcher table a{
+	background:$busi-switcher-bg
+}
+
+.list_item, .edit_title_block, .busi_switcher table a {
+	color:$default-text-color;
+}
+
+.busi_switcher table span.active_item,  {
+	color: $inline-link-grey-color
+}
+
+.list_item, .busi_switcher table span, .busi_switcher table a, a.top_menu_link{
+	display: block
+}
+
+.busi_switcher table td {
+	padding: 0 !important;
+}
+
+.list_item table,
+.busi_switcher table{
+	width:100%;
+	border-collapse:collapse;
+	border-spacing: 0px;
+}
+
+.busi_switcher table{
+	text-align:center;
+	table-layout: fixed;
+}
+
+.busi_switcher{
+	margin-top:-1px;
+	margin-bottom:-1px;
+}
+
+.busi_switcher table a:hover{
+	background: $busi-switcher-hover-bg;
+}
+
+.busi_switcher table .active_item {
+	background: $busi-switcher-active-bg;
+}
+
+.busi_switcher table a, .busi_switcher table span.active_item{	
+	border: 1px solid $separator-color;
+	border-right:0;
+	margin-left:-1px; 
+	padding:5px 0;
+}
+
+/* Тайловая кнопка */
+.adv_user_link, .adv_user_link span{
+	display:block !important;
+}
+
+.adv_user_link{
+	float:left;
+	overflow:hidden;
+	border:1px solid $default-border-color;
+	padding:10px !important;
+	margin-right: if(($PC), 5px, 10px);
+	background: $adv-user-link-bg;
+	position: relative;
+	height: 16px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+@if ($PC) {
+	.adv_user_link:hover{
+		background: $adv-user-link-hover-bg;
+	}
+}
+
+.adv_user_link_selected, .adv_user_link_selected:hover {
+	background: $adv-user-link-selected-bg;
+}
+
+.myc-button_link{
+	color:$myc-button-text-color;
+	border:1px solid $myc-button-border;
+	height:20px;
+	line-height:20px;
+	padding:7px;
+	position:relative;
+	background: $myc-button-bg;
+}
+
+@if ($PC) {
+	.myc-button_link:hover .email_ico{
+		background-position: 0 0;
+	}
+}
+
+.start_page_padd .dot_pic {
+	margin-right: 0 !important
+}
+
+.start_page_padd{
+	padding:3px 10px
+}
+
+.blue_border_bottom{
+	border-bottom:1px solid $default-border-color;
+}
+
+.light_blue_bg{
+	background:$block-title-bg;
+}
+
+.vlight_border_bottom{
+	border-bottom: 1px solid $light-separator-color
+}
+
+.blue_wrap_block{
+	background: $legacy-blue-block-bg
+}
+
+.start_page_padd{
+	border-bottom: none
+}
+
+/* Старые табы */
+.tabs_block{
+	position: relative;
+	z-index: 200;
+}
+
+.tabs_block .tab_item{
+	padding: 8px 8px 7px 8px;
+	margin-bottom: -1px;
+	margin-right: 0;
+	margin-left:-1px;
+	border: 1px solid $default-border-color;
+	border-bottom: 0;
+	text-transform: uppercase;
+	font-weight: bold;
+	background: $legacy-tabs-unselected-bg;
+	color: $default-text-color;
+	display: block;
+}
+
+@if ($TOUCH) {
+	.android .tabs_block .tab_item {
+		padding-left: 3px;
+		padding-right: 3px
+	}
+}
+
+.tab_title{
+	float: left;
+	padding: 8px 15px 7px 10px
+}
+
+.tabs_block .tab_item:first-child{
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-o-border-radius: 5px 0 0 0;
+	border-top-left-radius: 5px;
+}
+
+.tabs_block .tab_item:last-child{
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-o-border-radius: 0 5px 0 0;
+	border-top-right-radius: 5px;
+}
+
+@if ($PC) {
+	.tabs_block a:hover{
+		background: $legacy-tabs-hover-bg;
+	}
+}
+
+.tabs_block .tab_active, .tabs_block a.tab_active:hover {
+	background: $legacy-tabs-selected-bg;
+	position:relative;
+	z-index: 50;
+	border-bottom: 1px solid $legacy-tabs-selected-bg;
+	@if ($PC) {
+		cursor:default;
+	}
+}
+
+.tabs_line {
+	margin-top:-1px;
+	border-top:1px solid $separator-color;
+	position:relative;
+	z-index:100;
+}
+
+.tabs_block {
+	margin-bottom: if(($PC), 0px, -1px);
+	padding: 5px 10px 0px 10px
+}
+
+.tabs_block a {
+	color: $inline-link-grey-color
+}
+
+/* Старые стили для тачей */
+.t-block_item{
+	display:block;
+}
+
+.t-bg3{
+	background: $content-bg;
+}
+
+.t-bg_arrow_next{
+	background: url('/i/arrow_next.png') right center  no-repeat;
+}
+
+.t-padd_left{
+	padding-left:10px
+}
+
+.t-padd_right{
+	padding-right:10px
+}
+
+.light_border_bottom{
+	border-bottom: 1px solid $separator-color
+}
+
+.light_border_top{
+	border-top: 1px solid $separator-color
+}
+
+.t_transform_none {
+	text-transform: none;
+}
+
+@if ($PC) {
+	.email_ico{
+		width:16px;
+		height:16px;
+		background: transparent url(/i/email_sprite.png) 0 -16px no-repeat;
+	}
+}
+
+.delete_btn{
+	width: 16px;
+	height: 16px;
+	background: url(/i/cross_r.gif) center no-repeat !important;
+}
+
+.title {
+	padding: 3px;
+	background:$legacy-title-bg;
+	border-bottom:1px dotted $legacy-title-border-color
+}
+
+.info{
+	padding: 10px;
+	border: 1px solid $list-item-success-border;
+	background: $list-item-success-bg;
+}
+
+.error, .block.error, .error_block, .list_item .error_block {
+	border: 1px solid $error-message-border-color !important;
+	background:$error-message-bg !important;
+	word-wrap: break-word;
+}
+
+#main > .busi {
+	border-right: 0;
+	border-left: 0
+}
+
+.busi, .yellow-block {
+	background: $system-message-warning-bg;
+	color: $system-message-warning-text;
+	border: 1px solid $system-message-warning-border;
+}
+
+.error_block .i_busi{
+	padding: 4px 10px 4px 30px;
+	background:  url(/i/get_info.png) 6px 4px no-repeat;
+}
+
+.busi, .info, .error, .error_block, .yellow-block {
+	position:relative;
+	z-index:1000;
+	margin:-1px;
+}
+
+.karma-button {
+	background-color: $karma-button-bg;
+	color: $karma-button-color;
+	font-size: 0.9em;
+	padding: 1px;
+	margin-right:3px
+}

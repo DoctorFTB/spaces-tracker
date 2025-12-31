@@ -1,0 +1,38 @@
+@use "Common/Utils" as *;
+
+/* Внешние сайты */
+@include define-icon("ico_ext_site", "1");
+@include define-icon("ico_ext_site", "2");
+@include define-icon("ico_ext_site", "3");
+@include define-icon("ico_ext_site", "4");
+@include define-icon("ico_ext_site", "5");
+@include define-icon("ico_ext_site", "6");
+@include define-icon("ico_ext_site", "7");
+@include define-icon("ico_ext_site", "8");
+@include define-icon("ico_ext_site", "9");
+
+/* Соц. сети */
+@include define-icon("ico_prof", "vk_c");
+@include define-icon("ico_prof", "odnk_c");
+@include define-icon("ico_prof", "mymir_c");
+@include define-icon("ico_prof", "fb_c");
+@include define-icon("ico_prof", "google_c");
+@include define-icon("ico_prof", "yandex_c");
+@include define-icon("ico_prof", "tg_c");
+
+/* Квест новичка */
+@include define-icon("ico_newbie_quest", "circle") {
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	left: 25px;
+	position: absolute;
+}
+.stnd-link_newbe-completed {
+	@include replace-icon("ico_newbie_quest", "circle", "circle_green");
+}
+
+@include define-icon("ico_newbie_quest", "dots");
+.stnd-link_newbe-completed {
+	@include replace-icon("ico_newbie_quest", "dots", "dots_green");
+}

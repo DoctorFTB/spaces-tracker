@@ -1,0 +1,34 @@
+@use "Common/Utils" as *;
+
+@include define-icon("ico_abar", "vote_up");
+@include define-icon("ico_abar", "vote_up_on");
+@include define-icon("ico_abar", "vote_down");
+@include define-icon("ico_abar", "vote_down_on");
+@include define-icon("ico_abar", "share");
+@include define-icon("ico_abar", "share_on");
+@include define-icon("ico_abar", "comment");
+@include define-icon("ico_abar", "pin");
+@include define-icon("ico_abar", "pin_darkblue");
+
+@include define-icon("ico_abar", "comments_small");
+@include define-icon("ico_abar", "share_small");
+@include define-icon("ico_abar", "eye_small");
+@include define-icon("ico_abar", "eye_small_darkblue");
+@include define-icon("ico_abar", "vote_up_small_darkblue");
+@include define-icon("ico_abar", "comments_small_darkblue");
+@include define-icon("ico_abar", "share_small_darkblue");
+
+@include define-icon("ico_abar", "votes");
+@include define-icon("ico_abar", "votes_darkblue");
+
+@include define-icon("ico_abar", "vote_up_small") {
+	&.on {
+		@include use-icon("ico_abar", "vote_up_small_on");
+	}
+}
+
+@include define-icon("ico_abar", "vote_down_small") {
+	&.on {
+		@include use-icon("ico_abar", "vote_down_small_on");
+	}
+}

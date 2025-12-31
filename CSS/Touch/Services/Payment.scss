@@ -1,0 +1,28 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+@include embed-sprite("ico_payment") {
+	margin: 0 3px -3px 0;
+	display: inline-block;
+}
+@include define-icon("ico_payment", "card");
+@include define-icon("ico_payment", "sbp");
+@include define-icon("ico_payment", "bitcoin");
+@include define-icon("ico_payment", "anypay");
+@include define-icon("ico_payment", "alfa");
+@include define-icon("ico_payment", "beeline");
+@include define-icon("ico_payment", "tbank");
+@include define-icon("ico_payment", "mb");
+@include define-icon("ico_payment", "mobile");
+@include define-icon("ico_payment", "qiwi");
+@include define-icon("ico_payment", "sms");
+@include define-icon("ico_payment", "terminal");
+@include define-icon("ico_payment", "wm");
+@include define-icon("ico_payment", "ya");
+@include define-icon("ico_payment", "sb");
+@include define-icon("ico_payment", "xsolla");
+@include define-icon("ico_payment", "gp");
+@include define-icon("ico_payment", "robokassa");
+@include define-icon("ico_payment", "yookassa");
+@include define-icon("ico_payment", "code");

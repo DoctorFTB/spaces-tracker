@@ -1,0 +1,77 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.blog-item__icon-btn {
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.blog-item__icon-btn:last-child {
+	margin-right: 0;
+}
+
+.blog-item_short{
+	color: $default-text-color;
+}
+
+.blog-item_short_shared {
+	padding: 10px;
+	background: $bubble-bg;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+.blog-item__author,
+.blog-item__time {
+	color: $secondary-text-color;
+}
+
+.blog-item__author{
+	margin-bottom: 9px;
+}
+
+.blog-item__author .online_status_ico{
+	margin-bottom: 0;
+}
+
+.blog-item_short_shared .blog-item__author{
+	margin-bottom: 4px;
+}
+
+.blog-item__title{
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.blog-item__subject,
+.blog-item__channel,
+.blog-item_short_shared .black{
+	color: $default-text-color;
+}
+
+.blog-item__channel{
+	color: $secondary-text-color;
+}
+
+.blog-item__attaches{
+	margin-top: 2px;
+	overflow: hidden;
+}
+
+.blog-item__attaches .short_attach img{
+	float: left;
+	max-width: 105px;
+	height: 65px;
+	width: 65px;
+	margin-right: 2%;
+}
+
+.blog-toolbar{
+	color: $secondary-text-color;
+	margin-top: 10px;
+}
+
+.blog-item_short_shared .blog-toolbar{
+	margin-top: -2px;
+}

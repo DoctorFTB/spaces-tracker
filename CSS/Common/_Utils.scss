@@ -1,0 +1,227 @@
+@use "sass:map";
+@use "spacepack/build/variables" as *;
+
+$icon-right-margin: 4px;
+
+$default-icon-to-align-fix: (
+	16: -3px
+);
+$icon-to-align-fix: (
+	20: (13: -6px, 14: -5px, 16: -5px, 18: -4px, 20: -3px, 22: -3px, 24: -2px),
+	16: (13: -4px, 14: -3px, 16: -3px, 18: -2px, 20: -1px, 22: -1px, 24: 0px),
+	14: (13: -3px, 14: -2px, 16: -2px, 18: -1px, 20: 0px, 22: 0px, 24: 1px),
+	12: (13: -2px, 14: -1px, 16: -1px, 18: -0px, 20: 1px, 22: 1px, 24: 2px),
+);
+
+@function icon($sprite, $icon) {
+	@return get-icon-class($sprite, $icon);
+}
+
+@function theme($light, $dark) {
+	@if ($DARK_MODE) {
+		@return $dark;
+	} @else {
+		@return $light;
+	}
+}
+
+@mixin use-sprite($sprite) {
+	$sprite-info: get-sprite($sprite);
+	@if (map.get($sprite-info, "default_width")) {
+		/*!__PURE__*/ width:  map.get($sprite-info, "default_width");
+	}
+	@if (map.get($sprite-info, "default_height")) {
+		/*!__PURE__*/ height: map.get($sprite-info, "default_height");
+	}
+	/*!__PURE__*/ background-color: transparent;
+	/*!__PURE__*/ background-repeat: no-repeat;
+
+	@if ($DARK_MODE) {
+		background-image: url(/i/dark/#{map.get($sprite-info, "src")});
+	} @else {
+		background-image: url(/i/#{map.get($sprite-info, "src")});
+	}
+}
+
+@mixin define-sprite($sprite) {
+	$sprite-info: get-sprite($sprite);
+	#{map.get($sprite-info, "selector")} {
+		@if (map.get($sprite-info, "default_width")) {
+			/*!__PURE__*/ width:  map.get($sprite-info, "default_width");
+		}
+		@if (map.get($sprite-info, "default_height")) {
+			/*!__PURE__*/ height: map.get($sprite-info, "default_height");
+		}
+		/*!__PURE__*/ background-color: transparent;
+		/*!__PURE__*/ background-repeat: no-repeat;
+		@if ($DARK_MODE) {
+			background-image: url(/i/dark/#{map.get($sprite-info, "src")});
+		} @else {
+			background-image: url(/i/#{map.get($sprite-info, "src")});
+		}
+		@content;
+	}
+}
+
+@mixin switch-sprite-color($sprite, $state) {
+	$sprite-info: get-sprite($sprite);
+	#{map.get($sprite-info, "selector")} {
+		background-position-y: #{get-sprite-state-offset($sprite, $state)};
+	}
+}
+
+@mixin use-sprite-2x($sprite) {
+	$sprite-info: get-sprite($sprite);
+	@if ($DARK_MODE) {
+		background-image: url(/i/dark/#{map.get($sprite-info, "src_2x")});
+	} @else {
+		background-image: url(/i/#{map.get($sprite-info, "src_2x")});
+	}
+	/*!__PURE__*/ background-size: map.get($sprite-info, "width") map.get($sprite-info, "height");
+}
+
+@mixin define-sprite-2x($sprite) {
+	$sprite-info: get-sprite($sprite);
+	#{map.get($sprite-info, "selector")} {
+		@if ($DARK_MODE) {
+			background-image: url(/i/dark/#{map.get($sprite-info, "src_2x")});
+		} @else {
+			background-image: url(/i/#{map.get($sprite-info, "src_2x")});
+		}
+		/*!__PURE__*/ background-size: map.get($sprite-info, "width") map.get($sprite-info, "height");
+		@content;
+	}
+}
+
+@mixin embed-sprite($sprite) {
+	@include define-sprite($sprite) {
+		@content;
+	}
+
+	@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5),
+		only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)
+	{
+		@include define-sprite-2x($sprite);
+	}
+}
+
+@mixin use-icon($sprite, $icon) {
+	$icon-info: get-sprite-icon($sprite, $icon);
+	@if (map.get($icon-info, "height")) {
+		/*!__PURE__*/ height: map.get($icon-info, "height");
+	}
+	@if (map.get($icon-info, "width")) {
+		/*!__PURE__*/ width: map.get($icon-info, "width");
+	}
+	background-position: map.get($icon-info, "x") map.get($icon-info, "y");
+}
+
+@mixin define-icon($sprite, $icon) {
+	$icon-info: get-sprite-icon($sprite, $icon);
+	#{map.get($icon-info, "selector")} {
+		@if (map.get($icon-info, "height")) {
+			/*!__PURE__*/ height: map.get($icon-info, "height");
+		}
+		@if (map.get($icon-info, "width")) {
+			/*!__PURE__*/ width: map.get($icon-info, "width");
+		}
+		background-position: map.get($icon-info, "x") map.get($icon-info, "y");
+		@content;
+	}
+}
+
+@mixin replace-icon($sprite, $from, $to) {
+	$icon-info: get-sprite-icon($sprite, $to);
+	#{get-icon-class($sprite, $from)} {
+		@if (map.get($icon-info, "height")) {
+			/*!__PURE__*/ height: map.get($icon-info, "height");
+		}
+		@if (map.get($icon-info, "width")) {
+			/*!__PURE__*/ width: map.get($icon-info, "width");
+		}
+		background-position: map.get($icon-info, "x") map.get($icon-info, "y");
+		@content;
+	}
+}
+
+@mixin icon-middle-align($icon-height) {
+	margin-bottom: map-get($default-icon-to-align-fix, $icon-height);
+	@each $font-size, $margin-bottom-value in map.get($icon-to-align-fix, $icon-height) {
+		@if ($margin-bottom-value != map-get($default-icon-to-align-fix, $icon-height)) {
+			.font_#{$font-size} & {
+				/*!__PURE__*/ margin-bottom: $margin-bottom-value;
+			}
+		}
+	}
+}
+
+@mixin smile-middle-align($icon-height) {
+	margin-bottom: map-get($default-icon-to-align-fix, $icon-height);
+	@each $font-size, $margin-bottom-value in map.get($icon-to-align-fix, $icon-height) {
+		@if ($margin-bottom-value != map-get($default-icon-to-align-fix, $icon-height)) {
+			.font_#{$font-size} & {
+				/*!__PURE__*/ vertical-align: $margin-bottom-value;
+			}
+		}
+	}
+}
+
+@mixin icon-active-state($sprite, $color) {
+	/* Зачем столько вариантов одинаковых ссылок??? :( */
+	.inl-link:active .bordered &,
+	.inl-link.js-clicked &,
+	.list-link:not(.blog-item_short):active &,
+	.list-link.js-clicked &,
+	.mail__button:not(:disabled):active &,
+	.stnd-link:active &,
+	.stnd-link_active &,
+	.stnd-link.clicked &,
+	.list-link.clicked &,
+	.drop-down-label.js-clicked &,
+	.btn-main:active &,
+	.btn-single:not(.stnd-link_disabled):active &,
+	.b-title__link:active &,
+	.b-title__sublink:active &,
+	.user__tools-link:active &,
+	.user__tools-link.clicked &,
+	.b-title__with-btn:active &,
+	.btn-tools:active &,
+	.btn-tools.js-clicked &,
+	.js-radio.form-checkbox:active &.js-ico,
+	.js-radio.form-checkbox.form-checkbox_checked &.js-ico,
+	.use-icon-state.js-clicked &,
+	.use-icon-state:active & {
+		/*!__PURE__*/ background-position-y: #{get-sprite-state-offset($sprite, $color)};
+	}
+}
+
+@mixin icon-hover-state($sprite, $color1, $color2) {
+	.inl-link:hover &,
+	.drop-down-label:hover &,
+	.link-grey:hover &,
+	.link-return:hover &,
+	.link-stnd:hover &,
+	.link-light:hover &,
+	.use-icon-state:hover & {
+		@if ($DARK_MODE) {
+			/*!__PURE__*/ background-position-y: #{get-sprite-state-offset($sprite, $color2)};
+		} @else {
+			/*!__PURE__*/ background-position-y: #{get-sprite-state-offset($sprite, $color1)};
+		}
+	}
+
+	.link-blue:hover &,
+	.link-imp:hover & {
+		/*!__PURE__*/ background-position-y: #{get-sprite-state-offset($sprite, $color2)};
+	}
+}
+
+@mixin icon-disabled-state($sprite) {
+	.form-checkbox & {
+		/*!__PURE__*/ opacity: 0.6
+	}
+	.form-checkbox:active &,
+	.form-checkbox.form-checkbox_checked & {
+		/*!__PURE__*/ opacity: 1
+	}
+}

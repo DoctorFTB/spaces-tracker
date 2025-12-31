@@ -1,0 +1,85 @@
+@use "./Base" as *;
+
+$soc-link-color:					#FFFFFF;
+
+/* None */
+$soc-link-none-bg:					theme(#E1E5ED,	#4b4d4e);
+$soc-link-none-hover:				theme(#C8DDF3,	#575a5b);
+
+/* VK */
+$soc-link-vk-bg:					#54769A;
+$soc-link-vk-hover:					theme(#194D84,	#2164ab);
+$soc-link-vk-clicked:				#13304F;
+$soc-link-vk-clicked-shadow:		inset 0px 3px 5px #051D36;
+
+/* OK */
+$soc-link-ok-bg:					#F4731C;
+$soc-link-ok-hover:					#EA4700;
+$soc-link-ok-clicked:				#BB3100;
+$soc-link-ok-clicked-shadow:		inset 0px 3px 5px #5D1800;
+
+/* FB */
+$soc-link-fb-bg:					#43609C;
+$soc-link-fb-hover:					theme(#0F3686,	#1650c5);
+$soc-link-fb-clicked:				#092358;
+$soc-link-fb-clicked-shadow:		inset 0px 3px 5px #011030;
+
+/* МойМир */
+$soc-link-mymir-bg:					#168DE2;
+$soc-link-mymir-hover:				#0170BF;
+$soc-link-mymir-clicked:			#005A9B;
+$soc-link-mymir-clicked-shadow:		inset 0px 3px 5px #002349;
+
+/* Twitter */
+$soc-link-twitter-bg:				#000000;
+$soc-link-twitter-hover:			#333333;
+$soc-link-twitter-clicked:			#252525;
+$soc-link-twitter-clicked-shadow:	inset 0px 3px 5px #000000;
+
+/* Google */
+$soc-link-google-bg:				#D73D32;
+$soc-link-google-hover:				#AE0C00;
+$soc-link-google-clicked:			#7C0000;
+$soc-link-google-clicked-shadow:	inset 0px 3px 5px #4F0000;
+
+/* Spaces */
+$soc-link-spcs-bg:					#677fb2;
+$soc-link-spcs-hover:				#445a88;
+$soc-link-spcs-clicked:				#3c4e77;
+$soc-link-spcs-clicked-shadow:		inset 0px 3px 5px #161d2c;
+
+/* Yandex */
+$soc-link-yandex-bg:				#FC3F1D;
+$soc-link-yandex-hover:				#d32203;
+$soc-link-yandex-clicked:			#b01d03;
+$soc-link-yandex-clicked-shadow:	inset 0px 3px 5px #4b0c01;
+
+/* Telegram */
+$soc-link-telegram-bg:					#54A9EB;
+$soc-link-telegram-hover:				#3B8CCB;
+$soc-link-telegram-clicked:				#156eb2;
+$soc-link-telegram-clicked-shadow:		inset 0px 3px 5px #061f32;
+
+/* Email */
+$soc-link-email-bg:					#525252;
+$soc-link-email-hover:				#404040;
+$soc-link-email-clicked:			#202020;
+$soc-link-email-clicked-shadow:		inset 0px 3px 5px #011030;
+
+/* Instagram */
+$soc-link-inst-bg:					#E4405F;
+$soc-link-inst-hover:				#cc2d4b;
+$soc-link-inst-clicked:				#9e1f36;
+$soc-link-inst-clicked-shadow:		inset 0px 3px 5px #5a0e1c;
+
+/* YouTube */
+$soc-link-youtube-bg:				#FF0000;
+$soc-link-youtube-hover:			#cc0000;
+$soc-link-youtube-clicked:			#a30000;
+$soc-link-youtube-clicked-shadow:	inset 0px 3px 5px #4a0000;
+
+/* TikTok */
+$soc-link-tiktok-bg:				#010101;
+$soc-link-tiktok-hover:				#2a2a2a;
+$soc-link-tiktok-clicked:			#1a1a1a;
+$soc-link-tiktok-clicked-shadow:	inset 0px 3px 5px #000000;

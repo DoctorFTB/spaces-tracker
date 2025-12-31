@@ -1,0 +1,30 @@
+@use "Common/Utils" as *;
+
+/* Кнопка закрытия */
+@include define-icon("ico_buttons", "close") {
+	&:hover {
+		@include use-icon("ico_buttons", "close_black");
+	}
+}
+
+@include define-icon("ico_buttons", "close_darkblue") {
+	&:hover {
+		@include use-icon("ico_buttons", "close_black");
+	}
+}
+
+@include define-icon("ico_buttons", "complaint") {
+	&:hover {
+		@include use-icon("ico_buttons", "complaint_active");
+	}
+}
+
+/* Иконки слайдера */
+@include define-icon("ico_buttons", "select");
+@include define-icon("ico_buttons", "selected");
+@include define-icon("ico_buttons", "next") {
+	margin-right: 10px;
+}
+@include define-icon("ico_buttons", "prev") {
+	margin-left: 10px;
+}

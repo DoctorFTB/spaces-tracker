@@ -1,0 +1,83 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.tile-menu{
+	margin: 0 5px 0 5px
+}
+
+.tile-menu__wrap:nth-child(1), 
+.tile-menu__wrap:nth-child(2), 
+.tile-menu__wrap:nth-child(3) {
+	margin-top: 0
+}
+
+.tile-menu__wrap{
+	float: left;
+	width: 33%;
+	margin-top: 19px;
+}
+
+.tile-menu__title {
+	height: 2.6em;
+}
+
+.pc .tile-menu__link:hover{
+	background: $default-hover-bg;
+}
+
+.tile-menu__link{
+	text-align: center;
+	display: block;
+	cursor: pointer;
+	background: $content-bg;
+	text-decoration: none !important;
+	margin: 0 5px 0 5px;
+	-webkit-box-shadow: $default-block-shadow;
+	   -moz-box-shadow: $default-block-shadow;
+			box-shadow: $default-block-shadow;
+}
+
+.tile-menu__link:active{
+	background: $default-clicked-bg !important;
+	-webkit-box-shadow: $default-clicked-shadow;
+	   -moz-box-shadow: $default-clicked-shadow;
+			box-shadow: $default-clicked-shadow;
+}
+
+@media all and (min-width: 900px){
+	.pc .tile-menu__wrap{
+		width: 25%;
+	}
+	.pc .tile-menu__wrap:nth-child(4) {
+		margin-top: 0
+	}
+}
+
+.tile-menu__title{
+	color: $default-text-color;
+	font-weight: bold;
+	word-wrap: break-word;
+}
+
+.tile-menu__link{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.operamini .tile-menu__pic{
+	margin-bottom: 5px;
+}
+
+/* Иконки */
+@include define-icon("tile_main", "dating");
+@include define-icon("tile_main", "users");
+@include define-icon("tile_main", "chat");
+@include define-icon("tile_main", "obj");
+@include define-icon("tile_main", "files");
+@include define-icon("tile_main", "music");
+@include define-icon("tile_main", "comm");
+@include define-icon("tile_main", "blogs");
+@include define-icon("tile_main", "online-games");
+@include define-icon("tile_main", "video");

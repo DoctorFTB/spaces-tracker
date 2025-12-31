@@ -1,0 +1,8 @@
+export const AI_STATUS = {
+	SUCCESS: 				0,
+	UNKNOWN_ERROR:			1,
+	NOT_ENOUGH_FUNDS:		2,
+	DENIED_BY_CENSORE:		3,
+	RATE_LIMITED:			4,
+	NEED_REPEAT:			5,
+};

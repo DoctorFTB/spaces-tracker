@@ -1,0 +1,30 @@
+@use "Common/Theme" as *;
+.s-property__wrap {
+	margin-bottom: -10px;
+}
+
+.s-property__wrapper .s-property {
+	margin: 10px 10px 0 0;
+}
+
+.s-property {
+	display: block;
+	float: left;
+	color: $secondary-text-color;
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+	background: $content-bg;
+	max-width: 100%;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 0;
+	border: 1px solid $label-border-color;
+	text-overflow: ellipsis;
+	box-sizing: border-box;
+	padding: 6px 32px 6px 10px;
+
+	&--style-inline {
+		margin: 0;
+	}
+}

@@ -1,0 +1,316 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.form-checkbox{
+	display: block;
+	color: $checkbox-unchecked-color;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	text-decoration: none !important;
+	padding: 7px 25px 8px 0;
+}
+
+.form-checkbox_wrap {
+	padding: 5px 0
+}
+
+.form-checkbox_btn {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.form-checkbox.left_chb {
+	padding: 7px 0 8px 25px;
+}
+
+.form-checkbox.left_chb.form-checkbox__drag {
+	padding: 7px 25px 8px 25px;
+}
+
+.form-checkbox__group {
+	margin-bottom: -8px
+}
+
+.form-checkbox__drag_btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 46px;
+}
+
+.s-chb.left_chb:after, .form-checkbox.left_chb:after {
+	left: 0;
+	right: auto;
+}
+
+.form-checkbox__descr{
+	color: $checkbox-unchecked-descr-color;
+	margin-top: 5px;
+}
+
+.form-checkbox_checked .form-checkbox__descr{
+	color: $checkbox-checked-descr-color;
+	font-weight: normal;
+}
+
+.full_height .form-checkbox_full,
+.form-checkbox_full.right_chb,
+.f-c_fll .form-checkbox.right_chb{
+	padding: 13px 46px 12px 15px;
+}
+
+.form-checkbox_full,
+.f-c_fll .form-checkbox{
+	padding: 13px 15px 12px 40px;
+	border-bottom: 1px solid $separator-color;
+}
+
+.f-c_fll .form-checkbox.left_chb.form-checkbox__drag {
+	padding: 13px 46px 12px 46px;
+}
+
+.f-c_fll_ns .form-checkbox{
+	border-bottom: none;
+}
+
+.f-c_fll .error__item .form-checkbox{
+	border-bottom: 0;
+}
+
+.error__msg.error__msg_chb{
+	padding: 0 15px 11px 15px;
+}
+
+.group .form-checkbox_full{
+	border-bottom: 0;
+}
+
+.chb_label{
+	display: block;
+	padding: 5px 0;
+}
+
+.form-checkbox_no-after:after{
+	display: none;
+}
+
+.form-checkbox_full:after,
+.f-c_fll .form-checkbox:after{
+	left: 15px;
+}
+
+.s-chb:after,
+.sep-chb .form-checkbox:after,
+.form-checkbox_dropdown-menu:after, 
+.full_height .form-checkbox_full:after,
+.form-checkbox_full.right_chb:after,
+.f-c_fll .form-checkbox.right_chb:after{
+	right: 15px;
+	left: auto;
+}
+
+.form-checkbox_w_descr:after{
+	top: 0;
+	margin-top: 13px;
+}
+
+.form-checkbox_w_descr .form-checkbox__label{
+	color: $default-text-color;
+}
+
+.form-checkbox__el_fix{
+	left: auto;
+	right: 12px;
+}
+
+.form-checkbox_checked{
+	color: $checkbox-checked-color !important;
+	font-weight: bold;
+}
+
+.full_height,
+.full_height .form-checkbox{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
+}
+
+.full_height_side,
+.full_height_side .form-checkbox{
+	left: auto;
+}
+
+.form-checkbox .mysite-nick{
+	color: $default-text-color;
+	font-weight: bold;
+}
+
+.form-checkbox,
+.form-toggle__wrap{
+	-webkit-tap-highlight-color: transparent;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+				user-select: none;
+}
+
+.sep-chb .form-checkbox,
+.form-checkbox_dropdown-menu{
+	padding: 13px 15px 12px 15px;
+	background: $content-bg;
+	border-bottom: 1px solid $separator-color;
+}
+
+.form-checkbox_dropdown-menu {
+	padding: 13px 46px 12px 15px;
+}
+
+.dropdown-menu_access .form-checkbox_dropdown-menu{
+	padding: 15px;
+}
+
+.links-group_short .dropdown-menu_access .form-checkbox_dropdown-menu{
+	padding: 10px 15px;
+}
+
+.sep-chb .form-checkbox:last-child,
+.form-checkbox_dropdown-menu:last-child{
+	border-bottom: 0;
+}
+
+.sep-chb .form-checkbox:active,
+.form-checkbox_dropdown-menu:active{
+	color: $default-text-color;
+}
+
+/* NO_JS */
+.form-checkbox-native .form-checkbox:after {
+	display: none
+}
+
+.form-checkbox-native .form-checkbox__el {
+	position: static;
+	left: auto
+}
+
+/* horiz toggle */
+.user__tools_horiz-mode{
+	border: 1px solid $default-border-color;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;
+}
+
+.user__tools_horiz-mode .clicked:after{
+	display: none !important;
+}
+
+.user__tools_horiz-mode .user__tools-link{
+	padding: 11px 0;
+	font-weight: normal;
+	min-height: 18px;
+}
+
+.user__tools_horiz-mode .table__cell{
+	border-right: 1px solid $default-border-color;
+}
+
+.user__tools_horiz-mode .user__tools-link:active,
+.user__tools_horiz-mode .user__tools-link.clicked{
+	padding: 12px 0 10px;
+}
+
+.user__tools_horiz-mode .table__cell.table__cell_last{
+	border-right: 0;
+}
+
+.user__tools_horiz-mode {
+	.user__tools-link--with-description.clicked {
+		position: relative;
+		&:after {
+			display: block !important;
+			margin-top: -8px;
+			border-bottom-color: $bubble-secondary-bg;
+		}
+	}
+}
+
+.user__tools_horiz-description {
+	position: relative;
+	color: $secondary-text-color;
+	background: $bubble-secondary-bg;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+/* horiz toggle end */
+
+/* iphone-like toggle */
+
+.form-toggle__wrap{
+	position: relative;
+	display: block;
+	width: 34px;
+	height: 20px;
+	z-index: 10;
+	cursor: pointer;
+	-webkit-box-shadow: $form-toggle-on-shadow;
+	   -moz-box-shadow: $form-toggle-on-shadow;
+		box-shadow: $form-toggle-on-shadow;
+	
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+	
+	background: $form-toggle-on-bg;
+		
+	-webkit-transition: background 0.5s ease;
+	   -moz-transition: background 0.5s ease;
+		 -o-transition: background 0.5s ease;
+		transition: background 0.5s ease;
+}
+
+.form-toggle__wrap_off{
+	-webkit-box-shadow: $form-toggle-off-shadow;
+	   -moz-box-shadow: $form-toggle-off-shadow;
+		box-shadow: $form-toggle-off-shadow;
+	background: $form-toggle-off-bg;
+}
+
+.form-toggle__wrap:after{
+	position: absolute;
+	display: block;
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: $form-toggle-circle-bg;
+	-webkit-box-shadow: $default-block-shadow;
+	   -moz-box-shadow: $default-block-shadow;
+			box-shadow: $default-block-shadow;
+	z-index: 500;
+	top: 2px;
+	left: 16px;
+	cursor: pointer;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+			border-radius: 4px;
+	-webkit-transition: left 0.5s ease;
+	   -moz-transition: left 0.5s ease;
+		 -o-transition: left 0.5s ease;
+		transition: left 0.5s ease;
+}
+
+.form-toggle__wrap_off:after{
+	left: 2px;
+}
+
+/* iphone-like toggle end */

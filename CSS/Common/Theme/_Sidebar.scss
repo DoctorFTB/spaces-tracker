@@ -1,0 +1,50 @@
+@use "spacepack/build/variables" as *;
+@use "./Base" as *;
+
+/* Сайдбар */
+$sidebar-shadow:					theme(0 0 4px 1px rgba(#474f57, 0.35),	0px 3px 3px rgba(#111113, 0.3));
+$sidebar-overlay:					#000000;
+
+$sidebar-left-border:				theme(#D8D0D0,	#2d2e30);
+$sidebar-bg:						theme(#dae1e8,	#333638);
+$sidebar-title-bg:					theme(#d0d9e2,	#3d4043);
+$sidebar-item-color:				theme(#4c5f6b,	#ffffff);
+$sidebar-item-top-border:			theme(#eff2f5,	#424446);
+$sidebar-item-bottom-border:		theme(#c7d1dc,	#1b1b1b);
+$sidebar-item-hover-bg:				transparent;
+$sidebar-link:						theme(#617989,	#cccccc);
+$sidebar-input-bg:					theme(#f2f2f2,	#3d3f3f);
+$sidebar-input-text:				theme(#323232,	#ffffff);
+$sidebar-input-border:				theme(#c0d4e2,	#2d2e30);
+
+@if ($PC) {
+	$sidebar-left-border:			theme(#bac5cf,	#2d2e30);
+	$sidebar-bg:					theme(#dae1e8,	#36393c);
+	$sidebar-title-bg:				transparent;
+	$sidebar-item-color:			theme(#617989,	#ffffff);
+	$sidebar-item-top-border:		transparent;
+	$sidebar-item-bottom-border:	transparent;
+	$sidebar-item-hover-bg:			theme(#f4faff,	#424446);
+	$sidebar-link:					theme(#617989,	#cccccc);
+	$sidebar-input-bg:				theme(#f2f2f2,	#3d3f3f);
+	$sidebar-input-text:			theme(#323232,	#ffffff);
+	$sidebar-input-border:			theme(#c0d4e2,	#2d2e30);
+}
+
+/* Тёмная тема сайдбара на светлой версии сайта */
+$sidebar-dark-bg:					if($PC, #4d5961,		#32394a);
+$sidebar-dark-title-bg:				if($PC, transparent,	#434b5a);
+$sidebar-dark-input-bg:				if($PC, #444e55,		#434b5a);
+$sidebar-dark-input-color:			#c4ccda;
+$sidebar-dark-input-border:			#232833;
+$sidebar-dark-input-focus-bg:		#1d212a;
+$sidebar-dark-input-focus-border:	#89b2f6;
+$sidebar-dark-item-top-border:		#3e4555;
+$sidebar-dark-item-bottom-border:	#242a37;
+$sidebar-dark-item-color:			if($PC, #ffffff,		#c4ccda);
+$sidebar-dark-item-shadow:			if($PC, none,			1px 1px #000);
+$sidebar-dark-item-hover-bg:		#818f99;
+$sidebar-dark-item-clicked-color:	#ffffff;
+$sidebar-dark-item-clicked-bg:		#344047;
+$sidebar-dark-item-clicked-shadow:	inset 0 3px 3px #192228;
+$sidebar-dark-link-color:			#bdc8d0;

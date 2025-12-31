@@ -1,0 +1,39 @@
+@use "Common/Theme" as *;
+.blog-item_lenta{
+	border-bottom: 0;
+}
+
+.lenta-block__item{
+	word-wrap: break-word;
+}
+
+.lenta-block__item:first-child .stnd-block_outer-mrg,
+.lenta-block__item:not(:first-child) .lenta-block__comment .bubble{
+	margin-top: 0;
+}
+
+.lenta-block__item:not(:first-child) .lenta-block__comment{
+	padding-top: 0;
+}
+
+.lenta-block__item:not(:first-child) .lenta-block__comment .bubble:after{
+	display: none;
+}
+
+.lenta-block__item .file_music{
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+
+.lenta-block__item:last-child .file_music{
+	margin-bottom: 0;
+}
+
+.lenta-block__item:first-child .file_music{
+	margin-top: 0;
+}
+
+.ib-wrapper span{
+	display: inline !important;
+	vertical-align: initial !important;
+}

@@ -1,0 +1,49 @@
+@use "./Base" as *;
+
+$reaction-chat-outgoing-bg:				theme(#C0E5BA, #303033);
+$reaction-chat-outgoing-border:			transparent;
+$reaction-chat-outgoing-hover-bg:		theme(#B6E4AF, #37373B);
+$reaction-chat-outgoing-active-bg:		theme(#ABDAA4, #3D3D3F);
+$reaction-chat-outgoing-selected-bg:	theme(#67B05B, #4A4B4F);
+$reaction-chat-outgoing-selected-text:	#FFFFFF;
+
+$reaction-chat-incoming-bg:				theme(#D0D9E3, #37383B);
+$reaction-chat-incoming-border:			transparent;
+$reaction-chat-incoming-hover-bg:		theme(#C1CCD9, #404245);
+$reaction-chat-incoming-active-bg:		theme(#B9C6D6, #464749);
+$reaction-chat-incoming-selected-bg:	theme(#8B9CB0, #4C4E52);
+$reaction-chat-incoming-selected-text:	#FFFFFF;
+
+$reaction-topic-icon:					theme(#404f5e, #cccccc);
+$reaction-topic-selected-icon:			theme(#ffffff, #cccccc);
+$reaction-topic-bg:						theme(#f4f6f9, #47484a);
+$reaction-topic-border:					transparent;
+$reaction-topic-hover-bg:				theme(#e9edf3, #4e5052);
+$reaction-topic-active-bg:				theme(#dde3ec, #56585b);
+$reaction-topic-selected-bg:			theme(#9aaac0, #5f6164);
+$reaction-topic-selected-text:			#FFFFFF;
+
+$reaction-pills-bg:						$content-bg;
+$reaction-pills-border:					theme(#E1E9F3, $separator-color);
+$reaction-pills-hover-bg:				$default-hover-bg;
+$reaction-pills-active-bg:				$default-clicked-bg;
+$reaction-pills-selected-bg:			theme(#E1E9F3, #555759);
+$reaction-pills-selected-text:			$default-text-color;
+
+$reactions-selector-shadow:						theme(0px 3px 3px rgba(93, 109, 157, 0.3), 0px 3px 3px 0px gba(17, 17, 19, 0.3));
+$reactions-selector-border:						theme(#CDDAE7, #2D2E30);
+$reactions-selector-icon:						theme(#A8B9C6, #ABB8C5);
+
+$reactions-selector-item-hover-bg:				theme(#ECF5FD, #424446);
+$reactions-selector-item-active-bg:				theme(#B8CDE3, #555759);
+$reactions-selector-item-selected-bg:			theme(#DDEBF7, #4B4D4E);
+
+$reactions-mail-button-hover-bg:				$default-hover-bg;
+$reactions-mail-button-shadow: 					none;
+$reactions-mail-button-text:					$blue-text-color;
+$reactions-mail-button-border:					$blue-text-color;
+
+$reactions-mail-button-sticky-hover-bg:			$default-hover-bg;
+$reactions-mail-button-sticky-shadow: 			theme(0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(17, 17, 19, 0.25));
+$reactions-mail-button-sticky-text:				$blue-text-color;
+$reactions-mail-button-sticky-border:			$separator-color;

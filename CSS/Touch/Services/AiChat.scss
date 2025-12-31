@@ -1,0 +1,32 @@
+@use "Common/Theme" as *;
+@use "spacepack/build/variables" as *;
+
+.ai-chat-message {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 15px;
+
+	&__header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&__author {
+		flex: 1;
+	}
+
+	&__tokens {
+		color: $secondary-text-color;
+	}
+
+	&--type-incoming {
+		background: $chat-message-incoming-bg;
+	}
+
+	&--type-outgoing {
+		background: $chat-message-outgoing-bg;
+		padding-top: 10px;
+	}
+}
