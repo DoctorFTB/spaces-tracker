@@ -1,6 +1,10 @@
 import fs from 'fs/promises'
 import path from 'path'
 import crypto from 'crypto'
+import { execFile } from 'child_process'
+import { promisify } from 'util'
+
+const execFileAsync = promisify(execFile)
 
 const links = await fs.readFile('links.json', 'utf-8')
 
@@ -26,28 +30,25 @@ async function fileExists(filePath) {
   }
 }
 
-const UNITS = {
-  year: 365 * 24 * 60 * 60 * 1000,
-  month: (365 / 12) * 24 * 60 * 60 * 1000,
-  week: 7 * 24 * 60 * 60 * 1000,
-  day: 24 * 60 * 60 * 1000,
-  hour: 60 * 60 * 1000,
-  minute: 60 * 1000,
-  second: 1000,
-}
+async function getLastModifiedRelative(filePath) {
+  try {
+    const { stdout } = await execFileAsync('git', [
+      'log',
+      '-1',
+      '--format=%cr',
+      '--',
+      filePath
+    ])
 
-const timeFormat = new Intl.RelativeTimeFormat('en', { style: 'long' })
-
-function formatTimeSince(time) {
-  const diffInMs = time - Date.now()
-  const absDiff = Math.abs(diffInMs)
-
-  for (const [unit, msValue] of Object.entries(UNITS)) {
-    if (absDiff >= msValue || unit === 'second') {
-      const value = Math.round(diffInMs / msValue)
-      return timeFormat.format(value, unit)
+    const timestamp = stdout.trim()
+    if (timestamp) {
+      return new Date(parseInt(timestamp) * 1000)
     }
+  } catch (error) {
+    return null
   }
+
+  return null
 }
 
 async function updateRevisions() {
@@ -105,8 +106,9 @@ async function downloadAndExtractSourcemap(url) {
       const cleanPath = sourcePath.replace(/^[a-z]+:\/\/\//, '')
       const localPath = path.join('.', cleanPath)
       const newHash = getFileHash(sourceContent)
+
       let isChanged = false
-      let previousModified = null
+      let previousModified = '(new)'
 
       if (await fileExists(localPath)) {
         const existingContent = await fs.readFile(localPath, 'utf-8')
@@ -114,8 +116,7 @@ async function downloadAndExtractSourcemap(url) {
         isChanged = newHash !== existingHash
 
         if (isChanged) {
-          const fileStat = await fs.stat(localPath)
-          previousModified = fileStat.mtime
+          previousModified = getLastModifiedRelative(localPath)
         }
       } else {
         isChanged = true
@@ -188,8 +189,7 @@ async function main() {
     lines.push('\n<pre>')
     const sortedChanged = Array.from(stats.changed.entries()).sort((a, b) => a[0].localeCompare(b[0]))
     sortedChanged.forEach(([file, info]) => {
-      const timeSuffix = info.previousModified ? ` (${formatTimeSince(info.previousModified.getTime())})` : ' (new)'
-      lines.push(`${file}${timeSuffix}`)
+      lines.push(`${file}${info.previousModified}`)
     })
     lines.push('</pre>')
   }
