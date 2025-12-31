@@ -90,6 +90,12 @@ $admin-icons-list-used-bg:		$content-bg;
 $admin-icons-list-not-used-bg:	theme(#f5f5f5,	#474747);
 $admin-icons-list-white-bg:		#000000;
 
+/* Dialog */
+$dialog-bg:						theme(#f7f7f8, #14151a);
+$dialog-shadow:					rgba(0, 0, 0, 0.15) 0px 0px 16px 0px;
+$dialog-header-separator:		theme(#dee0e3, #21232b);
+$dialog-header-button-hover-bg:	theme(#d3d6db, #1a1a1a);
+
 /* Karma log */
 $karma-log-is-voter-bg:		theme(#d3d3d3,	#757575);
 $karma-log-is-owner-bg:		theme(#f4f4be,	#7a7a00);
