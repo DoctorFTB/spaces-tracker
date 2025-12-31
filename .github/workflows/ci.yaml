@@ -31,6 +31,7 @@ jobs:
 
       - name: Commit and push
         if: steps.check.outputs.changed == 'true'
+        id: commit
         run: |
           git config user.name "Vitalij Ryndin"
           git config user.email "crashmax.dev@gmail.com"
@@ -44,6 +45,9 @@ jobs:
 
           git push
 
+          COMMIT_SHA=$(git rev-parse HEAD)
+          echo "sha=${COMMIT_SHA}" >> $GITHUB_OUTPUT
+
       - name: Send to Telegram
         if: steps.check.outputs.changed == 'true'
         env:
@@ -52,9 +56,9 @@ jobs:
         run: |
           if [ -f commit.txt ]; then
             REPO_URL="https://github.com/${{ github.repository }}"
-            COMMIT_URL="${REPO_URL}/commit/${{ github.sha }}"
+            COMMIT_URL="${REPO_URL}/commit/${{ steps.commit.outputs.sha }}"
 
-            HEADER="[${{ github.repository }}](${REPO_URL}) • [${{ github.sha }}](${COMMIT_URL})"
+            HEADER="[${{ github.repository }}](${REPO_URL}) • [${{ steps.commit.outputs.sha }}](${COMMIT_URL})"
             BODY=$(cat commit.txt)
             MESSAGE=$(printf "%s\n\n%s" "$HEADER" "$BODY")
 
