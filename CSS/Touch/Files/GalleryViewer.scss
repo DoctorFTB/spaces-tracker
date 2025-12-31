@@ -1,0 +1,33 @@
+@use "Common/Theme" as *;
+.gal_toolbar{
+	background: $gallery-wap-toolbar-bg;
+}
+
+.gal_toolbar .table__wrap{
+	height: 26px;
+}
+
+.gal_toolbar td{
+	border-right-color: $gallery-wap-separator-color;
+}
+
+.gal_disabled{
+	filter: alpha(opacity=50);
+		-moz-opacity: 0.5;
+			 opacity: 0.5;
+}
+
+.gal_block_link{
+	border: 1px solid $gallery-wap-separator-color;
+	color: $gallery-wap-toolbar-color;
+	padding: 2px 5px;
+	display: inline-block;
+}
+
+.gal_err_bg{
+	background: $gallery-wap-error-bg;
+}
+
+.gal_clicked {
+	background: $gallery-button-active-bg
+}

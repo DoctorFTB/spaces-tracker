@@ -1,0 +1,29 @@
+@use "Common/Theme" as *;
+
+.rate-explain {
+	font-size: 8pt;
+	border-collapse: collapse;
+	
+	td, tr {
+		border: 1px solid $rate-explain-border-color;
+	}
+	
+	th {
+		background-color: $rate-explain-title-bg;
+		font-weight: bold;
+		border: 1px solid $rate-explain-title-border-color;
+	}
+	
+	tr {
+		background-color: $rate-explain-row-bg;
+	}
+	
+	tr:hover {
+		background-color: $rate-explain-row-hover-bg;
+	}
+	
+	tfoot tr {
+		background-color: $rate-explain-summary-bg;
+		font-weight: bold;
+	}
+}

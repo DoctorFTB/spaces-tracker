@@ -1,0 +1,41 @@
+@use "Common/Theme" as *;
+
+.bugs-table {
+	td, th {
+		padding: 5px;
+		border: 1px solid $default-border-color;
+	}
+	
+	th {
+		background: $stat-table-title-bg;
+	}
+}
+
+.bug-item {
+	color: $secondary-text-color;
+
+	&__balls {
+		text-align: center;
+		color: $default-text-color;
+	}
+	
+	&__status {
+		text-align: center;
+		text-transform: uppercase;
+	}
+	
+	&--status-release {
+		background: $list-item-success-bg;
+		color: $green-text-color;
+	}
+	
+	&--status-closed {
+		background: $list-item-inactive-bg;
+		color: $secondary-text-color;
+	}
+	
+	&--status-beta {
+		background: $list-item-info-bg;
+		color: $blue-text-color;
+	}
+}

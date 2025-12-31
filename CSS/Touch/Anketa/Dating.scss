@@ -1,0 +1,63 @@
+@use "Common/Theme" as *;
+.fullscreen_avatar {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+	max-height: 500px
+}
+
+.fullscreen_avatar:before {
+	padding-top: 100%;
+	content: '';
+	display: block;
+}
+
+.fullscreen_avatar img {
+	width: 100%;
+	height: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.fullscreen_avatar .gview_link {
+	display: block;
+}
+
+.fullscreen_avatar{
+	 -webkit-border-top-left-radius: 2px;
+	-webkit-border-top-right-radius: 2px;
+		 -moz-border-radius-topleft: 2px;
+		-moz-border-radius-topright: 2px;
+		 border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+}
+
+.user__info_dating{
+	padding-left: 0;
+}
+
+.dating__status{
+	color: $disabled-text-color;
+	margin-left: 6px;
+}
+
+.dating__status_online{
+	color: $darkgreen-text-color;
+}
+
+.dating__name {
+	font-weight: bold;
+	padding-top: 0;
+	padding-bottom: 4px;
+	padding-top: 4px;
+	display: inline-block;
+}
+
+.dating__inner{
+	padding: 11px 15px;
+}

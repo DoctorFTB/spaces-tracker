@@ -1,0 +1,21 @@
+@use "Common/Theme" as *;
+
+.twitter-button {
+	display: inline-block;
+	position: relative;
+	box-sizing: border-box;
+	border-radius: 9999px;
+	padding: 6px 12px;
+	background-color: $soc-link-twitter-bg;
+	color: $soc-link-color;
+	font-weight: 500;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $soc-link-twitter-clicked;
+	}
+
+	&:active {
+		background-color: $soc-link-twitter-clicked;
+	}
+}

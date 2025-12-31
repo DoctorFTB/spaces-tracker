@@ -1,0 +1,21 @@
+@use "Common/Theme" as *;
+@use "Touch/Base/Skeleton";
+
+.sticker-gen-emotions .user__tools-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 25px;
+}
+
+.sticker-gen-tasks {
+	display: flex;
+	gap: 5px;
+
+	.preview--stub {
+		max-width: 100%;
+		height: auto;
+		border-radius: 5px;
+		@extend .skeleton;
+	}
+}

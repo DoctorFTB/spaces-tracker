@@ -1,0 +1,21 @@
+@use "Common/Theme" as *;
+.upload_error__item_wrapper .error__item {
+	padding: 15px;
+	margin: 0 -15px;
+	margin-left: 0;
+	border: 1px solid $error-message-border-color;
+	margin-top: 5px;
+}
+
+.upload_preview {
+	width: 80px;
+	height: 80px;
+	background: $upload-preview-bg;
+	display: inline-block;
+	line-height: 80px;
+}
+
+.upload_preview img {
+	max-height: 100%;
+	max-width: 100%;
+}

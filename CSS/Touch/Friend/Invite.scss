@@ -1,0 +1,39 @@
+@use "Common/Theme" as *;
+
+.qr-table,
+.qr-table tr{
+	border:0;
+	margin:0;
+	padding:0;
+	border-spacing: 0;
+	width: auto !important;
+}
+
+.qr-table{
+	margin: 0 auto;
+	border: 2px solid $qr-code-bg;
+}
+
+.qr-td_w,
+.qr-td_b{
+	border:0;
+	margin:0;
+	padding:0;
+	width:4px;
+	height:4px;
+	background-color: $qr-code-bg;
+}
+
+.qr-td_b{
+	background-color: $qr-code-pixel-color;
+}
+
+.content-item_top{
+	padding-top: 20px;
+	padding-bottom: 11px;
+}
+
+.content-item_bottom{
+	padding-top: 12px;
+	padding-bottom: 20px;
+}

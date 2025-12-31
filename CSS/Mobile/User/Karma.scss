@@ -1,0 +1,18 @@
+@use "Common/Theme" as *;
+.karma__info {
+	background-color: $list-item-info-bg
+}
+.karma__plus {
+	background-color: $list-item-success-bg
+}
+.karma__minus {
+	background-color: $list-item-error-bg
+}
+
+.flot-tick-label {
+	color: $default-text-color;
+}
+
+.legendLabel {
+	color: $secondary-text-color;
+}

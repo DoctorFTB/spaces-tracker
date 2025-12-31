@@ -1,0 +1,17 @@
+@use "spacepack/build/variables" as *;
+@use "Common/Theme" as *;
+
+.stnd_img{
+	text-align:center;
+	border:1px solid $default-border-color;
+	padding: 1px;
+}
+
+.stnd_img img {
+	width: if($LITE, 50px, 20px);
+	height: if($LITE, 50px, 20px);
+}
+
+.border_images img{
+	border:1px solid $default-border-color;
+}

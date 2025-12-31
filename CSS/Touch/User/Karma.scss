@@ -1,0 +1,39 @@
+@use "Common/Theme" as *;
+
+.karma__info {
+	background-color: $list-item-info-bg
+}
+.karma__plus {
+	background-color: $list-item-success-bg
+}
+.karma__minus {
+	background-color: $list-item-error-bg
+}
+
+.flot-tick-label {
+	color: $default-text-color;
+}
+
+.legendLabel {
+	color: $secondary-text-color;
+}
+
+.karma-log {
+	--vote_power_limit: 0;
+	
+	&--is-voter {
+		background:		$karma-log-is-voter-bg;
+	}
+	&--is-owner {
+		background:		$karma-log-is-owner-bg;
+	}
+	&--zero-delta {
+		background:		$karma-log-zero-delta;
+	}
+	&--negative-delta {
+		background:		$karma-log-negative-delta;
+	}
+	&--positive-delta {
+		background:		$karma-log-positive-delta;
+	}
+}

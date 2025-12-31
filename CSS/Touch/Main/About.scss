@@ -1,0 +1,53 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.about_separator {
+	text-align: center;
+	position: relative;
+	font-weight: bold;
+}
+
+.about_separator > span {
+	background: $content-bg;
+	padding: 0 5px;
+	position: relative;
+	margin: 0 10px;
+	display: inline-block;
+}
+
+.about_separator:before {
+	content: '';
+	display: block;
+	border-bottom: 1px solid $separator-color;
+	left: 0;
+	right: 0;
+	top: 50%;
+	position: absolute;
+}
+
+.about_caption {
+	padding-bottom: 5px;
+}
+
+.about_descr {
+	padding-bottom: 19px;
+	padding-right: 10px
+}
+
+.about_pic {
+	float: left;
+	text-align: center;
+	width: 60px;
+	margin-top: 2px;
+}
+
+/* Иконки */
+@include embed-sprite("ico_about") {
+	display: inline-block;
+}
+
+@include define-icon("ico_about", "mobile");
+@include define-icon("ico_about", "privacy");
+@include define-icon("ico_about", "contacts");
+@include define-icon("ico_about", "creation");

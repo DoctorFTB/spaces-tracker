@@ -1,0 +1,72 @@
+@use "Common/Theme" as *;
+.euro2020-big_text,
+.euro2020-big_row {
+	display: none
+}
+
+.euro2020-table td.grey {
+	color: $secondary-text-color !important
+}
+
+.euro2020-table td,
+.euro2020-table th {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.euro2020-country_name {
+	width: 8em;
+	white-space: nowrap;
+}
+
+.euro2020-table th, .euro2020-table .euro2020-summary td {
+	background: $stat-table-title-bg;
+	font-weight: bold
+}
+
+.euro2020-table tr {
+	background: $content-bg;
+}
+
+.euro2020-table tr:hover {
+	background: $default-hover-bg;
+}
+
+.euro2020-table th, .euro2020-table td {
+	padding: 5px;
+	border: 1px solid $default-border-color;
+	border-top: none;
+	color: $default-text-color;
+}
+
+.euro2020-table tr:last-child td {
+	border-bottom: none;
+}
+
+.euro2020-table td:first-child,
+.euro2020-table th:first-child {
+	border-left: none
+}
+
+.euro2020-table td:last-child,
+.euro2020-table th:last-child {
+	border-right: none
+}
+
+@media all and (min-width:500px) {
+	.euro2020-small_text {
+		display: none
+	}
+	
+	.euro2020-big_text {
+		display: inline
+	}
+	
+	.euro2020-big_row {
+		display: table-cell
+	}
+	
+	.euro2020-country_name {
+		width: 14em;
+	}
+}
