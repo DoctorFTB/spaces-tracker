@@ -41,6 +41,10 @@ html, body, button, textarea {
 	font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
 }
 
+body {
+	min-height: 100vh;
+}
+
 uc-click {
 	cursor: pointer;
 	display: inline

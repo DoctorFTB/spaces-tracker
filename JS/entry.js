@@ -30,6 +30,12 @@ if (cookie.get("spaces_js_console")) {
 	});
 }
 
+const m = location.href.match(/lm=(\d+)/i);
+if (m) {
+	const main_content_block = document.getElementById('main_content_block');
+	main_content_block.style.margin = `0 -${m[1]}px`;
+}
+
 if (window.SPACES_PARAMS.nid) {
 	// Обновление статуса онлайн у иконок юзеров
 	import('./online_status');
