@@ -81,6 +81,7 @@
   "https://spaces.im/js/touch/widgets/video/videojs/statistic.js",
   "https://spaces.im/js/touch/widgets/files/thumb-guard.js",
 
+  "https://spaces.im/js/touch/pages/gifts/list.js",
   "https://spaces.im/js/touch/pages/ai/chat.js",
   "https://spaces.im/js/touch/pages/ai/gifts.js",
   "https://spaces.im/js/touch/pages/ai/common.js",
