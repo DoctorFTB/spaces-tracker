@@ -116,7 +116,7 @@ async function downloadAndExtractSourcemap(url) {
         isChanged = newHash !== existingHash
 
         if (isChanged) {
-          previousModified = getLastModifiedRelative(localPath)
+          previousModified = await getLastModifiedRelative(localPath)
         }
       } else {
         isChanged = true
@@ -189,7 +189,7 @@ async function main() {
     lines.push('\n<pre>')
     const sortedChanged = Array.from(stats.changed.entries()).sort((a, b) => a[0].localeCompare(b[0]))
     sortedChanged.forEach(([file, info]) => {
-      lines.push(`${file}${info.previousModified}`)
+      lines.push(`${file} ${info.previousModified}`)
     })
     lines.push('</pre>')
   }
