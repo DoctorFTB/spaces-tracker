@@ -1,0 +1,7 @@
+@use "Common/Theme" as *;
+/* Используем общий файл */
+@import "Touch/Files/Tile";
+
+.com_attach .tiled_item.t80_80 {
+	max-width: 80px
+}

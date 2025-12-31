@@ -1,0 +1,196 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+.mail__dialog_wrapper .block_narrow {
+	padding: 0 10px 10px 10px;
+}
+
+.message {
+	position: relative;
+}
+
+.message.system{
+	background: $mail-message-system-bg;
+	text-align: center;
+}
+
+.message.answer{
+	background: $mail-message-incoming-bg;
+}
+
+.message.my{
+	background: $mail-message-outgoing-bg;
+}
+
+.message.my.not_read::before {
+	position: absolute;
+	content: "";
+	display: block;
+	width: 3px;
+	left: -10px;
+	top: 0;
+	bottom: 0;
+	background: $mail-contact-unread-border;
+}
+
+.block_w_menu_btn {
+	padding-right: 27px;
+}
+
+.message .bubble {
+	border: 1px solid $default-border-color
+}
+
+.message__text {
+	padding-top: if($LITE, 5px, 2px);
+}
+
+/* Контакт-лист */
+@if ($LITE) {
+	.mail-contact {
+		position: relative;
+		display: block;
+		color: $default-text-color;
+		padding: 10px;
+		padding-left: 12px;
+		border-bottom: 1px solid $separator-color;
+	}
+	
+	.mail-contact:last-child {
+		border-bottom: none;
+	}
+	
+	.mail-contact_unread {
+		background: $mail-contact-unread-bg;
+		border-left: 4px solid $mail-contact-unread-border;
+		padding-left: 8px;
+	}
+	
+	.mail-contact_avatar {
+		float: left;
+		margin-right: 8px;
+		font-size: 0;
+	}
+	
+	.mail-contact_date {
+		color: $mail-service-color;
+		white-space: nowrap;
+		float: right;
+		vertical-align: middle;
+	}
+	
+	.mail-contact_text {
+		min-height: 25px;
+		line-height: 25px;
+	}
+	
+	.mail-contact_text_unread {
+		background: $mail-contact-message-unread-bg;
+		padding: 0 5px;
+	}
+	
+	.mail-contact_notify {
+		background: $important-counter-bg none repeat scroll 0 0;
+		border-radius: 8px;
+		bottom: 100%;
+		color: $important-counter-text-color;
+		left: -10px;
+		min-height: 14px;
+		min-width: 14px;
+		padding: 1px;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		margin-top: -8px;
+		z-index: 9;
+		font-size: 10px;
+		line-height: 14px;
+	}
+	
+	@media all and (max-width: 299px) {
+		.mail-contact_avatar {
+			display: none;
+		}
+	}
+}
+
+/* Ссылка "Новое сообщение" */
+#mail__new_dialog {
+	padding-top: 5px;
+	padding-right: 5px;
+	font-size: 0;
+}
+#mail__new_dialog .inl-link {
+	min-height: 0;
+	border: 1px solid $default-border-color;
+	background: $content-bg;
+	padding: 8px;
+	display: block
+}
+
+.input-txt_wrapper_inline {
+	border: 1px solid $input-border;
+	overflow: hidden;
+	padding: 1px 1px 0 1px;
+	background: $input-bg;
+}
+
+.touch_light .input-txt_wrapper_inline {
+	padding: 3px 3px 0 3px;
+	font-size: medium;
+	min-height: 29px;
+}
+
+.input-txt_wrapper_inline .input-txt {
+	border: 1px solid $input-bg;
+	padding: 2px;
+	outline: 0;
+	width: 70%;
+	-webkit-appearance: none;
+}
+
+.touch_light .input-txt_wrapper_inline .input-txt {
+	padding: 3px;
+}
+
+.input-txt_wrapper_inline .s-property{
+	margin: 0 1px 1px 0 !important;
+}
+
+.touch_light .input-txt_wrapper_inline .s-property{
+	margin: 0 3px 1px 0 !important;
+}
+
+.input-txt_wrapper_inline .s-property:before{
+	width: 25px !important;
+}
+
+.input-txt_wrapper_inline input.search__btn {
+	position: relative;
+	margin: 1px -2px 7px 0;
+}
+
+.touch_light .input-txt_wrapper_inline input.search__btn {
+	margin: -5px -5px 3px 0;
+}
+
+body .input-txt_wrapper_inline input[type="submit"].delete-btn{
+	right: 7px;
+}
+
+.operamini #mail__new_dialog .inl-link {
+	padding: 6px
+}
+
+.input-txt_wrapper_inline .s-property {
+	padding: 3px 25px 3px 7px !important;
+}
+
+@if ($DARK_MODE) {
+	.mail__dialog_wrapper {
+		.bubble, .quote, .code_tag, .att_wrap {
+			background: $mail-bubble-bg;
+		}
+	}
+}

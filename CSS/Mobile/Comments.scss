@@ -1,0 +1,107 @@
+@use "Common/Theme" as *;
+.comm{
+	padding: 10px 5px;
+	position: relative;
+	border-bottom: 1px solid $separator-color;
+	background: $content-bg;
+	word-wrap: break-word;
+}
+
+.touch_light .comm{
+	padding: 12px 5px;
+}
+
+.comm_hidden{
+	background: $comment-hidden-bg;
+}
+
+.cnt_blue{
+	border-color: $title-counter-blue-border;
+	color: $title-counter-blue-color;
+}
+
+.msie.ver8 .form-tools__left{
+	margin-right: 10px;
+}
+
+.comm_spoiler{
+	background: $body-bg;
+	margin: 0 -5px;
+}
+
+.comm_spoiler-bord{
+	background: $content-bg;
+	height: 10px;
+}
+
+.comm_selected .comm .comm_spoiler-bord,
+.comm_selected .comm .comm_spoiler .block{
+	background: $comment-selected-bg !important;
+}
+
+.comm_spoiler-bord.top{
+	margin-bottom: 10px;
+	border-bottom: 1px solid $separator-color;
+}
+
+.comm_spoiler-bord.botm{
+	margin-top: 10px;
+	border-top: 1px solid $separator-color;
+}
+
+.js-comm_reply.js-clicked{
+	color: $inline-link-default-clicked-color;
+}
+
+.comm_selected .comm {
+	background: $comment-selected-bg;
+}
+
+.comm-warn {
+	background-color: $system-message-warning-bg;
+	color: $system-message-warning-text;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.comm-sub .comm-ava img {
+	width: 40px;
+	height: 40px
+}
+
+/* Суб-комменты */
+.comm-sub .comm-ava img {
+	width: 25px;
+	height: 25px
+}
+
+.touch_light .comm-sub .comm {
+	padding-left: 25px;
+}
+
+.touch_light .comm-sub .comm_spoiler {
+	margin-left: -25px
+}
+
+.wap .comm-sub .comm {
+	border-left: 4px solid $separator-color;
+}
+
+.touch_light .comm-root .comm, 
+.touch_light .comm-sub .comm {
+	border-bottom: none
+}
+
+.touch_light .comm-sub_wrap {
+	border-bottom: 1px solid $separator-color;
+}
+
+.touch_light .comm-sub_sep {
+	border-top: 1px solid $separator-color;
+	margin-left: 25px;
+}
+
+#comments_form + .comm-sub .comm-sub_sep {
+	display: none;
+}
+/* =================================== */

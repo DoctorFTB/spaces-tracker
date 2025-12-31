@@ -1,0 +1,16 @@
+@use "Common/Theme" as *;
+.sub_selected{
+	color: $sub-tabs-selected-color;
+	position: relative;
+}
+
+.sub_selected:after{
+	content: '';
+	display: block;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: $sub-tabs-selected-color;
+	position: absolute;
+}

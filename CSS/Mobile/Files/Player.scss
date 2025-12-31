@@ -1,0 +1,75 @@
+@use "Common/Theme" as *;
+.player_pb_ico {
+	height: 11px; width: 9px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 11px 12px 11px 12px;
+}
+
+.playing .player_pb_ico {
+	height: 13px;
+	width: 9px;
+	background-position: -11px -10px;
+	margin: 10px 12px 10px 12px;
+}
+.player_pb {
+	cursor: pointer;
+	background: $music-player-button-bg;
+	margin-right: 2px
+}
+.player .progress-item__runner, .player .progress-item {
+	height: 5px;
+	cursor: pointer
+}
+.progress-item__runner_2nd {
+	margin-top: -5px;
+}
+.player { width: 100%; }
+.progress-item__runner_dark {
+	background: $darkblue-text-color;
+}
+.player_timeline {
+	vertical-align: middle !important;
+	width: 100%;
+}
+.player {
+	text-align: left /* IE7 fix */
+}
+
+/* стили для нового плеера */
+.player_modern .player_progress{
+	display: none;
+	position: absolute;
+	top: 4px;
+	left: 0;
+	right: 0;
+}
+
+.player_modern.playing .player_progress{
+	display: block;
+}
+
+.player_modern .player_title_bottom{
+	visibility: visible;
+}
+
+.player_modern.playing .player_title_bottom{
+	visibility: hidden;
+}
+.player_modern .progress-item,
+.player_modern .progress-item__runner{
+	height: 10px;
+}
+.player_modern .progress-item__runner_2nd{
+	margin-top: -10px;
+}
+.player_modern .player_pb{
+	margin-right: 10px;
+}
+
+.player_modern .player_title{
+	display: none;
+}
+.player_modern.playing .player_title{
+	display: inline;
+}
