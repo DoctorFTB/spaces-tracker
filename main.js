@@ -39,16 +39,10 @@ async function getLastModifiedRelative(filePath) {
       '--',
       filePath
     ])
-
-    const timestamp = stdout.trim()
-    if (timestamp) {
-      return new Date(parseInt(timestamp) * 1000)
-    }
+    return stdout.trim()
   } catch (error) {
     return null
   }
-
-  return null
 }
 
 async function updateRevisions() {
