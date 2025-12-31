@@ -5,12 +5,12 @@ import $ from '../jquery';
 let current_sort = 'real_time';
 let current_order = 'DESC';
 
-module.on("_componentpage", () => {
+module.on("componentpage", () => {
 	toggleFullscreenMode(true);
-
+	
 	loadCheckpoints($('<div>'), $('#telemetry_checkpoints'), 0, 0, false);
 	loadCheckpoints($('<div>'), $('#telemetry_checkpoints_flat'), 0, 0, true);
-
+	
 	$('#telemetry').on('click', '.js-expand', function (e) {
 		e.preventDefault();
 		let el = $(this);
@@ -18,7 +18,7 @@ module.on("_componentpage", () => {
 		loadCheckpoints(el, parent, el.data('hcid'), el.data('depth'), el.data('flat'));
 	}).on('click', '.js-checkpoints_sort', function (e) {
 		e.preventDefault();
-
+		
 		let el = $(this);
 		if (el.data('sort') != current_sort) {
 			current_sort = el.data('sort');
@@ -26,7 +26,7 @@ module.on("_componentpage", () => {
 		} else {
 			current_order = current_order == 'DESC' ? 'ASC' : 'DESC';
 		}
-
+		
 		updateSort();
 	});
 });
@@ -50,7 +50,7 @@ function toggleFullscreenMode(enable) {
 function loadCheckpoints(el, parent, hcid, depth, flat) {
 	if (el.data('disabled'))
 		return;
-
+	
 	if (el.data('expanded')) {
 		parent.hide();
 		el.find('.js-icon').text('+');
@@ -62,19 +62,19 @@ function loadCheckpoints(el, parent, hcid, depth, flat) {
 		el.data('expanded', true);
 		return;
 	}
-
+	
 	if (parent.data('busy'))
 		return;
-
+	
 	parent.data('busy', true);
-
+	
 	el.find('.js-icon').addClass('checkpoint-expand_loading').removeClass('checkpoint-expand_err');
-
+	
 	let onFail = () => {
 		el.find('.js-icon').removeClass('checkpoint-expand_loading').addClass('checkpoint-expand_err');
 		parent.data('busy', false);
 	};
-
+	
 	Spaces.api("system_prof.getCheckpoints", {
 		Hcid: hcid,
 		Flat: flat ? 1 : 0,
@@ -85,14 +85,14 @@ function loadCheckpoints(el, parent, hcid, depth, flat) {
 			onFail();
 			return;
 		}
-
+		
 		el.find('.js-icon').removeClass('checkpoint-expand_loading').text('-');
 		el.data('loaded', true);
 		el.data('expanded', true);
-
+		
 		for (var checkpoint of res.data)
 			renderCheckPoint(parent, checkpoint, depth + 1, flat);
-
+		
 		doCheckpointsSort(parent);
 	}, {
 		onError(err) {
@@ -104,7 +104,7 @@ function loadCheckpoints(el, parent, hcid, depth, flat) {
 function renderCheckPoint(parent, checkpoint, depth, flat) {
 	let color = 255 - (depth - 1) * 10;
 	let plus = checkpoint.empty ? '&nbsp;' : '+';
-
+	
 	parent.append(`
 		<div
 			class="checkpoint js-checkpoint" style="background:rgb(${color}, ${color}, ${color})"
@@ -125,7 +125,7 @@ function renderCheckPoint(parent, checkpoint, depth, flat) {
 				<b class="checkpoint-value">${(+checkpoint.real_time_avg * 1000).toFixed(2)} ms</b>
 				<b class="checkpoint-value">${(+checkpoint.real_time_pct).toFixed(1)}%</b>
 			</div>
-
+			
 			<div class="js-checkpoints_list"></div>
 		</div>
 	`);
@@ -136,7 +136,7 @@ function updateSort() {
 	$('.js-checkpoints_sort[data-sort="' + current_sort + '"]').append(`
 		<span class="js-ico">${current_order == 'DESC' ? '▾' : '▴'}</span>
 	`);
-
+	
 	let lists = $('.js-checkpoints_list').toArray();
 	let sortChunk = () => {
 		doCheckpointsSort($(lists.pop()));
@@ -152,10 +152,10 @@ function doCheckpointsSort(parent) {
 	items.detach().sort(function (a, b) {
 		let a_v = +a.dataset[current_sort];
 		let b_v = +b.dataset[current_sort];
-
+		
 		if (a_v == b_v)
 			return 0;
-
+		
 		return current_order == 'DESC' ? (b_v > a_v ? 1 : -1) : (a_v > b_v ? 1 : -1);
 	});
 	parent.append(items);
