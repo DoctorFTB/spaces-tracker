@@ -1,4 +1,13 @@
 [
+  "https://spaces.im/js/wap/b/entry.js",
+
+  "https://spaces.im/js/lite/b/entry.js",
+  "https://spaces.im/js/lite/b/karma.js",
+  "https://spaces.im/js/lite/mail.js",
+  "https://spaces.im/js/lite/toolbar.js",
+  "https://spaces.im/js/lite/comments.js",
+  "https://spaces.im/js/lite/checkall.js",
+
   "https://spaces.im/js/touch/b/user/entry-pc.js",
   "https://spaces.im/js/touch/b/user/extra.js",
   "https://spaces.im/js/touch/b/legacy.js",
