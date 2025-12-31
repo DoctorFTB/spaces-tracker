@@ -83,9 +83,8 @@ async function downloadAndExtractSourcemap(url) {
 
       const cleanPath = sourcePath.replace(/^[a-z]+:\/\/\//, '');
       const localPath = path.join('.', cleanPath);
-
-      let isChanged = false;
       const newHash = getFileHash(sourceContent);
+      let isChanged = false;
 
       if (await fileExists(localPath)) {
         const existingContent = await fs.readFile(localPath, 'utf-8');
@@ -175,7 +174,7 @@ async function main() {
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
   console.log(`\nDuration: ${duration}s`);
 
-  if (stats.changed.size === 0 || stats.failed.length === 0) {
+  if (stats.changed.size === 0 && stats.failed.length === 0) {
     console.log('\nNo files changed. Exiting without commit.');
     process.exit(0);
   }
