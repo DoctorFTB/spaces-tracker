@@ -1,0 +1,116 @@
+@use "Common/Theme" as *;
+@use "spacepack/build/variables" as *;
+
+.chat_msg-inline .chat_msg-wrap {
+	padding: 0;
+	border: none
+}
+
+.chat_msg-avatar {
+	position: absolute;
+	top: 0; left: 0
+}
+.chat_msg-avatar.rtl {
+	left: auto;
+	right: 0
+}
+
+.chat_msg-body {
+	margin-left: 50px;
+	position: relative
+}
+.chat_msg-body.rtl {
+	margin-left: 0;
+	margin-right: 50px;
+}
+
+.chat_msg-body .chat_msg {
+	min-height: 20px
+}
+
+.chat_msg-body .chat_msg::after {
+	right: 100%;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 14px;
+	height: 0;
+	width: 0;
+	border: 6px solid transparent;
+}
+
+.touch_light .chat_msg-text {
+	padding-top: 3px
+}
+
+.chat_msg-wrap .bubble {
+	border: 1px solid $default-border-color
+}
+
+.chat_msg-room {
+    padding: 2px 0px 2px 0;
+}
+
+.touch_light .chat_msg-room {
+    padding: 5px 0px 5px 0;
+}
+
+.chat_msg.selected {
+	background: $chat-message-selected-bg
+}
+.chat_msg-body .chat_msg.selected::after {
+	border-right-color: $chat-message-selected-bg
+}
+
+.chat_msg {
+	background: $chat-message-incoming-bg
+}
+.chat_msg-body .chat_msg::after {
+	border-right-color: $chat-message-incoming-bg
+}
+
+.chat_msg-system {
+	background: $chat-message-system-bg;
+	color: $secondary-text-color;
+}
+.chat_msg-body .chat_msg-system::after {
+	border-right-color: $chat-message-system-bg
+}
+
+.chat_msg-znayko {
+	background: $chat-message-quest-bg
+}
+.chat_msg-body .chat_msg-znayko::after {
+	border-right-color: $chat-message-quest-bg
+}
+
+.chat_msg-my {
+	background: $chat-message-outgoing-bg
+}
+.chat_msg-body .chat_msg-my::after {
+    border-right-color: transparent;
+    border-left-color: $chat-message-outgoing-bg;
+    right: 0; left: 100%
+}
+
+.chat_msg-answer {
+	background: $chat-message-answer-bg
+}
+.chat_msg-body .chat_msg-answer::after {
+	border-right-color: $chat-message-answer-bg
+}
+
+.chat_msg-answer.chat_msg-private {
+	background: $chat-message-private-bg;
+}
+.chat_msg-body .chat_msg-answer.chat_msg-private::after {
+    border-right-color: $chat-message-private-bg
+}
+
+@if ($DARK_MODE) {
+	.chat_msg {
+		.bubble, .quote, .code_tag, .att_wrap {
+			background: $chat-bubble-bg;
+		}
+	}
+}

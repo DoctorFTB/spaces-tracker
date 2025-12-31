@@ -1,0 +1,15 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+@if $LITE {
+	.sitemap-level {
+		padding: 5px;
+		padding-left: 10px;
+	}
+} @else {
+	.sitemap-level {
+		padding: 3px;
+		padding-left: 5px;
+	}
+}

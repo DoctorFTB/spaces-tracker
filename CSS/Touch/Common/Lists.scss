@@ -1,0 +1,28 @@
+@use "Common/Theme" as *;
+@use "Common/Utils" as *;
+@use "spacepack/build/variables" as *;
+
+@include embed-sprite("ico_lists") {
+	/*!__PURE__*/ display: inline-block;
+	/*!__PURE__*/ margin-right: $icon-right-margin;
+	@include icon-middle-align(16);
+}
+
+@include define-icon("ico_lists", "1");
+@include define-icon("ico_lists", "2");
+@include define-icon("ico_lists", "3");
+@include define-icon("ico_lists", "4");
+@include define-icon("ico_lists", "5");
+@include define-icon("ico_lists", "6");
+@include define-icon("ico_lists", "7");
+@include define-icon("ico_lists", "8");
+@include define-icon("ico_lists", "9");
+@include define-icon("ico_lists", "10");
+@include define-icon("ico_lists", "11");
+@include define-icon("ico_lists", "12");
+@include define-icon("ico_lists", "13");
+@include define-icon("ico_lists", "14");
+@include define-icon("ico_lists", "15");
+@include define-icon("ico_lists", "16");
+@include define-icon("ico_lists", "17");
+@include define-icon("ico_lists", "18");

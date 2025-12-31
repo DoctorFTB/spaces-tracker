@@ -1,0 +1,8 @@
+@use "Common/Theme" as *;
+@use "spacepack/build/variables" as *;
+
+.pos_block {
+	padding: if($LITE, 10px, 1px);
+	background: $list-item-success-bg;
+	border-bottom: 1px solid $separator-color;
+}

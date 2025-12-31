@@ -1,0 +1,117 @@
+@use "Common/Theme" as *;
+body, .tf {
+	font-size: 14px
+}
+
+.navi-theme {
+	background: $header-bg;
+	color: $header-text-color;
+}
+
+.navi-theme a,
+.navi-theme a:visited {
+	color: $header-text-color;
+}
+
+.newevent {
+	font-size: 10px;
+}
+
+.link {
+	min-height: 17px;
+}
+
+.pag {
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.pag.smscr {
+	font-size: 10px;
+}
+
+#main_wrap {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+body, html {
+	background: $content-bg
+}
+
+/* В e-mail проблемы с выводом таких штук */
+.ico_play_btn, .fd, .player {
+	display: none !important;
+}
+
+/* header */
+.email-header {
+	background: $header-bg;
+	height: 44px
+}
+
+.email-header__logo {
+	padding-left: 15px;
+	text-align: left;
+}
+
+.email-header__profile {
+	text-align: right;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.email-header__profile a {
+	color: $header-text-color;
+}
+
+.email-header__profile img {
+	margin-right: 6px;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+/* footer */
+.email-footer {
+	background-color: $email-footer-bg;
+	border-top: 1px solid $email-footer-separator;
+	padding: 3px 10px;
+}
+
+.email-footer__item {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.email-footer__sep {
+    max-width: 1px;
+    border-left: 1px solid $email-footer-separator;
+}
+
+.email-footer__item a {
+	display: block;
+	color: $email-footer-link;
+	font-size: 80%;
+}
+
+.email-apps-widget {
+	padding: 10px 17px;
+	background-color: $body-bg;
+}
+
+/* Фикс тайлов */
+.tiled-preview img.preview, 
+.tiled-preview .fdw {
+	position: static !important
+}
+
+.tiled-preview:before {
+	display: none !important
+}
+
+.f_18p {
+	display: none;
+}
+

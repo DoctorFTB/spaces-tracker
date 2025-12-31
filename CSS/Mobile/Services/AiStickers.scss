@@ -1,0 +1,16 @@
+.sticker-gen-tasks {
+	display: table;
+	&__image {
+		display: table-cell;
+		padding-left: 2.5px;
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+}

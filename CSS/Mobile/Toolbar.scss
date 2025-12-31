@@ -1,0 +1,37 @@
+@use "Common/Theme" as *;
+.bb_table {
+	width: auto !important;
+}
+
+.bb_more img {
+	margin-left: 8px;
+	margin-right: 8px
+}
+
+.bbcolor {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border: 1px solid $colorpicker-color-border;
+	margin: 2px;
+}
+
+.bb_cnt {
+	font-size: 13px;
+	vertical-align: middle;
+	line-height: 28px;
+}
+
+.wap .bb_cnt {
+	line-height: 19px;
+}
+
+.bb {
+	padding: 2px 5px;
+	display: inline-block;
+}
+
+.wap .bb {
+	padding: 1px 5px;
+	display: inline-block;
+}

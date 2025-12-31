@@ -1,0 +1,89 @@
+@use "Common/Theme" as *;
+#debug { border:1px solid #EEE; width:98%; font-size:14px; margin:0 auto; clear:both;background: $bottom-bg;position:relative;}
+#debug .check_point { padding:5px; cursor:pointer; }
+
+#debug .name { padding:0 5px; clear:both; }
+#debug .name span { width:55px; float:right; margin-left:10px; text-align:right;}
+#debug .name .time { width:90px; }
+#debug .name .memory,
+#debug .name .db { width:75px; }
+#debug .legend { margin:15px 0; }
+#debug .legend SPAN { padding:2px 0; display:block; float:left; width:20%; text-align:center;}
+
+#debug .level_very_slowly	{ background-color:#FF0000; }
+#debug .level_slowly		{ background-color:#FF9900; }
+#debug .level_comprehensible{ background-color:#3300CC; }
+#debug .level_quickly		{ background-color:#0099FF; }
+#debug .level_very_quickly	{ background-color:#339933; }
+
+#check_point_full_info { padding: 5px 0 15px 0; display:none; background:#FFF; border:1px solid #DDD; clear:both; position:fixed; overflow:auto; z-index:9000; }
+#check_point_full_info .query { padding:5px; border-top:1px solid #EEE; clear:both; }
+#check_point_full_info .query .time { float:right; text-align:right; width:90px; }
+#check_point_full_info .query .placeholders { color:blue; margin-left:10px; }
+
+#check_point_full_info PRE { padding:5px; border-top:1px solid #EEE; margin:0; }
+#check_point_full_info PRE.msg_level_error { color:#FF9900; }
+#check_point_full_info PRE.msg_level_fatal { color:#FF0000; }
+
+.tree_element { margin-left: 16px; cursor: pointer; }
+.tree_element a { color: #000; text-decoration: none; }
+.tree_element:hover>.ns, #debug .check_point:hover{ background:#efe9b8; }
+.function:hover{ background:#efe9b8; }
+
+.function {
+	cursor: default; 
+	background-color: #ebebeb; 
+	border: 1px solid #CCC; 
+	padding: 1px; 
+	margin-bottom: 5px; 
+}
+
+.function_row { background-color: #fbfbfb; border-bottom: 1px solid #CCC; }
+
+.timeline_bg {
+	background-color: #fff; 
+	height: 3px; 
+	padding: 0; 
+	border: 1px solid black; 
+	margin: 2px; 
+}
+
+.right { float: right }
+
+.timeline_pointer {
+	height: 3px; 
+	position: relative; 
+	margin: 0; 
+	padding: 0; 
+}
+
+.tree_el_time { float: right; font-size: small; }
+#points- > .tree_element { margin-left: 0 !important; }
+
+#functions_stat .level_very_slowly	{ background:#FF0000; }
+#functions_stat .level_slowly		{ background:#FF9900; }
+#functions_stat .level_comprehensible   { background:#3300CC; }
+#functions_stat .level_quickly		{ background:#0099FF; }
+#functions_stat .level_very_quickly	{ background:#339933; }
+
+#debug .bar {
+    background-color: #FFFFFF;
+    margin-top: 7px;
+    padding: 0 !important;
+}
+
+#debug .bar div {
+    border: 0 none !important;
+    height: 7px;
+    margin: 0;
+    padding: 0 !important;
+}
+
+#debug .name {
+    clear: both;
+    padding: 0 5px;
+}
+
+.tree_element img {
+	vertical-align: middle;
+}

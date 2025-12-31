@@ -1,0 +1,12 @@
+@use "Common/Theme" as *;
+
+.bought_head{
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	border-right:10px solid $adv-user-link-selected-mark;
+	border-top:10px solid $adv-user-link-selected-mark;
+	border-left:10px solid transparent;
+	border-bottom:10px solid transparent;
+	border-radius:0 4px 0 0;
+}

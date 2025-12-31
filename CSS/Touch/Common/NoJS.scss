@@ -1,0 +1,20 @@
+@use "Common/Theme" as *;
+/*
+ * Здесь собраны фиксы-костыли для отключенного JS
+ * */
+
+.js-off_hide {
+	display: none !important;
+} 
+
+.js-off_show, body .js-off_show {
+	display: block !important;
+} 
+
+.js-off_show.inln, body .js-off_show.inln {
+	display: inline !important;
+}
+
+.spoiler {
+	display: block;
+}
