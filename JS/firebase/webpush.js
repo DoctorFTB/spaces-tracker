@@ -6,12 +6,10 @@ import notifications from '../notifications';
 import '../form_controls';
 
 import "Common/Sticker.css";
-import SPACES_PARAMS from '../core/env';
 
 let WEB_PUSH = Spaces.params.web_push;
 let messaging;
 let firebase;
-let serviceWorkerRegistration;
 
 const tpl = {
 	sticker: function () {
@@ -148,18 +146,10 @@ function showDelayedSticker() {
 	}
 }
 
-async function init() {
+function init() {
 	if (!canWebPush())
 		return;
 	
-	if (SPACES_PARAMS.sw) {
-		try {
-			serviceWorkerRegistration = await SPACES_PARAMS.sw;
-		} catch (e) {
-			console.error(`[sw]`, e);
-		}
-	}
-
 	if (!WEB_PUSH.tokenExists)
 		Spaces.LocalStorage.remove("fcm_token");
 	
@@ -266,10 +256,6 @@ function firebaseInit(callback) {
 		});
 		
 		messaging = firebase.getMessaging();
-
-		if (SPACES_PARAMS.sw) {
-			console.log('sw=', SPACES_PARAMS.sw);
-		}
 		
 		firebase.onMessage(messaging, (payload) => {
 			if (!notifications.isWindowActive()) {
@@ -318,11 +304,11 @@ function firebaseInit(callback) {
 }
 
 function fetchNewToken(callback, force, from) {
-	firebase.getToken(messaging, { vapidKey: WEB_PUSH.publicKey, serviceWorkerRegistration }).then((token) => {
+	firebase.getToken(messaging, { vapidKey: WEB_PUSH.publicKey }).then((token) => {
 		saveFcmToken(token, callback, force, from);
 	}).catch(function (err) {
 		// Если удалить SW через chrome://serviceworker-internals/, то сработает только на второй раз
-		firebase.getToken(messaging, { vapidKey: WEB_PUSH.publicKey, serviceWorkerRegistration }).then((token) => {
+		firebase.getToken(messaging, { vapidKey: WEB_PUSH.publicKey }).then((token) => {
 			saveFcmToken(token, callback, force, from);
 		}).catch(function (err) {
 			console.error('[FCM] getToken: ' + err);

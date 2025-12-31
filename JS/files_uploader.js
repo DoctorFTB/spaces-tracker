@@ -213,13 +213,6 @@ var params, state_params,
 	initialized = false,
 	show_native_btn = FilesUploader.needNtiveControls();
 
-const IMAGE_EXTS = ['gif','jpg','jpeg','png','bmp','webp','jp2','jps'];
-const AUDIO_EXTS = ['mp3','aac','wav','ogg','3ga','wma','flac','m4a','wave','amr','snd','au','aif','aiff','aifc'];
-const VIDEO_EXTS = [
-	'avi','3gp','3gpp','mpg','mpe','mpeg','wmv','mp4','m4v','flv','mov','webm','asf','mkv','ogv',
-	'ts', 'm2t', 'm2s', 'm4t', 'm4s', 'tmf', 'ts', 'tp', 'trp', 'ty', 'vob', 'm2ts', 'mts'
-];
-
 var filters = {};
 filters[Spaces.TYPES.FILE] = {
 	name: L("Файлы"),
@@ -228,10 +221,10 @@ filters[Spaces.TYPES.FILE] = {
 };
 filters[Spaces.TYPES.PICTURE] = {
 	name: L("Фото"),
-	exts: ['', ...IMAGE_EXTS],
+	exts: ['', 'gif','jpg','jpeg','png','bmp','webp'],
 	thumb: ICONS_BASEURL + "pixel.png",
 	thumb: ICONS_BASEURL + "default_file_preview.png?1",
-	accept: ['image/*', ...IMAGE_EXTS.map((ext) => `*.${ext}`)].join(',')
+	accept: 'image/*'
 };
 filters[Spaces.TYPES.MUSIC] = {
 	name: L("Музыка"),
@@ -244,9 +237,8 @@ filters[Spaces.TYPES.MUSIC] = {
 		'ts', 'm2t', 'm2s', 'm4t', 'm4s', 'tmf', 'ts', 'tp', 'trp', 'ty', 'vob', 'm2ts', 'mts'
 	],
 	thumb: ICONS_BASEURL + "default_file_preview.png?1",
-	accept: ['audio/*', ...AUDIO_EXTS.map((ext) => `*.${ext}`), ...VIDEO_EXTS.map((ext) => `*.${ext}`)].join(',')
+	accept: ''
 };
-
 filters[Spaces.TYPES.VIDEO] = {
 	name: L("Видео"),
 	exts: [
@@ -254,7 +246,7 @@ filters[Spaces.TYPES.VIDEO] = {
 		'ts', 'm2t', 'm2s', 'm4t', 'm4s', 'tmf', 'ts', 'tp', 'trp', 'ty', 'vob', 'm2ts', 'mts'
 	],
 	thumb: ICONS_BASEURL + "default_file_preview.png?1",
-	accept: ['video/*', ...IMAGE_EXTS.map((ext) => `*.${ext}`)].join(',')
+	accept: Device.browser.name != 'ucbrowser' ? 'video/*' : '' /* eval я ucweb, почему-то выбирает фото, вместо видео. */
 };
 
 if (Device.type == 'desktop')

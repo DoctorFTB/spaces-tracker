@@ -9,12 +9,8 @@ $vjs-timeline-height: 0.25em;
 
 // Скин плеера для тачей
 .vjs-theme-touch {
-	font-size: 13px;
+	font-size: 12px;
 	overflow: hidden;
-
-	&.vjs-fullscreen {
-		font-size: 16px;
-	}
 
 	.vjs-video-title {
 		display: flex;
@@ -200,13 +196,9 @@ $vjs-timeline-height: 0.25em;
 			.vjs-menu {
 				left: auto;
 				right: 0;
+				font-size: 1.2em;
 				width: 10em;
 				z-index: 100;
-
-				li {
-					font-size: 1.4em;
-					line-height: 1.3;
-				}
 
 				.vjs-menu-content {
 					top: 1.5em;

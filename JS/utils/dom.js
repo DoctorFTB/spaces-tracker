@@ -53,21 +53,3 @@ export function parseDataset(element, meta, prefix = undefined) {
 	}
 	return options;
 }
-
-export async function waitTransitionEnd(element, timeout = 500) {
-	return new Promise((resolve) => {
-		const onTransitionEnd = (e) => {
-			if (e.target != e.currentTarget)
-				return;
-			resolve();
-			element.removeEventListener('transitionend', onTransitionEnd);
-			clearTimeout(timerId);
-		};
-		const timerId = setTimeout(() => {
-			resolve();
-			element.removeEventListener('transitionend', onTransitionEnd);
-			console.error('waitTransitionEnd timeout!');
-		}, timeout);
-		element.addEventListener('transitionend', onTransitionEnd);
-	});
-}
