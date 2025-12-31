@@ -1,5 +1,6 @@
 [
   "https://spaces.im/js/wap/b/entry.js",
+  "https://spaces.im/css/custom/wap/b/main.css",
 
   "https://spaces.im/js/lite/b/entry.js",
   "https://spaces.im/js/lite/b/karma.js",
@@ -7,6 +8,8 @@
   "https://spaces.im/js/lite/toolbar.js",
   "https://spaces.im/js/lite/comments.js",
   "https://spaces.im/js/lite/checkall.js",
+  "https://spaces.im/css/custom/lite/b/main.css",
+  "https://spaces.im/css/custom/dark/lite/b/preload-lite.css",
 
   "https://spaces.im/js/touch/b/user/entry-pc.js",
   "https://spaces.im/js/touch/b/user/extra.js",
