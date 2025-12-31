@@ -139,16 +139,20 @@ async function downloadAndExtractSourcemap(url) {
   return results
 }
 
-async function processInBatches(items, batchSize, processor) {
+async function processInBatches(items, processor) {
   const results = []
+  let index = 0
 
-  for (let i = 0; i < items.length; i += batchSize) {
-    const batch = items.slice(i, i + batchSize)
-    const batchResults = await Promise.all(batch.map(processor))
-    results.push(...batchResults)
-    console.log(`Processed ${Math.min(i + batchSize, items.length)}/${items.length} sourcemaps`)
+  const worker = async () => {
+    while (index < items.length) {
+      const currentIndex = index++
+      const result = await processor(items[currentIndex])
+      results[currentIndex] = result
+      console.log(`Processed ${currentIndex + 1}/${items.length} sourcemaps`)
+    }
   }
 
+  await Promise.all(Array.from({ length: CONCURRENCY }, worker))
   return results
 }
 
@@ -161,7 +165,7 @@ async function main() {
   console.log(`Starting download sourcemaps (${sourcemapLinks.length} links, concurrency: ${CONCURRENCY})\n`)
 
   const startTime = Date.now()
-  const results = await processInBatches(sourcemapLinks, CONCURRENCY, downloadAndExtractSourcemap)
+  const results = await processInBatches(sourcemapLinks, downloadAndExtractSourcemap)
 
   for (const result of results) {
     if (!result.success) {
