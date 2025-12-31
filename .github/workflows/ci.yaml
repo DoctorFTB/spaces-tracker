@@ -37,8 +37,8 @@ jobs:
           git config user.email "crashmax.dev@gmail.com"
           git add .
 
-          if [ -f commit.txt ]; then
-            git commit -F commit.txt
+          if [ -f commit-message.txt ]; then
+            git commit -F commit-message.txt
           else
             git commit -m "chore: update sources from sourcemaps"
           fi
@@ -54,12 +54,12 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          if [ -f commit.txt ]; then
+          if [ -f telegram-message.txt ]; then
             REPO_URL="https://github.com/${{ github.repository }}"
             COMMIT_URL="${REPO_URL}/commit/${{ steps.commit.outputs.sha }}"
 
             HEADER="<a href=\"${REPO_URL}\">${{ github.repository }}</a> • <a href=\"${COMMIT_URL}\">${{ steps.commit.outputs.sha }}</a>"
-            BODY=$(cat commit.txt)
+            BODY=$(cat telegram-message.txt)
             MESSAGE=$(printf "%s\n%s" "$HEADER" "$BODY")
 
             TEXT=$(echo "$MESSAGE" | jq -sRr @uri)

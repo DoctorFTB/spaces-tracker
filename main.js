@@ -3,16 +3,15 @@ import path from 'path';
 import crypto from 'crypto';
 
 const links = await fs.readFile('links.json', 'utf-8');
-const sourcemapLinks = JSON.parse(links).map((link) => `${link}.map`);
 
+const HOST = 'spaces.im';
+const SANDBOX_KEY = 'beta';
 const CONCURRENCY = 10;
 
 const stats = {
-  totalFiles: 0,
-  totalLinks: 0,
-  changed: [],
+  revisionsUpdated: false,
+  changed: new Set(),
   failed: [],
-  unchanged: 0,
 };
 
 function getFileHash(content) {
@@ -26,6 +25,29 @@ async function fileExists(filePath) {
   } catch {
     return false;
   }
+}
+
+async function updateRevisions() {
+  const req = await fetch(`https://${HOST}/js/revisions.json`, {
+    headers: {
+      Cookie: `sandbox=${SANDBOX_KEY}`
+    }
+  });
+
+  if (!req.ok) {
+    console.log(`Can't download revisions.json: ${req.status}`);
+    return;
+  }
+
+  const res = await req.json();
+  const revision = JSON.stringify(res, null, 2)
+
+  const revisionFile = await fs.readFile("revisions.json", 'utf-8');
+  const prevHash = getFileHash(revision);
+  const currentHash = getFileHash(revisionFile);
+  stats.revisionsUpdated = prevHash !== currentHash;
+
+  await fs.writeFile("revisions.json", revision);
 }
 
 async function downloadAndExtractSourcemap(url) {
@@ -73,10 +95,13 @@ async function downloadAndExtractSourcemap(url) {
         isChanged = true;
       }
 
-      await fs.mkdir(path.dirname(localPath), { recursive: true });
-      await fs.writeFile(localPath, sourceContent, 'utf-8');
-
-      results.files.push({ path: localPath, isChanged });
+      if (isChanged) {
+        await fs.mkdir(path.dirname(localPath), { recursive: true });
+        await fs.writeFile(localPath, sourceContent, 'utf-8');
+        results.files.push({ path: localPath, isChanged: true });
+      } else {
+        results.files.push({ path: localPath, isChanged: false });
+      }
     }
   } catch (error) {
     results.success = false;
@@ -101,73 +126,71 @@ async function processInBatches(items, batchSize, processor) {
 }
 
 async function main() {
-  console.log(`Starting sourcemap extraction (${sourcemapLinks.length} files, concurrency: ${CONCURRENCY})...\n`);
+  await updateRevisions();
+
+  const sourcemapLinks = JSON.parse(links)
+    .map((link) => `https://${HOST}${link}.map`);
+
+  console.log(`Starting download sourcemap (${sourcemapLinks.length} links, concurrency: ${CONCURRENCY})...\n`);
 
   const startTime = Date.now();
   const results = await processInBatches(sourcemapLinks, CONCURRENCY, downloadAndExtractSourcemap);
 
   for (const result of results) {
-    stats.totalLinks++;
-
     if (!result.success) {
       stats.failed.push({ url: result.url, error: result.error });
-      console.error(`✗ Failed: ${result.url} - ${result.error}`);
     } else {
-      stats.totalFiles += result.files.length;
       const changedFiles = result.files.filter(file => file.isChanged);
-
       if (changedFiles.length > 0) {
-        stats.changed.push(...changedFiles.map(file => file.path));
-        console.log(`✓ ${result.url}: ${changedFiles.length} files changed`);
-      } else {
-        stats.unchanged++;
+        changedFiles.forEach(file => stats.changed.add(file.path));
       }
     }
   }
 
-  console.log(`\nTotal links: ${stats.totalLinks}`);
-  console.log(`Total files: ${stats.totalFiles}`);
+  const lines = [`chore: Changed ${stats.changed.size} file(s)`];
 
-  if (stats.changed.length > 0) {
-    console.log(`\nChanged files (${stats.changed.length}):`);
-    stats.changed.forEach(file => console.log(`  - ${file}`));
+  if (stats.revisionsUpdated) {
+    lines.push('\n');
+    lines.push('⚠️ revisions.json updated!');
+  }
+
+  if (stats.changed.size > 0) {
+    lines.push(`\nChanged files (${stats.changed.size}):`);
+    lines.push('\n<pre>')
+    const sortedChanged = Array.from(stats.changed).sort();
+    sortedChanged.forEach(file => {
+      console.log(`  - ${file}`)
+      lines.push(`- ${file}`);
+    });
+    lines.push('</pre>');
   }
 
   if (stats.failed.length > 0) {
-    console.log(`\nFailed downloads (${stats.failed.length}):`);
-    stats.failed.forEach(({ url, error }) => console.log(`  - ${url}: ${error}`));
+    lines.push(`\nFailed downloads (${stats.failed.length}):`);
+    lines.push('\n<pre>');
+    stats.failed.forEach(({ url, error }) => {
+      console.log(`  - ${url}: ${error}`)
+      lines.push(`- ${url}`);
+    });
+    lines.push('</pre>');
   }
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
   console.log(`\nDuration: ${duration}s`);
 
-  if (stats.changed.length === 0) {
+  if (stats.changed.size === 0 || stats.failed.length === 0) {
     console.log('\nNo files updated. Exiting without commit.');
     process.exit(0);
   }
 
-  const commitMessage = generateCommitMessage();
-  await fs.writeFile('commit.txt', commitMessage, 'utf-8');
-}
+  const telegramMessage = lines.join('\n')
+  const commitMessage = telegramMessage
+    .replaceAll('<pre>', '')
+    .replaceAll('</pre>', '')
+    .replace('chore: ', '')
 
-function generateCommitMessage() {
-  const lines = [`chore: Changed ${stats.changed.length} file(s)`, ''];
-
-  if (stats.changed.length > 0) {
-    stats.changed.forEach(file => {
-      lines.push(`- ${file}`);
-    });
-  }
-
-  if (stats.failed.length > 0) {
-    lines.push('');
-    lines.push(`Failed: ${stats.failed.length} sourcemap(s):`);
-    stats.failed.forEach(({ url }) => {
-      lines.push(`- ${url}`);
-    });
-  }
-
-  return lines.join('\n');
+  await fs.writeFile('commit-message.txt', commitMessage, 'utf-8');
+  await fs.writeFile('telegram-message.txt', telegramMessage, 'utf-8');
 }
 
 main().catch(console.error);
