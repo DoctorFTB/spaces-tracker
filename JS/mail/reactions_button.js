@@ -17,7 +17,7 @@ module.on("componentpage", () => {
 		const newReactionsCnt = +reactionsButton.dataset.count;
 		if (newReactionsCnt > 0) {
 			if (!cleanupFloatingButton) {
-				const topAnchor = document.getElementById('mail-text-field');
+				const topAnchor = document.getElementById('messages_list_form');
 				const bottomAnchor = document.getElementById('messages_list');
 				reactionsButton.classList.remove('mail-reactions-button--is-hidden');
 				cleanupFloatingButton = useFloatingButton(reactionsButton, {

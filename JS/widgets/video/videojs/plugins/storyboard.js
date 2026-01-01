@@ -117,13 +117,9 @@ class Storyboard extends Component {
 		if (videojs.browser.TOUCH_ENABLED) {
 			const playerElement = this.player().el();
 			const playerRect = playerElement.getBoundingClientRect();
-			const [thumbW, thumbH] = resize(this.options_.videoWidth, this.options_.videoHeight, playerRect.width, playerRect.height);
-			this.thumbW = thumbW;
-			this.thumbH = thumbH;
+			[this.thumbW, this.thumbH] = resizeContain(this.options_.videoWidth, this.options_.videoHeight, playerRect.width, playerRect.height);
 		} else {
-			const [thumbW, thumbH] = resize(this.options_.videoWidth, this.options_.videoHeight, this.options_.frameWidth, this.options_.frameHeight);
-			this.thumbW = thumbW;
-			this.thumbH = thumbH;
+			[this.thumbW, this.thumbH] = resizeLimit(this.options_.videoWidth, this.options_.videoHeight, this.options_.frameWidth, this.options_.frameHeight);
 		}
 
 		if (this.player().scrubbing() || this.isMoving) {
@@ -165,7 +161,7 @@ class Storyboard extends Component {
 			const maxX = this.progressControl.offsetLeft + this.progressControl.offsetWidth - this.thumbW;
 			const minX = this.progressControl.offsetLeft;
 			const x = Math.min(maxX, Math.max(minX, this.player().el().offsetWidth * this.currentHoverProgress - (this.thumbW / 2)));
-			el.style.transform = `translate(${x}px, 0px)`;
+			el.style.transform = `translate(${Math.round(x)}px, 0px)`;
 		}
 	}
 }
@@ -196,7 +192,7 @@ function loadImage(src, src_2x, callback) {
 	img.onerror = handleError;
 }
 
-function resize(w, h, limitW, limitH) {
+function resizeLimit(w, h, limitW, limitH) {
 	const aspectRatio = w / h;
 	if (h > limitH) {
 		w = limitH * aspectRatio;
@@ -206,5 +202,15 @@ function resize(w, h, limitW, limitH) {
 		w = limitW;
 		h = limitW / aspectRatio;
 	}
-	return [w, h];
+	return [Math.round(w), Math.round(h)];
+}
+
+function resizeContain(w, h, containerW, containerH) {
+	const aspectRatio = w / h;
+	const containerAspectRatio = containerW / containerH;
+	if (aspectRatio > containerAspectRatio) {
+		return [Math.round(containerW), Math.round(containerW / aspectRatio)];
+	} else {
+		return [Math.round(containerH * aspectRatio), Math.round(containerH)];
+	}
 }
