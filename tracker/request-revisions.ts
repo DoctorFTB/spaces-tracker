@@ -9,6 +9,10 @@ export async function requestRevisions() {
   const fileName = path.basename(Config.RevisionsPath)
   const req = await apiRequest(`/js/${fileName}`)
 
+  if (req.status === 304) {
+    return { isChanged: false } as { isChanged: false, links?: undefined }
+  }
+
   if (!req.ok) {
     throw new Error(`Can't download ${fileName}: ${req.status}`)
   }
@@ -33,6 +37,11 @@ export async function requestRevisions() {
 
   const revision = JSON.stringify(res, null, 2)
   const isChanged = await fileIsChanged(revision, Config.RevisionsPath)
+
+  if (!isChanged) {
+    return { isChanged }
+  }
+
   await fs.writeFile(Config.RevisionsPath, revision, 'utf-8')
 
   const currentLinks = await fs.readFile(Config.LinksPath, 'utf-8')

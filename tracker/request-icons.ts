@@ -9,6 +9,10 @@ const ICONS_REGEX = /url\(['"]?(\/i\/[^'")]+)['"]?\)/g
 export async function requestIcons() {
   const req = await apiRequest(ICONS_SOURCE)
 
+  if (req.status === 304) {
+    return
+  }
+
   if (!req.ok) {
     console.log(`Can't download icons from ${ICONS_SOURCE}: ${req.status}`)
     return
@@ -24,6 +28,10 @@ export async function requestIcons() {
 
   for (const icon of sortedIcons) {
     const req = await apiRequest(icon)
+
+    if (req.status === 304) {
+      continue
+    }
 
     if (!req.ok) {
       console.log(`Can't download icon ${icon}: ${req.status}`)

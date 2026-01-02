@@ -22,6 +22,10 @@ async function loadSourcemap(url: string) {
   try {
     const req = await apiRequest(url)
 
+    if (req.status === 304) {
+      return results
+    }
+
     if (!req.ok) {
       results.error = `HTTP ${req.status}`
       return results

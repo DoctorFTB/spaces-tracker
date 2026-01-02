@@ -1,3 +1,4 @@
+import { saveEtags } from './api.ts'
 import { generateChangelog } from './generate-changelog.ts'
 import { requestIcons } from './request-icons.ts'
 import { requestRevisions } from './request-revisions.ts'
@@ -43,6 +44,8 @@ async function main() {
   }
 
   await requestIcons()
+
+  saveEtags()
 
   stats.links = revisions.links
   generateChangelog(stats)
