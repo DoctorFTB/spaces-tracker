@@ -1,5 +1,4 @@
 import fs from 'node:fs/promises'
-import os from 'node:os'
 import path from 'node:path'
 import { apiRequest } from './api.ts'
 import { Config } from './config.ts'
@@ -11,7 +10,9 @@ import {
 } from './utils.ts'
 import type { Sourcemap, SourcemapFile, SourcemapResponse } from './types.ts'
 
-async function loadSourcemap(url: string, tempWorkDir: string) {
+const processedPathToSize: Record<string, number> = {}
+
+async function loadSourcemap(url: string) {
   const results: SourcemapResponse = {
     url,
     files: [],
@@ -37,19 +38,29 @@ async function loadSourcemap(url: string, tempWorkDir: string) {
       const sourceContent = sourcemap.sourcesContent[i]
       if (!sourceContent) continue
 
+      if (sourcePath in processedPathToSize) {
+        if (processedPathToSize[sourcePath] !== sourceContent.length) {
+          console.error(`Something goes wrong... At ${sourcePath}, prev: ${processedPathToSize[sourcePath]}, next: ${sourceContent.length}`)
+          process.exit(1)
+        }
+
+        continue
+      } else {
+        processedPathToSize[sourcePath] = sourceContent.length
+      }
+
       let fileSize = ''
       let isChanged = false
       let lastCommitDate: SourcemapFile['lastCommitDate'] | undefined
 
       const contentPath = path.join('.', sourcePath.replace(/^[a-z]+:\/\/\//, ''))
-      const tempFilePath = path.join(tempWorkDir, contentPath)
-      const isFileExists = await fileExists(tempFilePath)
+      const isFileExists = await fileExists(contentPath)
 
       if (isFileExists) {
-        isChanged = await fileIsChanged(sourceContent, tempFilePath)
+        isChanged = await fileIsChanged(sourceContent, contentPath)
         if (isChanged) lastCommitDate = await fileLastCommitDate(contentPath)
 
-        const fileStats = await fs.stat(tempFilePath)
+        const fileStats = await fs.stat(contentPath)
         fileSize = compareFileSize(fileStats.size, sourceContent.length)
       } else {
         lastCommitDate = 'new'
@@ -73,41 +84,12 @@ async function loadSourcemap(url: string, tempWorkDir: string) {
   return results
 }
 
-async function copyDirectoryRecursive(src: string, dest: string) {
-  try {
-    await fs.mkdir(dest, { recursive: true })
-    const entries = await fs.readdir(src, { withFileTypes: true })
-
-    for (const entry of entries) {
-      const srcPath = path.join(src, entry.name)
-      const destPath = path.join(dest, entry.name)
-
-      if (entry.isDirectory()) {
-        await copyDirectoryRecursive(srcPath, destPath)
-      } else {
-        await fs.copyFile(srcPath, destPath)
-      }
-    }
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
-      throw error
-    }
-  }
-}
-
 export async function requestSourcemaps(assets: Record<string, string[]>) {
   const hashes = Object.keys(assets)
   const countAssets = hashes.length
   console.log(`Starting download sourcemaps (${countAssets} assets, concurrency: ${Config.Concurrency})\n`)
 
-  const tempWorkDir = await fs.mkdtemp(path.join(os.tmpdir(), 'sourcemap-work-'))
-  console.log(`Created temp directory: ${tempWorkDir}`)
-
   try {
-    await copyDirectoryRecursive('CSS', path.join(tempWorkDir, 'CSS'))
-    await copyDirectoryRecursive('JS', path.join(tempWorkDir, 'JS'))
-    console.log('Copied CSS and JS folders to temp directory\n')
-
     const resources: SourcemapResponse[] = []
     let index = 0
 
@@ -121,7 +103,7 @@ export async function requestSourcemaps(assets: Record<string, string[]>) {
 
         for (let urlIndex = 0; urlIndex < urls.length; urlIndex++) {
           const url = urls[urlIndex]
-          result = await loadSourcemap(url, tempWorkDir)
+          result = await loadSourcemap(url)
 
           if (!result.error) {
             break
@@ -143,7 +125,6 @@ export async function requestSourcemaps(assets: Record<string, string[]>) {
     await Promise.all(Array.from({ length: Config.Concurrency }, worker))
     return resources
   } finally {
-    await fs.rm(tempWorkDir, { recursive: true, force: true })
     console.log('\nCleaned up temp directory')
   }
 }
