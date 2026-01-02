@@ -43,7 +43,7 @@ export async function generateChangelog(stats: TrackerStats) {
   lines.push(duration)
 
   const commitMessage = lines.join('\n').replaceAll('\n<pre>', '').replaceAll('\n</pre>', '')
-  const telegramMessage = lines.slice(1).join('\n').replaceAll('<pre>\n', '<pre>')
+  const telegramMessage = lines.slice(1).join('\n')
 
   await fs.writeFile('commit-message.txt', commitMessage, 'utf-8')
 
