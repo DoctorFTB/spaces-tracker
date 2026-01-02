@@ -20,7 +20,7 @@ jobs:
           node-version: 24
 
       - name: Download sourcemaps
-        run: node main.js
+        run: node tracker/main.ts
 
       - name: Check changes
         id: check
